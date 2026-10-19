@@ -1,0 +1,50 @@
+# Faith Together（暫定名稱）
+
+職場信仰互相理解 App：每個人設定自己的信仰，自動產生宗教日曆與提醒，自己決定要分享哪些資訊給團隊；AI 提供雙向的相處建議與母語「靜心」陪伴。介面支援越南文、印尼文、泰文、英文、繁體中文。
+
+## 技術
+
+- Vue 3 + Vite
+- vue-router、vue-i18n（語言檔在 `src/i18n/locales/`）
+- Tailwind CSS v4（色彩設定在 `src/style.css` 的 `@theme`）
+- vite-plugin-pwa（可安裝到手機桌面）
+- Back4App / Parse（資料庫，`src/lib/parse.js`）
+- Vercel 部署；`api/` 資料夾是後端函式，AI 的 key 只放在伺服器端
+
+## 本機開發
+
+```bash
+npm install
+cp .env.example .env.local   # 填入 Back4App 的 key
+npm run dev
+```
+
+`npm run dev` 不會執行 `api/` 裡的後端函式。要連同 `/api/ai` 一起測試，請用 `npx vercel dev`。
+
+## 資料夾
+
+```
+api/            Vercel 後端函式（AI 呼叫）
+public/         圖示等靜態檔
+src/
+  components/   共用元件
+  views/        各畫面
+  i18n/         多語設定與語言檔
+  lib/          Back4App、AI 呼叫
+```
+
+## 進度
+
+- [x] 專案骨架、PWA、五種語言
+- [x] 首次設定 1：選介面語言
+- [ ] 首次設定 2：選信仰
+- [ ] 首次設定 3：分享設定
+- [ ] 首次設定 4：加入團隊
+- [ ] 我的日曆、日曆訂閱（.ics）
+- [ ] 團隊日曆、主管排班提醒
+- [ ] AI：相處建議、靜心、節日說明
+
+## 注意
+
+- 語言檔的越、印、泰文需請母語人士確認。
+- 宗教內容（日期規則、經文、禱文）需經各信仰的信徒審閱，AI 不自行創作宗教文本。

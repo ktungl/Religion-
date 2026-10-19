@@ -1,0 +1,17 @@
+{
+  "welcome": "Selamat datang",
+  "language": {
+    "title": "Pilih bahasa",
+    "changeLater": "Anda bisa mengubahnya nanti di Pengaturan",
+    "listen": "Dengarkan nama bahasa"
+  },
+  "onboarding": {
+    "step": "Langkah {n} dari {total}",
+    "next": "Lanjut",
+    "back": "Kembali",
+    "comingSoon": "Langkah ini sedang dibuat"
+  },
+  "faith": {
+    "title": "Pilih keyakinan Anda"
+  }
+}

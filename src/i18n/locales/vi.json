@@ -1,0 +1,17 @@
+{
+  "welcome": "Xin chào",
+  "language": {
+    "title": "Chọn ngôn ngữ",
+    "changeLater": "Bạn có thể thay đổi sau trong phần Cài đặt",
+    "listen": "Nghe tên ngôn ngữ"
+  },
+  "onboarding": {
+    "step": "Bước {n}/{total}",
+    "next": "Tiếp tục",
+    "back": "Quay lại",
+    "comingSoon": "Bước này đang được xây dựng"
+  },
+  "faith": {
+    "title": "Chọn tín ngưỡng của bạn"
+  }
+}

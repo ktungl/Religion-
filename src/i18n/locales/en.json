@@ -1,0 +1,17 @@
+{
+  "welcome": "Welcome",
+  "language": {
+    "title": "Choose your language",
+    "changeLater": "You can change this later in Settings",
+    "listen": "Hear the language name"
+  },
+  "onboarding": {
+    "step": "Step {n} of {total}",
+    "next": "Continue",
+    "back": "Back",
+    "comingSoon": "This step is coming soon"
+  },
+  "faith": {
+    "title": "Choose your faith"
+  }
+}
