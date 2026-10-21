@@ -12,6 +12,7 @@ export const router = createRouter({
     { path: '/onboarding/team', component: () => import('./views/TeamView.vue') },
     { path: '/home', component: () => import('./views/HomeView.vue'), meta: { app: true } },
     { path: '/team', component: () => import('./views/TeamPage.vue'), meta: { app: true } },
+    { path: '/event/:key', component: () => import('./views/EventView.vue') },
     { path: '/settings/share', component: () => import('./views/ShareView.vue'), meta: { app: true } },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],

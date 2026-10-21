@@ -50,6 +50,12 @@ function relative(key) {
   return new Intl.RelativeTimeFormat(locale.value, { numeric: 'auto' }).format(days, 'day')
 }
 
+function eventLink(e) {
+  const query = { faith: e.faith, date: e.date }
+  if (e.until) query.until = e.until
+  return { path: `/event/${e.key}`, query }
+}
+
 async function startOver() {
   // Leaving the team deletes what was shared; if offline, the local copy is cleared anyway.
   await leaveTeam().catch(() => {})
@@ -67,10 +73,19 @@ async function startOver() {
     </header>
 
     <section v-if="todayEvents.length || iftar" class="mt-4 flex flex-col gap-2">
-      <div v-for="e in todayEvents" :key="e.key" class="rounded-2xl p-4" :class="faithStyle(e.faith).solid">
-        <p class="text-lg font-semibold">{{ t(`events.${e.key}`) }}</p>
-        <p class="text-sm opacity-80">{{ t(`faiths.${e.faith}`) }} · {{ t(`kinds.${e.kind}`) }}</p>
-      </div>
+      <RouterLink
+        v-for="e in todayEvents"
+        :key="e.key"
+        :to="eventLink(e)"
+        class="flex items-center justify-between rounded-2xl p-4"
+        :class="faithStyle(e.faith).solid"
+      >
+        <span>
+          <span class="block text-lg font-semibold">{{ t(`events.${e.key}`) }}</span>
+          <span class="block text-sm opacity-80">{{ t(`faiths.${e.faith}`) }} · {{ t(`kinds.${e.kind}`) }}</span>
+        </span>
+        <span class="text-sm opacity-90">{{ t('detail.open') }} ›</span>
+      </RouterLink>
       <div v-if="iftar" class="rounded-2xl p-4" :class="faithStyle('islam').soft">
         <p class="text-sm">{{ t('home.iftar') }}</p>
         <p class="text-2xl font-semibold">{{ fmtTime(iftar.time) }}</p>
@@ -93,7 +108,8 @@ async function startOver() {
         {{ t('home.empty') }}
       </p>
       <ul v-else class="mt-2 flex flex-col divide-y divide-line rounded-2xl border border-line bg-white">
-        <li v-for="e in upcoming" :key="e.date + e.key" class="relative flex items-center gap-3 py-3 pr-4 pl-5">
+        <li v-for="e in upcoming" :key="e.date + e.key">
+          <RouterLink :to="eventLink(e)" class="relative flex items-center gap-3 py-3 pr-4 pl-5 active:bg-brand-soft">
           <span class="absolute top-3 bottom-3 left-0 w-1 rounded-r-full" :class="faithStyle(e.faith).bar" aria-hidden="true" />
           <div class="w-20 shrink-0">
             <p class="text-sm font-semibold whitespace-nowrap">{{ fmtDate(e.date) }}</p>
@@ -108,6 +124,7 @@ async function startOver() {
           <span class="shrink-0 rounded-full border border-line px-2.5 py-1 text-xs text-muted">
             {{ t(`kinds.${e.kind}`) }}
           </span>
+          </RouterLink>
         </li>
       </ul>
       <p v-if="hasIslam" class="mt-3 text-xs text-muted">{{ t('home.islamicNote') }}</p>

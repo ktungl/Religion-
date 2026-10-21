@@ -139,5 +139,15 @@
     "leaveConfirm": "Yakin keluar dari tim? Data yang Anda bagikan akan dihapus.",
     "retry": "Coba lagi",
     "loading": "Memuat…"
+  },
+  "detail": {
+    "open": "Lihat",
+    "what": "Hari apa ini",
+    "how": "Bagaimana orang menjalaninya",
+    "tips": "Di tempat kerja, Anda bisa",
+    "loading": "AI sedang menyiapkan penjelasan…",
+    "aiNote": "Ditulis ulang oleh AI dari bahan yang sudah diperiksa. Kebiasaan bisa berbeda; ikuti penjelasan rekan kerja dan komunitas agama.",
+    "notesBadge": "Contoh",
+    "sampleNote": "AI belum aktif; menampilkan bahan berbahasa Inggris yang sudah diperiksa."
   }
 }

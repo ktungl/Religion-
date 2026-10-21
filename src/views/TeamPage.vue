@@ -177,7 +177,8 @@ async function leave() {
               {{ t('teamPage.empty') }}
             </p>
             <ul v-else class="mt-2 flex flex-col divide-y divide-line rounded-2xl border border-line bg-white">
-              <li v-for="e in teamEvents" :key="e.date + e.key" class="relative py-3 pr-4 pl-5">
+              <li v-for="e in teamEvents" :key="e.date + e.key">
+                <RouterLink :to="{ path: `/event/${e.key}`, query: { faith: e.faith, date: e.date, ...(e.until ? { until: e.until } : {}) } }" class="relative block py-3 pr-4 pl-5 active:bg-brand-soft">
                 <span class="absolute top-3 bottom-3 left-0 w-1 rounded-r-full" :class="faithStyle(e.faith).bar" aria-hidden="true" />
                 <div class="flex items-baseline justify-between gap-2">
                   <p class="font-semibold">{{ t(`events.${e.key}`) }}</p>
@@ -189,6 +190,7 @@ async function leave() {
                     {{ p.displayName }}<template v-if="p.isMe"> ({{ t('teamPage.you') }})</template>
                   </span>
                 </div>
+                </RouterLink>
               </li>
             </ul>
           </section>

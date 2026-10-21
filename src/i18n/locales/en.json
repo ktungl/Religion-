@@ -139,5 +139,15 @@
     "leaveConfirm": "Leave the team? What you shared will be deleted.",
     "retry": "Retry",
     "loading": "Loading…"
+  },
+  "detail": {
+    "open": "About",
+    "what": "What this day is",
+    "how": "How people observe it",
+    "tips": "At work, you can",
+    "loading": "AI is preparing this…",
+    "aiNote": "Rewritten by AI from reviewed notes. Customs vary; go by what your coworkers and faith communities say.",
+    "notesBadge": "Sample",
+    "sampleNote": "AI is not enabled yet; showing the reviewed English notes."
   }
 }

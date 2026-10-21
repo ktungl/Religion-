@@ -139,5 +139,15 @@
     "leaveConfirm": "Bạn chắc chắn muốn rời nhóm? Dữ liệu bạn đã chia sẻ sẽ bị xóa.",
     "retry": "Thử lại",
     "loading": "Đang tải…"
+  },
+  "detail": {
+    "open": "Xem",
+    "what": "Ngày này là gì",
+    "how": "Mọi người đón ngày này thế nào",
+    "tips": "Ở nơi làm việc, bạn có thể",
+    "loading": "AI đang soạn phần giải thích…",
+    "aiNote": "Do AI viết lại từ tài liệu đã kiểm tra. Phong tục mỗi nơi khác nhau; hãy theo lời đồng nghiệp và cộng đồng tôn giáo.",
+    "notesBadge": "Mẫu",
+    "sampleNote": "AI chưa bật, đang hiển thị tài liệu tiếng Anh đã kiểm tra."
   }
 }
