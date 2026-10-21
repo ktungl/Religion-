@@ -33,7 +33,7 @@ function finish() {
         <button type="button" class="h-14 rounded-2xl border-2 border-line bg-white px-5 text-lg text-ink" @click="router.back()">
           {{ t('onboarding.back') }}
         </button>
-        <button type="button" class="h-14 flex-1 rounded-2xl bg-pine text-lg font-semibold text-paper active:opacity-90" @click="finish">
+        <button type="button" class="h-14 flex-1 rounded-2xl bg-brand text-lg font-semibold text-paper active:opacity-90" @click="finish">
           {{ t('team.skip') }}
         </button>
       </div>

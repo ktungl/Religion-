@@ -16,7 +16,7 @@ const { t } = useI18n()
           v-for="n in total"
           :key="n"
           class="h-1.5 flex-1 rounded-full"
-          :class="n <= step ? 'bg-pine' : 'bg-line'"
+          :class="n <= step ? 'bg-brand' : 'bg-line'"
         />
       </div>
       <span class="text-xs text-muted">{{ t('onboarding.step', { n: step, total }) }}</span>

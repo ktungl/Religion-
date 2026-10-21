@@ -89,5 +89,15 @@
     "allSaints": "All Saints' Day",
     "christmasEve": "Christmas Eve",
     "christmas": "Christmas"
+  },
+  "subscribe": {
+    "title": "Add to your phone calendar",
+    "desc": "Religious dates appear in the calendar you already use and stay up to date",
+    "google": "Add to Google Calendar",
+    "apple": "iPhone / other calendars",
+    "copy": "Copy link",
+    "copied": "Copied",
+    "note": "Google Calendar refreshes every few hours. The link only contains the faiths you chose, no personal data.",
+    "calName": "Faith calendar"
   }
 }

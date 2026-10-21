@@ -89,5 +89,15 @@
     "allSaints": "Hari Raya Semua Orang Kudus",
     "christmasEve": "Malam Natal",
     "christmas": "Natal"
+  },
+  "subscribe": {
+    "title": "Tambahkan ke kalender ponsel",
+    "desc": "Hari-hari keagamaan akan muncul otomatis di kalender Anda dan diperbarui sendiri",
+    "google": "Tambahkan ke Google Kalender",
+    "apple": "iPhone / kalender lain",
+    "copy": "Salin tautan",
+    "copied": "Disalin",
+    "note": "Google Kalender diperbarui setiap beberapa jam. Tautan hanya berisi keyakinan yang Anda pilih, tanpa data pribadi.",
+    "calName": "Kalender keagamaan"
   }
 }

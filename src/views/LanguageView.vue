@@ -54,7 +54,7 @@ function next() {
           <p
             :key="welcomes[welcomeIndex].code"
             :lang="welcomes[welcomeIndex].code"
-            class="text-4xl font-semibold text-pine"
+            class="text-4xl font-semibold text-brand"
           >
             {{ welcomes[welcomeIndex].text }}
           </p>
@@ -73,15 +73,15 @@ function next() {
           class="flex min-h-16 flex-1 items-center justify-between rounded-2xl border-2 px-5 text-left text-xl transition-colors"
           :class="
             locale === lang.code
-              ? 'border-pine bg-pine-soft text-pine font-semibold'
-              : 'border-line bg-white text-ink active:bg-pine-soft'
+              ? 'border-brand bg-brand-soft text-brand font-semibold'
+              : 'border-line bg-white text-ink active:bg-brand-soft'
           "
           @click="choose(lang.code)"
         >
           <span>{{ lang.native }}</span>
           <span
             v-if="locale === lang.code"
-            class="flex h-7 w-7 items-center justify-center rounded-full bg-pine text-base text-paper"
+            class="flex h-7 w-7 items-center justify-center rounded-full bg-brand text-base text-paper"
             aria-hidden="true"
             >✓</span
           >
@@ -89,8 +89,8 @@ function next() {
         <button
           v-if="canSpeak"
           type="button"
-          class="flex w-14 items-center justify-center rounded-2xl border-2 border-line bg-white text-muted active:bg-pine-soft"
-          :class="speakingCode === lang.code ? 'text-pine border-pine' : ''"
+          class="flex w-14 items-center justify-center rounded-2xl border-2 border-line bg-white text-muted active:bg-brand-soft"
+          :class="speakingCode === lang.code ? 'text-brand border-brand' : ''"
           :aria-label="`${t('language.listen')}: ${lang.native}`"
           @click="speak(lang)"
         >
@@ -108,7 +108,7 @@ function next() {
     <template #footer>
       <button
         type="button"
-        class="h-14 w-full rounded-2xl bg-pine text-lg font-semibold text-paper active:opacity-90"
+        class="h-14 w-full rounded-2xl bg-brand text-lg font-semibold text-paper active:opacity-90"
         @click="next"
       >
         {{ t('onboarding.next') }}

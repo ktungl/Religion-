@@ -5,6 +5,7 @@ import { useRouter } from 'vue-router'
 import OnboardingShell from '../components/OnboardingShell.vue'
 import { FAITHS } from '../lib/calendar'
 import { profile } from '../lib/profile'
+import { faithStyle } from '../lib/faithStyle'
 
 const { t } = useI18n()
 const router = useRouter()
@@ -47,16 +48,19 @@ function next() {
           class="flex min-h-16 w-full items-center justify-between rounded-2xl border-2 px-5 text-left text-lg transition-colors"
           :class="[
             profile.faiths.includes(faith)
-              ? 'border-pine bg-pine-soft text-pine font-semibold'
-              : 'border-line bg-white text-ink active:bg-pine-soft',
+              ? [faithStyle(faith).border, faithStyle(faith).soft, 'font-semibold']
+              : 'border-line bg-white text-ink active:bg-brand-soft',
             faith === 'none' ? 'mt-2' : '',
           ]"
           @click="toggle(faith)"
         >
-          <span>{{ t(`faiths.${faith}`) }}</span>
+          <span class="flex items-center gap-3">
+            <span class="h-3 w-3 shrink-0 rounded-full" :class="faithStyle(faith).bar" aria-hidden="true" />
+            {{ t(`faiths.${faith}`) }}
+          </span>
           <span
             class="flex h-7 w-7 shrink-0 items-center justify-center rounded-lg border-2 text-base"
-            :class="profile.faiths.includes(faith) ? 'border-pine bg-pine text-paper' : 'border-line'"
+            :class="profile.faiths.includes(faith) ? [faithStyle(faith).border, faithStyle(faith).solid] : 'border-line'"
             aria-hidden="true"
             >{{ profile.faiths.includes(faith) ? '✓' : '' }}</span
           >
@@ -77,7 +81,7 @@ function next() {
         <button type="button" class="h-14 rounded-2xl border-2 border-line bg-white px-5 text-lg text-ink" @click="router.back()">
           {{ t('onboarding.back') }}
         </button>
-        <button type="button" class="h-14 flex-1 rounded-2xl bg-pine text-lg font-semibold text-paper active:opacity-90" @click="next">
+        <button type="button" class="h-14 flex-1 rounded-2xl bg-brand text-lg font-semibold text-paper active:opacity-90" @click="next">
           {{ t('onboarding.next') }}
         </button>
       </div>

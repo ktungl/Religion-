@@ -25,15 +25,15 @@ const options = computed(() => {
       <li v-for="key in options" :key="key">
         <label
           class="flex min-h-20 cursor-pointer items-center gap-4 rounded-2xl border-2 bg-white px-5 py-3 transition-colors"
-          :class="profile.share[key] ? 'border-pine' : 'border-line'"
+          :class="profile.share[key] ? 'border-brand' : 'border-line'"
         >
           <span class="flex-1">
-            <span class="block text-lg" :class="profile.share[key] ? 'font-semibold text-pine' : ''">{{ t(`share.${key}`) }}</span>
+            <span class="block text-lg" :class="profile.share[key] ? 'font-semibold text-brand' : ''">{{ t(`share.${key}`) }}</span>
             <span class="mt-0.5 block text-sm text-muted">{{ t(`share.${key}Hint`) }}</span>
           </span>
           <span class="relative inline-flex h-8 w-14 shrink-0 items-center">
             <input v-model="profile.share[key]" type="checkbox" role="switch" class="peer absolute inset-0 h-full w-full cursor-pointer opacity-0" />
-            <span class="h-8 w-14 rounded-full bg-line transition-colors peer-checked:bg-pine peer-focus-visible:ring-2 peer-focus-visible:ring-pine peer-focus-visible:ring-offset-2" aria-hidden="true" />
+            <span class="h-8 w-14 rounded-full bg-line transition-colors peer-checked:bg-brand peer-focus-visible:ring-2 peer-focus-visible:ring-brand peer-focus-visible:ring-offset-2" aria-hidden="true" />
             <span class="pointer-events-none absolute left-1 h-6 w-6 rounded-full bg-white shadow transition-transform peer-checked:translate-x-6" aria-hidden="true" />
           </span>
         </label>
@@ -45,7 +45,7 @@ const options = computed(() => {
         <button type="button" class="h-14 rounded-2xl border-2 border-line bg-white px-5 text-lg text-ink" @click="router.back()">
           {{ t('onboarding.back') }}
         </button>
-        <button type="button" class="h-14 flex-1 rounded-2xl bg-pine text-lg font-semibold text-paper active:opacity-90" @click="router.push('/onboarding/team')">
+        <button type="button" class="h-14 flex-1 rounded-2xl bg-brand text-lg font-semibold text-paper active:opacity-90" @click="router.push('/onboarding/team')">
           {{ t('onboarding.next') }}
         </button>
       </div>

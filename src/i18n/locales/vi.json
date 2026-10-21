@@ -89,5 +89,15 @@
     "allSaints": "Lễ Các Thánh",
     "christmasEve": "Đêm Giáng sinh",
     "christmas": "Lễ Giáng sinh"
+  },
+  "subscribe": {
+    "title": "Thêm vào lịch điện thoại",
+    "desc": "Các ngày tôn giáo sẽ tự hiện trong lịch bạn hay dùng và tự cập nhật",
+    "google": "Thêm vào Google Lịch",
+    "apple": "iPhone / lịch khác",
+    "copy": "Sao chép",
+    "copied": "Đã chép",
+    "note": "Google Lịch cập nhật vài giờ một lần. Liên kết chỉ chứa tín ngưỡng bạn chọn, không có thông tin cá nhân.",
+    "calName": "Lịch tôn giáo"
   }
 }

@@ -3,6 +3,8 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import { profile, resetProfile } from '../lib/profile'
+import { faithStyle } from '../lib/faithStyle'
+import SubscribeCard from '../components/SubscribeCard.vue'
 import { eventsBetween, groupForList, prayerTimes, isRamadan, ymd, DEFAULT_PLACE } from '../lib/calendar'
 
 const { t, locale } = useI18n()
@@ -46,12 +48,6 @@ function relative(key) {
   return new Intl.RelativeTimeFormat(locale.value, { numeric: 'auto' }).format(days, 'day')
 }
 
-const KIND_STYLE = {
-  fast: 'bg-saffron/20 text-amber-900',
-  vegetarian: 'bg-pine-soft text-pine',
-  holiday: 'bg-sky-100 text-sky-900',
-}
-
 function startOver() {
   resetProfile()
   router.replace('/onboarding/language')
@@ -66,21 +62,21 @@ function startOver() {
     </header>
 
     <section v-if="todayEvents.length || iftar" class="mt-4 flex flex-col gap-2">
-      <div v-for="e in todayEvents" :key="e.key" class="rounded-2xl bg-pine p-4 text-paper">
+      <div v-for="e in todayEvents" :key="e.key" class="rounded-2xl p-4" :class="faithStyle(e.faith).solid">
         <p class="text-lg font-semibold">{{ t(`events.${e.key}`) }}</p>
         <p class="text-sm opacity-80">{{ t(`faiths.${e.faith}`) }} · {{ t(`kinds.${e.kind}`) }}</p>
       </div>
-      <div v-if="iftar" class="rounded-2xl bg-saffron/25 p-4">
-        <p class="text-sm text-amber-900">{{ t('home.iftar') }}</p>
-        <p class="text-2xl font-semibold text-amber-950">{{ fmtTime(iftar.time) }}</p>
+      <div v-if="iftar" class="rounded-2xl p-4" :class="faithStyle('islam').soft">
+        <p class="text-sm">{{ t('home.iftar') }}</p>
+        <p class="text-2xl font-semibold">{{ fmtTime(iftar.time) }}</p>
       </div>
     </section>
 
     <section v-if="hasIslam" class="mt-6">
       <h2 class="text-base font-semibold">{{ t('home.prayerTitle') }}</h2>
       <ol class="mt-2 grid grid-cols-5 gap-1.5">
-        <li v-for="p in prayers" :key="p.key" class="rounded-xl border border-line bg-white px-1 py-2 text-center">
-          <span class="block truncate text-xs text-muted">{{ t(`prayers.${p.key}`) }}</span>
+        <li v-for="p in prayers" :key="p.key" class="rounded-xl px-1 py-2 text-center" :class="faithStyle('islam').soft">
+          <span class="block truncate text-xs opacity-80">{{ t(`prayers.${p.key}`) }}</span>
           <span class="block text-sm font-semibold tabular-nums">{{ fmtTime(p.time) }}</span>
         </li>
       </ol>
@@ -92,22 +88,27 @@ function startOver() {
         {{ t('home.empty') }}
       </p>
       <ul v-else class="mt-2 flex flex-col divide-y divide-line rounded-2xl border border-line bg-white">
-        <li v-for="e in upcoming" :key="e.date + e.key" class="flex items-center gap-3 px-4 py-3">
+        <li v-for="e in upcoming" :key="e.date + e.key" class="relative flex items-center gap-3 py-3 pr-4 pl-5">
+          <span class="absolute top-3 bottom-3 left-0 w-1 rounded-r-full" :class="faithStyle(e.faith).bar" aria-hidden="true" />
           <div class="w-20 shrink-0">
             <p class="text-sm font-semibold whitespace-nowrap">{{ fmtDate(e.date) }}</p>
             <p class="text-xs text-muted whitespace-nowrap">{{ relative(e.date) || fmtWeekday(e.date) }}</p>
           </div>
           <div class="min-w-0 flex-1">
             <p class="truncate">{{ t(`events.${e.key}`) }}</p>
-            <p v-if="e.until" class="text-xs text-muted">{{ t('home.until', { date: fmtDate(e.until) }) }}</p>
+            <p class="truncate text-xs" :class="faithStyle(e.faith).text">
+              {{ t(`faiths.${e.faith}`) }}<template v-if="e.until"> · {{ t('home.until', { date: fmtDate(e.until) }) }}</template>
+            </p>
           </div>
-          <span class="shrink-0 rounded-full px-2.5 py-1 text-xs font-semibold" :class="KIND_STYLE[e.kind]">
+          <span class="shrink-0 rounded-full border border-line px-2.5 py-1 text-xs text-muted">
             {{ t(`kinds.${e.kind}`) }}
           </span>
         </li>
       </ul>
       <p v-if="hasIslam" class="mt-3 text-xs text-muted">{{ t('home.islamicNote') }}</p>
     </section>
+
+    <SubscribeCard v-if="!profile.faiths.includes('none')" class="mt-6" />
 
     <button type="button" class="mt-8 w-full text-center text-sm text-muted underline underline-offset-4" @click="startOver">
       {{ t('home.reset') }}

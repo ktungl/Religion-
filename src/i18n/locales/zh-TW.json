@@ -89,5 +89,15 @@
     "allSaints": "諸聖節",
     "christmasEve": "平安夜",
     "christmas": "聖誕節"
+  },
+  "subscribe": {
+    "title": "加到我的手機日曆",
+    "desc": "宗教日子會自動出現在你平常用的日曆裡，也會自動更新",
+    "google": "加入 Google 日曆",
+    "apple": "iPhone／其他日曆",
+    "copy": "複製連結",
+    "copied": "已複製",
+    "note": "Google 日曆大約每幾小時更新一次。連結裡只有你選的信仰，不含個人資料。",
+    "calName": "信仰日曆"
   }
 }

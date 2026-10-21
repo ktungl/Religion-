@@ -16,8 +16,8 @@ export default defineConfig({
         description: 'A shared faith calendar that helps coworkers understand each other.',
         start_url: '/',
         display: 'standalone',
-        background_color: '#FBF7F0',
-        theme_color: '#2F5D50',
+        background_color: '#FAF8F4',
+        theme_color: '#2B3440',
         icons: [
           { src: 'icon.svg', sizes: 'any', type: 'image/svg+xml', purpose: 'any maskable' },
         ],
