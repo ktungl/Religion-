@@ -1,3 +1,16 @@
 {
-  "rewrites": [{ "source": "/((?!api/).*)", "destination": "/index.html" }]
+  "rewrites": [
+    {
+      "source": "/((?!api/).*)",
+      "destination": "/index.html"
+    }
+  ],
+  "functions": {
+    "api/explain.js": {
+      "maxDuration": 60
+    },
+    "api/health.js": {
+      "maxDuration": 60
+    }
+  }
 }

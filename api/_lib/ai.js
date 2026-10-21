@@ -28,24 +28,33 @@ export async function generateJson({ system, prompt, schema, maxTokens = 900 }) 
   const model = aiModelName()
 
   if (provider === 'gemini') {
-    const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
-      body: JSON.stringify({
-        systemInstruction: { parts: [{ text: system }] },
-        contents: [{ role: 'user', parts: [{ text: prompt }] }],
-        generationConfig: {
-          temperature: 0.3,
-          // Newer Gemini models "think" first and that counts toward this limit,
-          // so leave plenty of room beyond the answer itself.
-          maxOutputTokens: maxTokens + 4000,
-          responseMimeType: 'application/json',
-          responseSchema: schema,
-        },
-      }),
-    })
-    const data = await res.json().catch(() => ({}))
+    async function call(withThinking) {
+      const generationConfig = {
+        temperature: 0.3,
+        // Thinking counts toward this limit, so leave room beyond the answer.
+        maxOutputTokens: maxTokens + 2000,
+        responseMimeType: 'application/json',
+        responseSchema: schema,
+      }
+      // Rewording needs little reasoning; low thinking keeps answers fast.
+      if (withThinking) generationConfig.thinkingConfig = { thinkingLevel: process.env.GEMINI_THINKING || 'low' }
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
+        body: JSON.stringify({
+          systemInstruction: { parts: [{ text: system }] },
+          contents: [{ role: 'user', parts: [{ text: prompt }] }],
+          generationConfig,
+        }),
+      })
+      return { res, data: await res.json().catch(() => ({})) }
+    }
+
+    let { res, data } = await call(true)
+    // Models that don't support thinking levels reject the field: retry without it.
+    if (res.status === 400 && /thinking/i.test(data.error?.message || '')) ({ res, data } = await call(false))
     if (!res.ok) throw new Error(`Gemini ${res.status}: ${data.error?.message || 'error'}`)
+
     const candidate = data.candidates?.[0]
     const text = (candidate?.content?.parts || [])
       .filter((p) => !p.thought)
