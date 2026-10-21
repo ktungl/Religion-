@@ -1,6 +1,6 @@
 // GET /api/health          -> which services are configured (never shows keys)
 // GET /api/health?check=ai -> also makes one tiny AI call and reports the result
-import { aiEnabled, aiModelName, generateJson } from './_lib/ai.js'
+import { aiEnabled, aiModelName, generateJson, lastModel } from './_lib/ai.js'
 
 export default async function handler(req, res) {
   const url = new URL(req.url, 'http://localhost')
@@ -29,6 +29,7 @@ export default async function handler(req, res) {
         maxTokens: 50,
       })
       out.ai.test = r?.ok === true ? 'ok' : 'unexpected reply'
+      out.ai.answeredBy = lastModel()
     } catch (e) {
       out.ai.test = String(e.message || e).slice(0, 300)
     }

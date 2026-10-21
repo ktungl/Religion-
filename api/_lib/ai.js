@@ -17,6 +17,19 @@ export function aiModelName() {
   return null
 }
 
+// Lighter models to try when the main one is busy. Unknown ids are skipped.
+function geminiFallbacks() {
+  return (process.env.GEMINI_FALLBACK_MODELS || 'gemini-3.5-flash-lite,gemini-3.1-flash-lite,gemini-2.5-flash')
+    .split(',')
+    .map((m) => m.trim())
+    .filter(Boolean)
+}
+
+let lastModelUsed = null
+export function lastModel() {
+  return lastModelUsed
+}
+
 function parseJson(text) {
   const cleaned = String(text || '').replace(/^```(?:json)?\s*|\s*```$/g, '').trim()
   return JSON.parse(cleaned)
@@ -28,7 +41,7 @@ export async function generateJson({ system, prompt, schema, maxTokens = 900 }) 
   const model = aiModelName()
 
   if (provider === 'gemini') {
-    async function call(withThinking) {
+    async function call(modelId, withThinking) {
       const generationConfig = {
         temperature: 0.3,
         // Thinking counts toward this limit, so leave room beyond the answer.
@@ -38,7 +51,7 @@ export async function generateJson({ system, prompt, schema, maxTokens = 900 }) 
       }
       // Rewording needs little reasoning; low thinking keeps answers fast.
       if (withThinking) generationConfig.thinkingConfig = { thinkingLevel: process.env.GEMINI_THINKING || 'low' }
-      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${model}:generateContent`, {
+      const res = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/${modelId}:generateContent`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'x-goog-api-key': process.env.GEMINI_API_KEY },
         body: JSON.stringify({
@@ -50,21 +63,41 @@ export async function generateJson({ system, prompt, schema, maxTokens = 900 }) 
       return { res, data: await res.json().catch(() => ({})) }
     }
 
-    let { res, data } = await call(true)
-    // Models that don't support thinking levels reject the field: retry without it.
-    if (res.status === 400 && /thinking/i.test(data.error?.message || '')) ({ res, data } = await call(false))
-    if (!res.ok) throw new Error(`Gemini ${res.status}: ${data.error?.message || 'error'}`)
-
-    const candidate = data.candidates?.[0]
-    const text = (candidate?.content?.parts || [])
-      .filter((p) => !p.thought)
-      .map((p) => p.text || '')
-      .join('')
-    if (!text.trim()) {
-      const why = candidate?.finishReason || data.promptFeedback?.blockReason || 'unknown'
-      throw new Error(`Gemini returned no text (reason: ${why})`)
+    async function tryModel(modelId) {
+      let { res, data } = await call(modelId, true)
+      // Models that don't support thinking levels reject the field: retry without it.
+      if (res.status === 400 && /thinking/i.test(data.error?.message || '')) ({ res, data } = await call(modelId, false))
+      return { res, data }
     }
-    return parseJson(text)
+
+    // Free-tier models are sometimes busy (503/429). Retry once, then move on to
+    // lighter models, so people still get an answer in their language.
+    const models = [model, ...geminiFallbacks().filter((m) => m !== model)]
+    let lastError = 'no model tried'
+    for (const [i, modelId] of models.entries()) {
+      let { res, data } = await tryModel(modelId)
+      if ((res.status === 503 || res.status === 429) && i === 0) {
+        await new Promise((r) => setTimeout(r, 1500))
+        ;({ res, data } = await tryModel(modelId))
+      }
+      if (!res.ok) {
+        lastError = `Gemini ${modelId} ${res.status}: ${data.error?.message || 'error'}`
+        if ([429, 500, 503, 404].includes(res.status)) continue
+        throw new Error(lastError)
+      }
+      const candidate = data.candidates?.[0]
+      const text = (candidate?.content?.parts || [])
+        .filter((p) => !p.thought)
+        .map((p) => p.text || '')
+        .join('')
+      if (!text.trim()) {
+        lastError = `Gemini ${modelId} returned no text (reason: ${candidate?.finishReason || data.promptFeedback?.blockReason || 'unknown'})`
+        continue
+      }
+      lastModelUsed = modelId
+      return parseJson(text)
+    }
+    throw new Error(lastError)
   }
 
   if (provider === 'anthropic') {
