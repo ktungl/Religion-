@@ -128,8 +128,8 @@
     "manager": "Atasan",
     "you": "Anda",
     "notShared": "Keyakinan tidak dibagikan",
-    "calendar": "Kalender tim (30 hari)",
-    "empty": "Belum ada yang membagikan hari khusus dalam 30 hari ke depan",
+    "calendar": "Kalender tim (90 hari)",
+    "empty": "Belum ada yang membagikan hari khusus dalam 90 hari ke depan",
     "managerHint": "Catatan untuk atasan",
     "fastingNow": "Hari ini {n} rekan kerja berpuasa atau makan vegetarian",
     "leaveHint": "{date} {event}: {n} rekan kerja mungkin perlu cuti",
@@ -138,7 +138,10 @@
     "leave": "Keluar dari tim",
     "leaveConfirm": "Yakin keluar dari tim? Data yang Anda bagikan akan dihapus.",
     "retry": "Coba lagi",
-    "loading": "Memuat…"
+    "loading": "Memuat…",
+    "fastHint": "{date} {event}: {n} rekan kerja",
+    "noHints": "Tidak ada hari yang perlu diatur khusus dalam waktu dekat",
+    "fastingNone": "Hari ini tidak ada rekan kerja yang berpuasa atau makan vegetarian"
   },
   "detail": {
     "open": "Lihat",
@@ -149,5 +152,13 @@
     "aiNote": "Ditulis ulang oleh AI dari bahan yang sudah diperiksa. Kebiasaan bisa berbeda; ikuti penjelasan rekan kerja dan komunitas agama.",
     "notesBadge": "Contoh",
     "sampleNote": "AI belum aktif; menampilkan bahan berbahasa Inggris yang sudah diperiksa."
+  },
+  "demo": {
+    "teamName": "Tim contoh · Bagian pengemasan",
+    "youName": "Saya",
+    "prompt": "Belum punya tim? Coba dulu dengan rekan kerja fiktif.",
+    "start": "Lihat tim contoh",
+    "banner": "Ini tim contoh dengan rekan kerja fiktif; Anda sebagai atasan.",
+    "exit": "Keluar dari contoh"
   }
 }

@@ -128,8 +128,8 @@
     "manager": "主管",
     "you": "你",
     "notShared": "未分享信仰",
-    "calendar": "團隊日曆（30 天）",
-    "empty": "接下來 30 天，還沒有人分享相關日子",
+    "calendar": "團隊日曆（90 天）",
+    "empty": "接下來 90 天，還沒有人分享相關日子",
     "managerHint": "主管提醒",
     "fastingNow": "今天有 {n} 位同事齋戒或吃素",
     "leaveHint": "{date} {event}：{n} 位同事可能需要請假",
@@ -138,7 +138,10 @@
     "leave": "離開團隊",
     "leaveConfirm": "確定要離開團隊嗎？你分享的資料會一併刪除。",
     "retry": "重試",
-    "loading": "載入中…"
+    "loading": "載入中…",
+    "fastHint": "{date} {event}：{n} 位同事",
+    "noHints": "接下來沒有需要特別安排的日子",
+    "fastingNone": "今天沒有同事齋戒或吃素"
   },
   "detail": {
     "open": "說明",
@@ -149,5 +152,13 @@
     "aiNote": "由 AI 依整理過的資料改寫。各地習俗不同，請以同事和宗教團體的說法為準。",
     "notesBadge": "範例",
     "sampleNote": "AI 尚未啟用，先顯示整理過的英文資料。"
+  },
+  "demo": {
+    "teamName": "示範團隊・包裝課",
+    "youName": "我",
+    "prompt": "還沒有團隊？先用虛構的同事看看團隊功能。",
+    "start": "先看看示範團隊",
+    "banner": "這是示範團隊，同事都是虛構的，你是主管。",
+    "exit": "離開示範"
   }
 }

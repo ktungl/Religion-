@@ -128,8 +128,8 @@
     "manager": "Manager",
     "you": "you",
     "notShared": "Faith not shared",
-    "calendar": "Team calendar (30 days)",
-    "empty": "No one has shared dates for the next 30 days",
+    "calendar": "Team calendar (90 days)",
+    "empty": "No one has shared dates for the next 90 days",
     "managerHint": "For managers",
     "fastingNow": "{n} coworkers are fasting or vegetarian today",
     "leaveHint": "{date} {event}: {n} coworkers may need leave",
@@ -138,7 +138,10 @@
     "leave": "Leave team",
     "leaveConfirm": "Leave the team? What you shared will be deleted.",
     "retry": "Retry",
-    "loading": "Loading…"
+    "loading": "Loading…",
+    "fastHint": "{date} {event}: {n} coworkers",
+    "noHints": "Nothing needs special planning soon",
+    "fastingNone": "No coworkers are fasting or vegetarian today"
   },
   "detail": {
     "open": "About",
@@ -149,5 +152,13 @@
     "aiNote": "Rewritten by AI from reviewed notes. Customs vary; go by what your coworkers and faith communities say.",
     "notesBadge": "Sample",
     "sampleNote": "AI is not enabled yet; showing the reviewed English notes."
+  },
+  "demo": {
+    "teamName": "Demo team · Packing",
+    "youName": "Me",
+    "prompt": "No team yet? Try it with fictional coworkers.",
+    "start": "Try the demo team",
+    "banner": "This is a demo team with fictional coworkers. You are the manager.",
+    "exit": "Leave demo"
   }
 }

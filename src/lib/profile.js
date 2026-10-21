@@ -12,6 +12,7 @@ const DEFAULTS = {
   onboarded: false,
   team: null, // { name, code }
   member: null, // { id, token, role }
+  demo: false, // viewing the fictional demo team
 }
 
 function load() {

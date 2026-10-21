@@ -1,7 +1,7 @@
 // Shared helpers for the /api/team/* functions: validation, auth, and the
 // privacy filter that decides what other members may see.
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto'
-import { FAITHS, eventsBetween, prayerTimes } from '../../src/lib/calendar.js'
+import { FAITHS, prayerTimes } from '../../src/lib/calendar.js'
 import { getStore, StoreError } from './store.js'
 
 const LOCALES = ['zh-TW', 'vi', 'id', 'th', 'en']
@@ -64,28 +64,7 @@ export function taipeiToday() {
   return new Date(y, m - 1, d)
 }
 
-// What one member lets the rest of the team see. Nothing here leaves the server
-// unless that member switched the matching setting on.
-export function sharedView(member, viewerId, today = taipeiToday(), days = 30) {
-  const isMe = member.id === viewerId
-  const share = member.share || {}
-  const faiths = member.faiths || []
-  const view = {
-    id: member.id,
-    displayName: member.displayName,
-    role: member.role,
-    isMe,
-    faiths: isMe || share.faith ? faiths.filter((f) => f !== 'none') : null,
-    events: [],
-    prayer: false,
-  }
-  if (!share.fasting && !share.holidays && !isMe) return view
-  view.events = eventsBetween(today, days, faiths)
-    .filter((e) => isMe || ((e.kind === 'holiday' ? share.holidays : share.fasting) === true))
-    .map(({ date, key, kind, faith }) => ({ date, key, kind, faith }))
-  view.prayer = faiths.includes('islam') && (isMe || share.prayer === true)
-  return view
-}
+export { sharedView } from '../../src/lib/sharedView.js'
 
 export function teamPrayerTimes(today = taipeiToday()) {
   return prayerTimes(today).map((p) => ({ key: p.key, time: p.time.toISOString() }))

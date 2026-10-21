@@ -193,7 +193,10 @@ export function groupForList(events) {
   const ramadanDays = events.filter((e) => e.key === 'ramadan')
   const out = events.filter((e) => e.key !== 'ramadan').map((e) => ({ ...e }))
   if (!ramadanDays.length) return out
-  const last = ramadanDays[ramadanDays.length - 1].date
+  // The list may stop mid-month, so find the real last day of Ramadan.
+  let last = ramadanDays[ramadanDays.length - 1].date
+  const [y, m, d] = last.split('-').map(Number)
+  for (let x = new Date(y, m - 1, d + 1); hijri(x).month === 9; x = addDays(x, 1)) last = ymd(x)
   const start = out.find((e) => e.key === 'ramadanStart')
   if (start) start.until = last
   else out.push({ ...ramadanDays[0], until: last })

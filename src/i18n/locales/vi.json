@@ -128,8 +128,8 @@
     "manager": "Quản lý",
     "you": "bạn",
     "notShared": "Chưa chia sẻ tín ngưỡng",
-    "calendar": "Lịch nhóm (30 ngày)",
-    "empty": "Trong 30 ngày tới chưa ai chia sẻ ngày nào",
+    "calendar": "Lịch nhóm (90 ngày)",
+    "empty": "Trong 90 ngày tới chưa ai chia sẻ ngày nào",
     "managerHint": "Ghi chú cho quản lý",
     "fastingNow": "Hôm nay có {n} đồng nghiệp nhịn ăn hoặc ăn chay",
     "leaveHint": "{date} {event}: {n} đồng nghiệp có thể xin nghỉ",
@@ -138,7 +138,10 @@
     "leave": "Rời nhóm",
     "leaveConfirm": "Bạn chắc chắn muốn rời nhóm? Dữ liệu bạn đã chia sẻ sẽ bị xóa.",
     "retry": "Thử lại",
-    "loading": "Đang tải…"
+    "loading": "Đang tải…",
+    "fastHint": "{date} {event}: {n} đồng nghiệp",
+    "noHints": "Sắp tới không có ngày nào cần sắp xếp đặc biệt",
+    "fastingNone": "Hôm nay không có đồng nghiệp nào nhịn ăn hay ăn chay"
   },
   "detail": {
     "open": "Xem",
@@ -149,5 +152,13 @@
     "aiNote": "Do AI viết lại từ tài liệu đã kiểm tra. Phong tục mỗi nơi khác nhau; hãy theo lời đồng nghiệp và cộng đồng tôn giáo.",
     "notesBadge": "Mẫu",
     "sampleNote": "AI chưa bật, đang hiển thị tài liệu tiếng Anh đã kiểm tra."
+  },
+  "demo": {
+    "teamName": "Nhóm mẫu · Tổ đóng gói",
+    "youName": "Tôi",
+    "prompt": "Chưa có nhóm? Xem thử với các đồng nghiệp hư cấu.",
+    "start": "Xem nhóm mẫu",
+    "banner": "Đây là nhóm mẫu với đồng nghiệp hư cấu; bạn là quản lý.",
+    "exit": "Thoát nhóm mẫu"
   }
 }

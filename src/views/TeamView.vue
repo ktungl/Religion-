@@ -10,6 +10,11 @@ const { t } = useI18n()
 const router = useRouter()
 const join = ref()
 
+function demo() {
+  profile.demo = true
+  finish('/team')
+}
+
 function finish(to = '/home') {
   profile.onboarded = true
   router.replace(to)
@@ -33,9 +38,14 @@ function finish(to = '/home') {
         >
           {{ join?.working ? t('team.working') : t('onboarding.next') }}
         </button>
-        <button type="button" class="h-11 w-full text-base text-muted underline underline-offset-4" @click="finish()">
-          {{ t('team.skip') }}
-        </button>
+        <div class="flex justify-center gap-5">
+          <button type="button" class="h-11 text-base text-muted underline underline-offset-4" @click="demo">
+            {{ t('demo.start') }}
+          </button>
+          <button type="button" class="h-11 text-base text-muted underline underline-offset-4" @click="finish()">
+            {{ t('team.skip') }}
+          </button>
+        </div>
       </div>
     </template>
   </OnboardingShell>
