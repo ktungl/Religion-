@@ -9,6 +9,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "adhan": "^4.4.6",
+    "lunar-javascript": "^1.7.7",
     "parse": "^8.6.2",
     "vue": "^3.5.44",
     "vue-i18n": "^11.4.16",

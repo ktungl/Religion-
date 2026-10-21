@@ -9,9 +9,85 @@
     "step": "Langkah {n} dari {total}",
     "next": "Lanjut",
     "back": "Kembali",
-    "comingSoon": "Langkah ini sedang dibuat"
+    "required": "Pilih setidaknya satu",
+    "finish": "Selesai"
   },
   "faith": {
-    "title": "Pilih keyakinan Anda"
+    "title": "Pilih keyakinan Anda",
+    "multi": "Boleh pilih lebih dari satu",
+    "privacy": "Di langkah berikutnya, Anda yang menentukan apa yang boleh dilihat rekan kerja"
+  },
+  "faiths": {
+    "islam": "Islam",
+    "catholic": "Katolik",
+    "protestant": "Kristen Protestan",
+    "buddhism": "Buddha",
+    "folk": "Tao / Kepercayaan tradisional Tionghoa",
+    "none": "Tidak menganut agama tertentu"
+  },
+  "share": {
+    "title": "Yang dibagikan ke tim",
+    "desc": "Awalnya tidak ada yang dibagikan. Bisa diubah kapan saja.",
+    "faith": "Keyakinan saya",
+    "faithHint": "Rekan kerja akan melihat keyakinan Anda",
+    "fasting": "Hari puasa dan makan vegetarian",
+    "fastingHint": "Misalnya “Sedang puasa minggu ini”, agar acara makan bisa diatur",
+    "holidays": "Hari raya keagamaan",
+    "holidaysHint": "Membantu mengatur cuti dan jadwal kerja",
+    "prayer": "Waktu salat/doa",
+    "prayerHint": "Agar tim tahu kapan Anda perlu izin sebentar"
+  },
+  "team": {
+    "title": "Gabung tim",
+    "desc": "Masukkan kode tim dari atasan atau rekan kerja. Fitur ini sedang dibuat, Anda bisa melewatinya dulu.",
+    "skip": "Lewati dulu"
+  },
+  "home": {
+    "today": "Hari ini",
+    "upcoming": "90 hari ke depan",
+    "empty": "Tidak ada hari khusus dalam 90 hari ke depan",
+    "prayerTitle": "Jadwal salat hari ini (Taipei)",
+    "iftar": "Waktu buka puasa hari ini",
+    "islamicNote": "Tanggal hari raya Islam bisa bergeser satu hari tergantung rukyat; ikuti pengumuman masjid",
+    "until": "sampai {date}",
+    "reset": "Atur ulang"
+  },
+  "kinds": {
+    "fast": "Puasa",
+    "vegetarian": "Vegetarian",
+    "holiday": "Hari raya"
+  },
+  "prayers": {
+    "fajr": "Subuh",
+    "dhuhr": "Zuhur",
+    "asr": "Asar",
+    "maghrib": "Magrib",
+    "isha": "Isya"
+  },
+  "events": {
+    "ramadanStart": "Awal Ramadan",
+    "ramadan": "Puasa Ramadan",
+    "eidFitr": "Idulfitri",
+    "eidAdha": "Iduladha",
+    "islamicNewYear": "Tahun Baru Islam",
+    "mawlid": "Maulid Nabi",
+    "lunarFirst": "Tanggal 1 kalender Imlek",
+    "lunarFifteenth": "Tanggal 15 kalender Imlek",
+    "lunarNewYearEve": "Malam Tahun Baru Imlek",
+    "lunarNewYear": "Tahun Baru Imlek",
+    "lantern": "Cap Go Meh",
+    "qingming": "Festival Qingming",
+    "mazu": "Hari lahir Dewi Mazu",
+    "dragonBoat": "Festival Perahu Naga",
+    "ghostFestival": "Festival Zhongyuan",
+    "midAutumn": "Festival Kue Bulan",
+    "buddhaBirthday": "Hari Lahir Buddha",
+    "ullambana": "Ullambana",
+    "ashWednesday": "Rabu Abu",
+    "goodFriday": "Jumat Agung",
+    "easter": "Paskah",
+    "allSaints": "Hari Raya Semua Orang Kudus",
+    "christmasEve": "Malam Natal",
+    "christmas": "Natal"
   }
 }

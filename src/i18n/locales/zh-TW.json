@@ -9,9 +9,85 @@
     "step": "第 {n} / {total} 步",
     "next": "下一步",
     "back": "上一步",
-    "comingSoon": "這一步正在製作中"
+    "required": "請至少選一項",
+    "finish": "完成"
   },
   "faith": {
-    "title": "選擇你的信仰"
+    "title": "選擇你的信仰",
+    "multi": "可以選多個",
+    "privacy": "下一步你可以決定要讓同事看到什麼"
+  },
+  "faiths": {
+    "islam": "伊斯蘭教",
+    "catholic": "天主教",
+    "protestant": "基督教",
+    "buddhism": "佛教",
+    "folk": "道教／民間信仰",
+    "none": "無特定信仰"
+  },
+  "share": {
+    "title": "要分享給團隊的內容",
+    "desc": "預設全部不分享，隨時可以更改",
+    "faith": "我的信仰",
+    "faithHint": "同事會看到你選的信仰",
+    "fasting": "齋戒與吃素的日子",
+    "fastingHint": "例如「本週齋戒中」，方便安排聚餐",
+    "holidays": "宗教節日",
+    "holidaysHint": "方便安排請假和排班",
+    "prayer": "禱告時間",
+    "prayerHint": "讓團隊知道你需要短暫離開的時段"
+  },
+  "team": {
+    "title": "加入團隊",
+    "desc": "輸入主管或同事給你的團隊代碼。這個功能正在製作中，可以先跳過。",
+    "skip": "先跳過"
+  },
+  "home": {
+    "today": "今天",
+    "upcoming": "接下來 90 天",
+    "empty": "接下來 90 天沒有相關日子",
+    "prayerTitle": "今日禱告時間（台北）",
+    "iftar": "今天開齋時間",
+    "islamicNote": "伊斯蘭節日依看月結果可能差一天，請以清真寺公告為準",
+    "until": "至 {date}",
+    "reset": "重新設定"
+  },
+  "kinds": {
+    "fast": "齋戒",
+    "vegetarian": "吃素",
+    "holiday": "節日"
+  },
+  "prayers": {
+    "fajr": "晨禮",
+    "dhuhr": "晌禮",
+    "asr": "晡禮",
+    "maghrib": "昏禮",
+    "isha": "宵禮"
+  },
+  "events": {
+    "ramadanStart": "齋戒月開始",
+    "ramadan": "齋戒月",
+    "eidFitr": "開齋節",
+    "eidAdha": "宰牲節",
+    "islamicNewYear": "伊斯蘭新年",
+    "mawlid": "聖紀節",
+    "lunarFirst": "農曆初一",
+    "lunarFifteenth": "農曆十五",
+    "lunarNewYearEve": "除夕",
+    "lunarNewYear": "農曆新年",
+    "lantern": "元宵節",
+    "qingming": "清明節",
+    "mazu": "媽祖誕辰",
+    "dragonBoat": "端午節",
+    "ghostFestival": "中元普渡",
+    "midAutumn": "中秋節",
+    "buddhaBirthday": "佛誕節",
+    "ullambana": "盂蘭盆節",
+    "ashWednesday": "聖灰星期三",
+    "goodFriday": "耶穌受難日",
+    "easter": "復活節",
+    "allSaints": "諸聖節",
+    "christmasEve": "平安夜",
+    "christmas": "聖誕節"
   }
 }

@@ -9,9 +9,85 @@
     "step": "Bước {n}/{total}",
     "next": "Tiếp tục",
     "back": "Quay lại",
-    "comingSoon": "Bước này đang được xây dựng"
+    "required": "Hãy chọn ít nhất một mục",
+    "finish": "Hoàn tất"
   },
   "faith": {
-    "title": "Chọn tín ngưỡng của bạn"
+    "title": "Chọn tín ngưỡng của bạn",
+    "multi": "Có thể chọn nhiều",
+    "privacy": "Ở bước tiếp theo, bạn sẽ chọn đồng nghiệp được xem gì"
+  },
+  "faiths": {
+    "islam": "Hồi giáo",
+    "catholic": "Công giáo",
+    "protestant": "Tin Lành",
+    "buddhism": "Phật giáo",
+    "folk": "Đạo giáo / Tín ngưỡng dân gian",
+    "none": "Không theo tôn giáo nào"
+  },
+  "share": {
+    "title": "Chia sẻ với nhóm",
+    "desc": "Mặc định không chia sẻ gì. Bạn có thể đổi bất cứ lúc nào.",
+    "faith": "Tín ngưỡng của tôi",
+    "faithHint": "Đồng nghiệp sẽ thấy tín ngưỡng bạn chọn",
+    "fasting": "Những ngày nhịn ăn và ăn chay",
+    "fastingHint": "Ví dụ “Tuần này đang nhịn ăn”, giúp sắp xếp bữa ăn chung",
+    "holidays": "Ngày lễ tôn giáo",
+    "holidaysHint": "Giúp sắp xếp nghỉ phép và ca làm",
+    "prayer": "Giờ cầu nguyện",
+    "prayerHint": "Để nhóm biết khi nào bạn cần rời đi một lát"
+  },
+  "team": {
+    "title": "Tham gia nhóm",
+    "desc": "Nhập mã nhóm do quản lý hoặc đồng nghiệp gửi. Tính năng này đang được xây dựng, bạn có thể bỏ qua.",
+    "skip": "Bỏ qua"
+  },
+  "home": {
+    "today": "Hôm nay",
+    "upcoming": "90 ngày tới",
+    "empty": "Không có ngày nào trong 90 ngày tới",
+    "prayerTitle": "Giờ cầu nguyện hôm nay (Đài Bắc)",
+    "iftar": "Giờ xả chay hôm nay (iftar)",
+    "islamicNote": "Ngày lễ Hồi giáo có thể lệch một ngày tùy việc ngắm trăng, hãy theo thông báo của nhà thờ Hồi giáo",
+    "until": "đến {date}",
+    "reset": "Thiết lập lại"
+  },
+  "kinds": {
+    "fast": "Nhịn ăn",
+    "vegetarian": "Ăn chay",
+    "holiday": "Ngày lễ"
+  },
+  "prayers": {
+    "fajr": "Fajr",
+    "dhuhr": "Dhuhr",
+    "asr": "Asr",
+    "maghrib": "Maghrib",
+    "isha": "Isha"
+  },
+  "events": {
+    "ramadanStart": "Bắt đầu tháng Ramadan",
+    "ramadan": "Tháng Ramadan",
+    "eidFitr": "Lễ Eid al-Fitr",
+    "eidAdha": "Lễ Eid al-Adha",
+    "islamicNewYear": "Năm mới Hồi giáo",
+    "mawlid": "Lễ Mawlid",
+    "lunarFirst": "Mùng 1 âm lịch",
+    "lunarFifteenth": "Rằm (15 âm lịch)",
+    "lunarNewYearEve": "Đêm Giao thừa",
+    "lunarNewYear": "Tết Nguyên Đán",
+    "lantern": "Tết Nguyên Tiêu",
+    "qingming": "Tết Thanh Minh",
+    "mazu": "Vía Bà Thiên Hậu (Mazu)",
+    "dragonBoat": "Tết Đoan Ngọ",
+    "ghostFestival": "Lễ Trung Nguyên",
+    "midAutumn": "Tết Trung Thu",
+    "buddhaBirthday": "Lễ Phật Đản",
+    "ullambana": "Lễ Vu Lan",
+    "ashWednesday": "Thứ Tư Lễ Tro",
+    "goodFriday": "Thứ Sáu Tuần Thánh",
+    "easter": "Lễ Phục Sinh",
+    "allSaints": "Lễ Các Thánh",
+    "christmasEve": "Đêm Giáng sinh",
+    "christmas": "Lễ Giáng sinh"
   }
 }

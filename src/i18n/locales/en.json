@@ -9,9 +9,85 @@
     "step": "Step {n} of {total}",
     "next": "Continue",
     "back": "Back",
-    "comingSoon": "This step is coming soon"
+    "required": "Choose at least one",
+    "finish": "Finish"
   },
   "faith": {
-    "title": "Choose your faith"
+    "title": "Choose your faith",
+    "multi": "You can choose more than one",
+    "privacy": "Next, you decide what your coworkers can see"
+  },
+  "faiths": {
+    "islam": "Islam",
+    "catholic": "Catholic",
+    "protestant": "Protestant Christian",
+    "buddhism": "Buddhism",
+    "folk": "Taoism / folk religion",
+    "none": "No particular faith"
+  },
+  "share": {
+    "title": "What to share with your team",
+    "desc": "Nothing is shared by default. You can change this anytime.",
+    "faith": "My faith",
+    "faithHint": "Coworkers see your faith",
+    "fasting": "Fasting and vegetarian days",
+    "fastingHint": "e.g. “Fasting this week”, so meals can be planned",
+    "holidays": "Religious holidays",
+    "holidaysHint": "Helps plan leave and shifts",
+    "prayer": "Prayer times",
+    "prayerHint": "Lets the team know when you step away briefly"
+  },
+  "team": {
+    "title": "Join a team",
+    "desc": "Enter the team code from your manager or a coworker. This is still being built, so you can skip it for now.",
+    "skip": "Skip for now"
+  },
+  "home": {
+    "today": "Today",
+    "upcoming": "Next 90 days",
+    "empty": "Nothing in the next 90 days",
+    "prayerTitle": "Today's prayer times (Taipei)",
+    "iftar": "Today's iftar",
+    "islamicNote": "Islamic dates may shift by a day depending on moon sighting; follow your mosque's announcement",
+    "until": "until {date}",
+    "reset": "Set up again"
+  },
+  "kinds": {
+    "fast": "Fasting",
+    "vegetarian": "Vegetarian",
+    "holiday": "Holiday"
+  },
+  "prayers": {
+    "fajr": "Fajr",
+    "dhuhr": "Dhuhr",
+    "asr": "Asr",
+    "maghrib": "Maghrib",
+    "isha": "Isha"
+  },
+  "events": {
+    "ramadanStart": "Ramadan begins",
+    "ramadan": "Ramadan fasting",
+    "eidFitr": "Eid al-Fitr",
+    "eidAdha": "Eid al-Adha",
+    "islamicNewYear": "Islamic New Year",
+    "mawlid": "Mawlid",
+    "lunarFirst": "1st of the lunar month",
+    "lunarFifteenth": "15th of the lunar month",
+    "lunarNewYearEve": "Lunar New Year's Eve",
+    "lunarNewYear": "Lunar New Year",
+    "lantern": "Lantern Festival",
+    "qingming": "Tomb-Sweeping Day",
+    "mazu": "Mazu's Birthday",
+    "dragonBoat": "Dragon Boat Festival",
+    "ghostFestival": "Ghost Festival",
+    "midAutumn": "Mid-Autumn Festival",
+    "buddhaBirthday": "Buddha's Birthday",
+    "ullambana": "Ullambana",
+    "ashWednesday": "Ash Wednesday",
+    "goodFriday": "Good Friday",
+    "easter": "Easter",
+    "allSaints": "All Saints' Day",
+    "christmasEve": "Christmas Eve",
+    "christmas": "Christmas"
   }
 }
