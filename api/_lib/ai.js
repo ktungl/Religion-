@@ -36,7 +36,9 @@ export async function generateJson({ system, prompt, schema, maxTokens = 900 }) 
         contents: [{ role: 'user', parts: [{ text: prompt }] }],
         generationConfig: {
           temperature: 0.3,
-          maxOutputTokens: maxTokens,
+          // Newer Gemini models "think" first and that counts toward this limit,
+          // so leave plenty of room beyond the answer itself.
+          maxOutputTokens: maxTokens + 4000,
           responseMimeType: 'application/json',
           responseSchema: schema,
         },
@@ -44,7 +46,16 @@ export async function generateJson({ system, prompt, schema, maxTokens = 900 }) 
     })
     const data = await res.json().catch(() => ({}))
     if (!res.ok) throw new Error(`Gemini ${res.status}: ${data.error?.message || 'error'}`)
-    return parseJson(data.candidates?.[0]?.content?.parts?.map((p) => p.text).join(''))
+    const candidate = data.candidates?.[0]
+    const text = (candidate?.content?.parts || [])
+      .filter((p) => !p.thought)
+      .map((p) => p.text || '')
+      .join('')
+    if (!text.trim()) {
+      const why = candidate?.finishReason || data.promptFeedback?.blockReason || 'unknown'
+      throw new Error(`Gemini returned no text (reason: ${why})`)
+    }
+    return parseJson(text)
   }
 
   if (provider === 'anthropic') {
