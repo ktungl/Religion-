@@ -1,12 +1,14 @@
 <script setup>
 import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { useRouter } from 'vue-router'
+import { useRoute, useRouter } from 'vue-router'
 import OnboardingShell from '../components/OnboardingShell.vue'
 import { profile } from '../lib/profile'
 
 const { t } = useI18n()
 const router = useRouter()
+// Same screen is reused from the team page to change settings later.
+const isSettings = useRoute().path.startsWith('/settings')
 
 // Prayer times only make sense to share for faiths with set daily prayers.
 const options = computed(() => {
@@ -17,7 +19,7 @@ const options = computed(() => {
 </script>
 
 <template>
-  <OnboardingShell :step="3" :total="4">
+  <OnboardingShell :step="isSettings ? 0 : 3" :total="isSettings ? 0 : 4">
     <h1 class="pt-8 text-2xl font-semibold">{{ t('share.title') }}</h1>
     <p class="mt-1 text-muted">{{ t('share.desc') }}</p>
 
@@ -41,7 +43,15 @@ const options = computed(() => {
     </ul>
 
     <template #footer>
-      <div class="flex gap-3">
+      <button
+        v-if="isSettings"
+        type="button"
+        class="h-14 w-full rounded-2xl bg-brand text-lg font-semibold text-paper active:opacity-90"
+        @click="router.replace('/team')"
+      >
+        {{ t('onboarding.finish') }}
+      </button>
+      <div v-else class="flex gap-3">
         <button type="button" class="h-14 rounded-2xl border-2 border-line bg-white px-5 text-lg text-ink" @click="router.back()">
           {{ t('onboarding.back') }}
         </button>

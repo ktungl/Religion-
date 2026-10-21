@@ -39,8 +39,25 @@
   },
   "team": {
     "title": "Tham gia nhóm",
-    "desc": "Nhập mã nhóm do quản lý hoặc đồng nghiệp gửi. Tính năng này đang được xây dựng, bạn có thể bỏ qua.",
-    "skip": "Bỏ qua"
+    "desc": "Dùng cùng đồng nghiệp để xem những ngày tín ngưỡng mà mọi người muốn chia sẻ.",
+    "skip": "Bỏ qua, tham gia sau",
+    "joinTab": "Tham gia nhóm",
+    "createTab": "Tạo nhóm",
+    "name": "Tên hoặc biệt danh của bạn",
+    "nameHint": "Đồng nghiệp sẽ thấy tên này",
+    "code": "Mã nhóm",
+    "teamName": "Tên nhóm",
+    "teamNamePlaceholder": "Ví dụ: Tổ đóng gói",
+    "createHint": "Sau khi tạo, bạn sẽ nhận được mã để chia sẻ cho đồng nghiệp",
+    "submit": "Xác nhận",
+    "working": "Đang xử lý…",
+    "errors": {
+      "name": "Hãy nhập tên",
+      "code": "Hãy nhập mã nhóm 6 ký tự",
+      "teamName": "Hãy nhập tên nhóm",
+      "notFound": "Không tìm thấy nhóm, hãy kiểm tra mã",
+      "network": "Lỗi kết nối, hãy thử lại sau"
+    }
   },
   "home": {
     "today": "Hôm nay",
@@ -99,5 +116,28 @@
     "copied": "Đã chép",
     "note": "Google Lịch cập nhật vài giờ một lần. Liên kết chỉ chứa tín ngưỡng bạn chọn, không có thông tin cá nhân.",
     "calName": "Lịch tôn giáo"
+  },
+  "nav": {
+    "me": "Của tôi",
+    "team": "Nhóm"
+  },
+  "teamPage": {
+    "invite": "Mời đồng nghiệp bằng mã này",
+    "copyCode": "Sao chép mã",
+    "members": "Thành viên ({n})",
+    "manager": "Quản lý",
+    "you": "bạn",
+    "notShared": "Chưa chia sẻ tín ngưỡng",
+    "calendar": "Lịch nhóm (30 ngày)",
+    "empty": "Trong 30 ngày tới chưa ai chia sẻ ngày nào",
+    "managerHint": "Ghi chú cho quản lý",
+    "fastingNow": "Hôm nay có {n} đồng nghiệp nhịn ăn hoặc ăn chay",
+    "leaveHint": "{date} {event}: {n} đồng nghiệp có thể xin nghỉ",
+    "prayerToday": "Giờ cầu nguyện hôm nay",
+    "sharing": "Cài đặt chia sẻ của tôi",
+    "leave": "Rời nhóm",
+    "leaveConfirm": "Bạn chắc chắn muốn rời nhóm? Dữ liệu bạn đã chia sẻ sẽ bị xóa.",
+    "retry": "Thử lại",
+    "loading": "Đang tải…"
   }
 }

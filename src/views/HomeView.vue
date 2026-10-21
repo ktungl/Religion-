@@ -5,6 +5,8 @@ import { useRouter } from 'vue-router'
 import { profile, resetProfile } from '../lib/profile'
 import { faithStyle } from '../lib/faithStyle'
 import SubscribeCard from '../components/SubscribeCard.vue'
+import AppNav from '../components/AppNav.vue'
+import { leaveTeam } from '../lib/team'
 import { eventsBetween, groupForList, prayerTimes, isRamadan, ymd, DEFAULT_PLACE } from '../lib/calendar'
 
 const { t, locale } = useI18n()
@@ -48,14 +50,17 @@ function relative(key) {
   return new Intl.RelativeTimeFormat(locale.value, { numeric: 'auto' }).format(days, 'day')
 }
 
-function startOver() {
+async function startOver() {
+  // Leaving the team deletes what was shared; if offline, the local copy is cleared anyway.
+  await leaveTeam().catch(() => {})
   resetProfile()
   router.replace('/onboarding/language')
 }
 </script>
 
 <template>
-  <div class="mx-auto min-h-dvh w-full max-w-md px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-10">
+  <div class="flex min-h-dvh flex-col">
+  <div class="mx-auto w-full max-w-md flex-1 px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-8">
     <header>
       <p class="text-sm text-muted">{{ t('home.today') }}</p>
       <h1 class="text-2xl font-semibold">{{ todayLabel }}</h1>
@@ -113,5 +118,7 @@ function startOver() {
     <button type="button" class="mt-8 w-full text-center text-sm text-muted underline underline-offset-4" @click="startOver">
       {{ t('home.reset') }}
     </button>
+  </div>
+  <AppNav />
   </div>
 </template>

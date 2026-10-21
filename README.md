@@ -8,7 +8,7 @@
 - vue-router、vue-i18n（語言檔在 `src/i18n/locales/`）
 - Tailwind CSS v4（色彩設定在 `src/style.css` 的 `@theme`）
 - vite-plugin-pwa（可安裝到手機桌面）
-- Back4App / Parse（資料庫，`src/lib/parse.js`）
+- Back4App（資料庫）：只由後端 `api/_lib/store.js` 用 Master Key 存取，前端無法直接讀取
 - Vercel 部署；`api/` 資料夾是後端函式，AI 的 key 只放在伺服器端
 
 ## 本機開發
@@ -19,7 +19,16 @@ cp .env.example .env.local   # 填入 Back4App 的 key
 npm run dev
 ```
 
-`npm run dev` 不會執行 `api/` 裡的後端函式。要連同 `/api/ai` 一起測試，請用 `npx vercel dev`。
+`npm run dev` 不會執行 `api/` 裡的後端函式。要連同 API 一起測試：
+
+```bash
+npm run build
+npm run serve:local                       # 用 .env.local 的 Back4App key
+FT_MEMORY_STORE=1 npm run serve:local      # 不連資料庫，資料存在記憶體（重開就清空）
+FT_MEMORY_STORE=1 FT_TODAY=2027-02-15 npm run serve:local   # 固定日期，例如展示齋戒月
+```
+
+網址是 http://localhost:4174
 
 ## 資料夾
 
@@ -39,11 +48,22 @@ src/
 - [x] 首次設定 1：選介面語言
 - [x] 首次設定 2：選信仰（可複選，「無特定信仰」互斥）
 - [x] 首次設定 3：分享設定（預設全部不分享；目前存在手機上）
-- [ ] 首次設定 4：加入團隊（畫面已做，可先跳過；功能待接 Back4App）
+- [x] 首次設定 4：加入或建立團隊（6 碼代碼，可跳過）
 - [x] 首頁：今日提醒、開齋時間、禱告時間（台北）、接下來 90 天
 - [x] 日曆訂閱（`/api/calendar`，Google／iPhone／其他日曆）
-- [ ] 團隊日曆、主管排班提醒
+- [x] 團隊頁：邀請代碼、成員、團隊日曆、今日禱告時段、主管提醒（齋戒人數、可能請假的節日）
+- [x] 分享設定可隨時修改，自動同步到團隊
 - [ ] AI：相處建議、靜心、節日說明
+
+## 團隊與隱私
+
+- 不用註冊：輸入名字和團隊代碼即可加入。建立團隊的人是主管。
+- 每位成員有一組只存在自己手機上的金鑰（伺服器只存雜湊值），用來證明身分。
+- Back4App 的資料表權限全部關閉，只有後端能讀寫。後端 `sharedView()` 依每個人的分享設定過濾，沒打開的內容不會送出伺服器。
+- 「宗教節日」和「齋戒日子」的名稱本身可能看得出信仰；分享前畫面已說明用途。
+- 離開團隊會刪除伺服器上這個人的資料。
+
+API：`POST /api/team/create`、`join`、`me`、`view`、`leave`
 
 ## 配色
 

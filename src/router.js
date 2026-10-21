@@ -10,7 +10,14 @@ export const router = createRouter({
     { path: '/onboarding/faith', component: () => import('./views/FaithView.vue') },
     { path: '/onboarding/share', component: () => import('./views/ShareView.vue') },
     { path: '/onboarding/team', component: () => import('./views/TeamView.vue') },
-    { path: '/home', component: () => import('./views/HomeView.vue') },
+    { path: '/home', component: () => import('./views/HomeView.vue'), meta: { app: true } },
+    { path: '/team', component: () => import('./views/TeamPage.vue'), meta: { app: true } },
+    { path: '/settings/share', component: () => import('./views/ShareView.vue'), meta: { app: true } },
     { path: '/:pathMatch(.*)*', redirect: '/' },
   ],
+})
+
+// App screens need finished onboarding.
+router.beforeEach((to) => {
+  if (to.meta.app && !profile.onboarded) return '/onboarding/language'
 })

@@ -39,8 +39,25 @@
   },
   "team": {
     "title": "Gabung tim",
-    "desc": "Masukkan kode tim dari atasan atau rekan kerja. Fitur ini sedang dibuat, Anda bisa melewatinya dulu.",
-    "skip": "Lewati dulu"
+    "desc": "Gunakan bersama rekan kerja untuk melihat hari-hari keagamaan yang ingin dibagikan satu sama lain.",
+    "skip": "Lewati, gabung nanti",
+    "joinTab": "Gabung tim",
+    "createTab": "Buat tim",
+    "name": "Nama atau panggilan Anda",
+    "nameHint": "Rekan kerja akan melihat nama ini",
+    "code": "Kode tim",
+    "teamName": "Nama tim",
+    "teamNamePlaceholder": "Contoh: Bagian pengemasan",
+    "createHint": "Setelah dibuat, Anda mendapat kode untuk dibagikan ke rekan kerja",
+    "submit": "Lanjut",
+    "working": "Memproses…",
+    "errors": {
+      "name": "Masukkan nama",
+      "code": "Masukkan kode tim 6 karakter",
+      "teamName": "Masukkan nama tim",
+      "notFound": "Tim tidak ditemukan, periksa kodenya",
+      "network": "Koneksi gagal, coba lagi nanti"
+    }
   },
   "home": {
     "today": "Hari ini",
@@ -99,5 +116,28 @@
     "copied": "Disalin",
     "note": "Google Kalender diperbarui setiap beberapa jam. Tautan hanya berisi keyakinan yang Anda pilih, tanpa data pribadi.",
     "calName": "Kalender keagamaan"
+  },
+  "nav": {
+    "me": "Saya",
+    "team": "Tim"
+  },
+  "teamPage": {
+    "invite": "Undang rekan kerja dengan kode ini",
+    "copyCode": "Salin kode",
+    "members": "Anggota ({n})",
+    "manager": "Atasan",
+    "you": "Anda",
+    "notShared": "Keyakinan tidak dibagikan",
+    "calendar": "Kalender tim (30 hari)",
+    "empty": "Belum ada yang membagikan hari khusus dalam 30 hari ke depan",
+    "managerHint": "Catatan untuk atasan",
+    "fastingNow": "Hari ini {n} rekan kerja berpuasa atau makan vegetarian",
+    "leaveHint": "{date} {event}: {n} rekan kerja mungkin perlu cuti",
+    "prayerToday": "Waktu salat hari ini",
+    "sharing": "Pengaturan berbagi saya",
+    "leave": "Keluar dari tim",
+    "leaveConfirm": "Yakin keluar dari tim? Data yang Anda bagikan akan dihapus.",
+    "retry": "Coba lagi",
+    "loading": "Memuat…"
   }
 }

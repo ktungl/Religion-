@@ -39,8 +39,25 @@
   },
   "team": {
     "title": "加入團隊",
-    "desc": "輸入主管或同事給你的團隊代碼。這個功能正在製作中，可以先跳過。",
-    "skip": "先跳過"
+    "desc": "和同事一起使用，就能看到彼此願意分享的信仰日子。",
+    "skip": "先跳過，之後再加入",
+    "joinTab": "加入團隊",
+    "createTab": "建立團隊",
+    "name": "你的名字或暱稱",
+    "nameHint": "同事會看到這個名字",
+    "code": "團隊代碼",
+    "teamName": "團隊名稱",
+    "teamNamePlaceholder": "例如：包裝課",
+    "createHint": "建立後你會拿到一組代碼，分享給同事就能加入",
+    "submit": "確定",
+    "working": "處理中…",
+    "errors": {
+      "name": "請輸入名字",
+      "code": "請輸入 6 碼團隊代碼",
+      "teamName": "請輸入團隊名稱",
+      "notFound": "找不到這個團隊，請確認代碼",
+      "network": "連線失敗，請稍後再試"
+    }
   },
   "home": {
     "today": "今天",
@@ -99,5 +116,28 @@
     "copied": "已複製",
     "note": "Google 日曆大約每幾小時更新一次。連結裡只有你選的信仰，不含個人資料。",
     "calName": "信仰日曆"
+  },
+  "nav": {
+    "me": "我的",
+    "team": "團隊"
+  },
+  "teamPage": {
+    "invite": "邀請同事：分享這組代碼",
+    "copyCode": "複製代碼",
+    "members": "成員（{n}）",
+    "manager": "主管",
+    "you": "你",
+    "notShared": "未分享信仰",
+    "calendar": "團隊日曆（30 天）",
+    "empty": "接下來 30 天，還沒有人分享相關日子",
+    "managerHint": "主管提醒",
+    "fastingNow": "今天有 {n} 位同事齋戒或吃素",
+    "leaveHint": "{date} {event}：{n} 位同事可能需要請假",
+    "prayerToday": "今日禱告時段",
+    "sharing": "我的分享設定",
+    "leave": "離開團隊",
+    "leaveConfirm": "確定要離開團隊嗎？你分享的資料會一併刪除。",
+    "retry": "重試",
+    "loading": "載入中…"
   }
 }

@@ -1,14 +1,17 @@
-// The person's own settings. Kept on the device for now; syncing the shared
-// parts to Back4App comes with the team feature.
+// The person's own settings, kept on the device. When they belong to a team,
+// changes are also sent to the server (see lib/team.js).
 import { reactive, watch } from 'vue'
 
 const KEY = 'ft.profile'
 
 const DEFAULTS = {
+  displayName: '',
   faiths: [],
   // Nothing is shared until the person turns it on.
   share: { faith: false, fasting: false, holidays: false, prayer: false },
   onboarded: false,
+  team: null, // { name, code }
+  member: null, // { id, token, role }
 }
 
 function load() {

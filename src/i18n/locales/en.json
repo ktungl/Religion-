@@ -39,8 +39,25 @@
   },
   "team": {
     "title": "Join a team",
-    "desc": "Enter the team code from your manager or a coworker. This is still being built, so you can skip it for now.",
-    "skip": "Skip for now"
+    "desc": "Use it with coworkers to see the faith dates everyone chooses to share.",
+    "skip": "Skip, join later",
+    "joinTab": "Join a team",
+    "createTab": "Create a team",
+    "name": "Your name or nickname",
+    "nameHint": "Coworkers will see this name",
+    "code": "Team code",
+    "teamName": "Team name",
+    "teamNamePlaceholder": "e.g. Packing team",
+    "createHint": "You'll get a code to share with coworkers",
+    "submit": "Continue",
+    "working": "Working…",
+    "errors": {
+      "name": "Enter a name",
+      "code": "Enter the 6-character team code",
+      "teamName": "Enter a team name",
+      "notFound": "Team not found. Check the code.",
+      "network": "Couldn't connect. Try again later."
+    }
   },
   "home": {
     "today": "Today",
@@ -99,5 +116,28 @@
     "copied": "Copied",
     "note": "Google Calendar refreshes every few hours. The link only contains the faiths you chose, no personal data.",
     "calName": "Faith calendar"
+  },
+  "nav": {
+    "me": "Me",
+    "team": "Team"
+  },
+  "teamPage": {
+    "invite": "Invite coworkers with this code",
+    "copyCode": "Copy code",
+    "members": "Members ({n})",
+    "manager": "Manager",
+    "you": "you",
+    "notShared": "Faith not shared",
+    "calendar": "Team calendar (30 days)",
+    "empty": "No one has shared dates for the next 30 days",
+    "managerHint": "For managers",
+    "fastingNow": "{n} coworkers are fasting or vegetarian today",
+    "leaveHint": "{date} {event}: {n} coworkers may need leave",
+    "prayerToday": "Prayer times today",
+    "sharing": "My sharing settings",
+    "leave": "Leave team",
+    "leaveConfirm": "Leave the team? What you shared will be deleted.",
+    "retry": "Retry",
+    "loading": "Loading…"
   }
 }

@@ -2,15 +2,16 @@
 import { useI18n } from 'vue-i18n'
 
 defineProps({
-  step: { type: Number, required: true },
-  total: { type: Number, required: true },
+  // Leave step out to use the same layout outside onboarding (no progress bar).
+  step: { type: Number, default: 0 },
+  total: { type: Number, default: 0 },
 })
 const { t } = useI18n()
 </script>
 
 <template>
   <div class="mx-auto flex min-h-dvh w-full max-w-md flex-col px-4 pt-[max(1rem,env(safe-area-inset-top))]">
-    <header class="flex items-center gap-3 pt-2">
+    <header v-if="step" class="flex items-center gap-3 pt-2">
       <div class="flex flex-1 gap-1.5" aria-hidden="true">
         <span
           v-for="n in total"
