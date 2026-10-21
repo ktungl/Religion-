@@ -10,6 +10,8 @@ export default defineConfig({
     VitePWA({
       registerType: 'autoUpdate',
       includeAssets: ['icon.svg'],
+      // The offline page must never stand in for API addresses.
+      workbox: { navigateFallbackDenylist: [/^\/api\//] },
       manifest: {
         name: 'Faith Together',
         short_name: 'Faith Together',
