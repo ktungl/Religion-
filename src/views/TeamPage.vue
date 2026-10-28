@@ -125,7 +125,7 @@ async function leave() {
 
 <template>
   <div class="flex min-h-dvh flex-col">
-    <div class="mx-auto w-full max-w-md flex-1 px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-8">
+    <div class="mx-auto w-full max-w-md flex-1 px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-8 md:max-w-2xl md:px-6 md:pt-8 lg:max-w-3xl">
       <!-- Not in a team yet -->
       <template v-if="!inTeam">
         <h1 class="text-2xl font-semibold">{{ t('team.title') }}</h1>

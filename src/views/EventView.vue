@@ -42,7 +42,7 @@ function back() {
 </script>
 
 <template>
-  <div class="mx-auto min-h-dvh w-full max-w-md px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-10">
+  <div class="mx-auto min-h-dvh w-full max-w-md px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-10 md:max-w-2xl md:px-6 md:pt-8">
     <button type="button" class="-ml-2 flex h-11 items-center gap-1 px-2 text-muted" @click="back">
       <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 18l-6-6 6-6" /></svg>
       {{ t('onboarding.back') }}

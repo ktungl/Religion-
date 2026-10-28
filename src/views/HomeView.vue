@@ -66,13 +66,13 @@ async function startOver() {
 
 <template>
   <div class="flex min-h-dvh flex-col">
-  <div class="mx-auto w-full max-w-md flex-1 px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-8">
+  <div class="mx-auto w-full max-w-md flex-1 px-4 pt-[max(1.25rem,env(safe-area-inset-top))] pb-8 md:max-w-2xl md:px-6 md:pt-8 lg:max-w-3xl">
     <header>
       <p class="text-sm text-muted">{{ t('home.today') }}</p>
       <h1 class="text-2xl font-semibold">{{ todayLabel }}</h1>
     </header>
 
-    <section v-if="todayEvents.length || iftar" class="mt-4 flex flex-col gap-2">
+    <section v-if="todayEvents.length || iftar" class="mt-4 grid gap-2 md:grid-cols-2">
       <RouterLink
         v-for="e in todayEvents"
         :key="e.key"
