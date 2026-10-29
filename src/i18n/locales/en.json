@@ -35,7 +35,9 @@
     "holidays": "Religious holidays",
     "holidaysHint": "Helps plan leave and shifts",
     "prayer": "Prayer times",
-    "prayerHint": "Lets the team know when you step away briefly"
+    "prayerHint": "Lets the team know when you step away briefly",
+    "diet": "Food needs",
+    "dietHint": "Helps the team order lunch and plan meals"
   },
   "team": {
     "title": "Join a team",
@@ -141,7 +143,10 @@
     "loading": "Loading…",
     "fastHint": "{date} {event}: {n} coworkers",
     "noHints": "Nothing needs special planning soon",
-    "fastingNone": "No coworkers are fasting or vegetarian today"
+    "fastingNone": "No coworkers are fasting or vegetarian today",
+    "meals": "Meal notes",
+    "mealsDesc": "Check before ordering food or planning a meal",
+    "mealsEmpty": "No one has shared food needs yet"
   },
   "detail": {
     "open": "About",
@@ -160,5 +165,39 @@
     "start": "Try the demo team",
     "banner": "This is a demo team with fictional coworkers. You are the manager.",
     "exit": "Leave demo"
+  },
+  "diet": {
+    "title": "Food needs",
+    "desc": "Tick what you don't eat so coworkers can plan food orders and meals.",
+    "dontEat": "I don't eat",
+    "dontEatShort": "Doesn't eat:",
+    "halalHint": "No pork or alcohol; meat slaughtered the halal way",
+    "included": "Included in a choice above",
+    "whenTitle": "When",
+    "note": "Other notes (optional)",
+    "notePlaceholder": "e.g. no spicy food",
+    "preview": "Coworkers will see",
+    "inTaiwan": "When ordering in Taiwan, say:",
+    "someDaysShort": "Some days",
+    "termNote": "Vegetarian terms differ by country; Taiwan's categories such as “五辛素” often have no equivalent elsewhere. So you tick what you don't eat, and the app turns it into the Taiwanese term for ordering food.",
+    "skip": "Skip",
+    "card": "My food needs",
+    "notSet": "Not set yet",
+    "edit": "Edit",
+    "items": {
+      "halal": "Halal food only",
+      "pork": "Pork",
+      "beef": "Beef",
+      "meat": "All meat (incl. chicken, duck)",
+      "seafood": "Fish and seafood",
+      "egg": "Eggs",
+      "dairy": "Milk and dairy",
+      "pungent": "Onion, garlic, scallion, leek, chives",
+      "alcohol": "Alcohol (incl. in cooking)"
+    },
+    "when": {
+      "always": "Every day",
+      "someDays": "Only on certain days (e.g. lunar 1st/15th, fasting days)"
+    }
   }
 }

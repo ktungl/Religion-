@@ -3,9 +3,10 @@
 import { createHash, randomBytes, timingSafeEqual } from 'node:crypto'
 import { FAITHS, prayerTimes } from '../../src/lib/calendar.js'
 import { getStore, StoreError } from './store.js'
+import { cleanDiet } from '../../src/lib/diet.js'
 
 const LOCALES = ['zh-TW', 'vi', 'id', 'th', 'en']
-const SHARE_KEYS = ['faith', 'fasting', 'holidays', 'prayer']
+const SHARE_KEYS = ['faith', 'fasting', 'holidays', 'prayer', 'diet']
 // No 0/O, 1/I/L, so codes are easy to read aloud and type.
 const CODE_ALPHABET = 'ABCDEFGHJKMNPQRSTUVWXYZ23456789'
 
@@ -36,7 +37,7 @@ export function cleanProfile(input = {}) {
   const faiths = Array.isArray(input.faiths) ? input.faiths.filter((f) => FAITHS.includes(f)) : []
   const share = Object.fromEntries(SHARE_KEYS.map((k) => [k, input.share?.[k] === true]))
   const locale = LOCALES.includes(input.locale) ? input.locale : 'en'
-  return { displayName, faiths: faiths.includes('none') ? ['none'] : faiths, share, locale }
+  return { displayName, faiths: faiths.includes('none') ? ['none'] : faiths, share, locale, diet: cleanDiet(input.diet) }
 }
 
 export function cleanTeamName(raw) {

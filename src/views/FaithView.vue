@@ -29,13 +29,12 @@ function next() {
     error.value = true
     return
   }
-  // Nothing to share without a faith, so skip the sharing step.
-  router.push(profile.faiths.includes('none') ? '/onboarding/team' : '/onboarding/share')
+  router.push('/onboarding/diet')
 }
 </script>
 
 <template>
-  <OnboardingShell :step="2" :total="4">
+  <OnboardingShell :step="2" :total="5">
     <h1 class="pt-8 text-2xl font-semibold">{{ t('faith.title') }}</h1>
     <p class="mt-1 text-muted">{{ t('faith.multi') }}</p>
 

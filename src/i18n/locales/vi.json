@@ -35,7 +35,9 @@
     "holidays": "Ngày lễ tôn giáo",
     "holidaysHint": "Giúp sắp xếp nghỉ phép và ca làm",
     "prayer": "Giờ cầu nguyện",
-    "prayerHint": "Để nhóm biết khi nào bạn cần rời đi một lát"
+    "prayerHint": "Để nhóm biết khi nào bạn cần rời đi một lát",
+    "diet": "Nhu cầu ăn uống",
+    "dietHint": "Giúp nhóm đặt cơm hộp và sắp xếp bữa ăn chung"
   },
   "team": {
     "title": "Tham gia nhóm",
@@ -141,7 +143,10 @@
     "loading": "Đang tải…",
     "fastHint": "{date} {event}: {n} đồng nghiệp",
     "noHints": "Sắp tới không có ngày nào cần sắp xếp đặc biệt",
-    "fastingNone": "Hôm nay không có đồng nghiệp nào nhịn ăn hay ăn chay"
+    "fastingNone": "Hôm nay không có đồng nghiệp nào nhịn ăn hay ăn chay",
+    "meals": "Ghi chú đặt đồ ăn",
+    "mealsDesc": "Xem trước khi đặt cơm hoặc ăn chung",
+    "mealsEmpty": "Chưa ai chia sẻ nhu cầu ăn uống"
   },
   "detail": {
     "open": "Xem",
@@ -160,5 +165,39 @@
     "start": "Xem nhóm mẫu",
     "banner": "Đây là nhóm mẫu với đồng nghiệp hư cấu; bạn là quản lý.",
     "exit": "Thoát nhóm mẫu"
+  },
+  "diet": {
+    "title": "Nhu cầu ăn uống",
+    "desc": "Chọn những món bạn không ăn để đồng nghiệp tham khảo khi đặt đồ ăn hoặc ăn chung.",
+    "dontEat": "Tôi không ăn",
+    "dontEatShort": "Không ăn:",
+    "halalHint": "Không thịt heo, không rượu; thịt phải giết mổ theo Halal",
+    "included": "Đã bao gồm trong lựa chọn ở trên",
+    "whenTitle": "Khi nào",
+    "note": "Ghi chú khác (không bắt buộc)",
+    "notePlaceholder": "Ví dụ: không ăn cay",
+    "preview": "Đồng nghiệp sẽ thấy",
+    "inTaiwan": "Khi gọi món ở Đài Loan, có thể nói:",
+    "someDaysShort": "Một số ngày",
+    "termNote": "Mỗi nước gọi đồ chay khác nhau. Ví dụ, các loại chay ở Đài Loan như “ngũ tân tố” không có tên tương ứng ở nước khác. Vì vậy ở đây ghi rõ những món không ăn, và ứng dụng sẽ đổi sang cách gọi ở Đài Loan để bạn dễ gọi món.",
+    "skip": "Bỏ qua",
+    "card": "Nhu cầu ăn uống của tôi",
+    "notSet": "Chưa thiết lập",
+    "edit": "Sửa",
+    "items": {
+      "halal": "Chỉ ăn đồ Halal",
+      "pork": "Thịt heo",
+      "beef": "Thịt bò",
+      "meat": "Tất cả các loại thịt (kể cả gà, vịt)",
+      "seafood": "Cá và hải sản",
+      "egg": "Trứng",
+      "dairy": "Sữa và chế phẩm từ sữa",
+      "pungent": "Hành, tỏi, hẹ, hành tây",
+      "alcohol": "Rượu (kể cả rượu nấu ăn)"
+    },
+    "when": {
+      "always": "Mỗi ngày",
+      "someDays": "Chỉ vào một số ngày (ví dụ mùng 1, rằm, mùa chay)"
+    }
   }
 }

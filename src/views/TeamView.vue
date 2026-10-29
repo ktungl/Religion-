@@ -22,7 +22,7 @@ function finish(to = '/home') {
 </script>
 
 <template>
-  <OnboardingShell :step="4" :total="4">
+  <OnboardingShell :step="5" :total="5">
     <h1 class="pt-8 text-2xl font-semibold">{{ t('team.title') }}</h1>
     <p class="mt-1 text-muted">{{ t('team.desc') }}</p>
 

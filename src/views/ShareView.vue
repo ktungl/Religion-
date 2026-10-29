@@ -12,14 +12,17 @@ const isSettings = useRoute().path.startsWith('/settings')
 
 // Prayer times only make sense to share for faiths with set daily prayers.
 const options = computed(() => {
+  // Without a faith there is nothing religious to share, only food needs.
+  if (profile.faiths.includes('none')) return ['diet']
   const list = ['faith', 'fasting', 'holidays']
   if (profile.faiths.includes('islam')) list.push('prayer')
+  list.push('diet')
   return list
 })
 </script>
 
 <template>
-  <OnboardingShell :step="isSettings ? 0 : 3" :total="isSettings ? 0 : 4">
+  <OnboardingShell :step="isSettings ? 0 : 4" :total="isSettings ? 0 : 5">
     <h1 class="pt-8 text-2xl font-semibold">{{ t('share.title') }}</h1>
     <p class="mt-1 text-muted">{{ t('share.desc') }}</p>
 

@@ -33,6 +33,7 @@ function myProfile() {
     displayName: profile.displayName,
     faiths: profile.faiths,
     share: profile.share,
+    diet: profile.diet,
     locale: i18n.global.locale.value,
   }
 }
@@ -76,7 +77,7 @@ export async function leaveTeam() {
 let timer
 export function startSync() {
   watch(
-    () => [profile.displayName, profile.faiths, { ...profile.share }, i18n.global.locale.value],
+    () => [profile.displayName, profile.faiths, { ...profile.share }, JSON.stringify(profile.diet), i18n.global.locale.value],
     () => {
       if (!profile.member) return
       clearTimeout(timer)

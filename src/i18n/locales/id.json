@@ -35,7 +35,9 @@
     "holidays": "Hari raya keagamaan",
     "holidaysHint": "Membantu mengatur cuti dan jadwal kerja",
     "prayer": "Waktu salat/doa",
-    "prayerHint": "Agar tim tahu kapan Anda perlu izin sebentar"
+    "prayerHint": "Agar tim tahu kapan Anda perlu izin sebentar",
+    "diet": "Kebutuhan makanan",
+    "dietHint": "Membantu tim memesan makanan dan mengatur makan bersama"
   },
   "team": {
     "title": "Gabung tim",
@@ -141,7 +143,10 @@
     "loading": "Memuat…",
     "fastHint": "{date} {event}: {n} rekan kerja",
     "noHints": "Tidak ada hari yang perlu diatur khusus dalam waktu dekat",
-    "fastingNone": "Hari ini tidak ada rekan kerja yang berpuasa atau makan vegetarian"
+    "fastingNone": "Hari ini tidak ada rekan kerja yang berpuasa atau makan vegetarian",
+    "meals": "Catatan pesan makanan",
+    "mealsDesc": "Lihat sebelum memesan makanan atau makan bersama",
+    "mealsEmpty": "Belum ada yang membagikan kebutuhan makanan"
   },
   "detail": {
     "open": "Lihat",
@@ -160,5 +165,39 @@
     "start": "Lihat tim contoh",
     "banner": "Ini tim contoh dengan rekan kerja fiktif; Anda sebagai atasan.",
     "exit": "Keluar dari contoh"
+  },
+  "diet": {
+    "title": "Kebutuhan makanan",
+    "desc": "Pilih makanan yang tidak Anda makan agar rekan kerja tahu saat memesan makanan atau makan bersama.",
+    "dontEat": "Saya tidak makan",
+    "dontEatShort": "Tidak makan:",
+    "halalHint": "Tanpa babi dan alkohol; daging disembelih secara halal",
+    "included": "Sudah termasuk dalam pilihan di atas",
+    "whenTitle": "Kapan",
+    "note": "Catatan lain (opsional)",
+    "notePlaceholder": "Contoh: tidak makan pedas",
+    "preview": "Rekan kerja akan melihat",
+    "inTaiwan": "Saat memesan makanan di Taiwan, sebutkan:",
+    "someDaysShort": "Hari tertentu",
+    "termNote": "Istilah vegetarian berbeda di tiap negara. Misalnya, jenis vegetarian di Taiwan seperti “wu xin su” belum tentu ada padanannya di negara lain. Jadi di sini dicatat makanan apa saja yang tidak dimakan, lalu aplikasi mengubahnya ke istilah Taiwan agar mudah memesan.",
+    "skip": "Lewati",
+    "card": "Kebutuhan makanan saya",
+    "notSet": "Belum diatur",
+    "edit": "Ubah",
+    "items": {
+      "halal": "Hanya makanan halal",
+      "pork": "Daging babi",
+      "beef": "Daging sapi",
+      "meat": "Semua daging (termasuk ayam, bebek)",
+      "seafood": "Ikan dan makanan laut",
+      "egg": "Telur",
+      "dairy": "Susu dan olahannya",
+      "pungent": "Bawang daun, bawang putih, kucai, bawang bombai",
+      "alcohol": "Alkohol (termasuk untuk masak)"
+    },
+    "when": {
+      "always": "Setiap hari",
+      "someDays": "Hanya hari tertentu (misalnya hari puasa)"
+    }
   }
 }

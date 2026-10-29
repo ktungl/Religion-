@@ -16,6 +16,7 @@ export function sharedView(member, viewerId, today, days = TEAM_DAYS) {
     faiths: isMe || share.faith ? faiths.filter((f) => f !== 'none') : null,
     events: [],
     prayer: false,
+    diet: (isMe || share.diet) && member.diet?.avoid ? member.diet : null,
   }
   if (!share.fasting && !share.holidays && !share.prayer && !isMe) return view
   view.events = eventsBetween(today, days, faiths)

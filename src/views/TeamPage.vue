@@ -9,6 +9,8 @@ import { loadTeam, leaveTeam } from '../lib/team'
 import { demoTeamView } from '../lib/demoTeam'
 import { groupForList, ymd } from '../lib/calendar'
 import { faithStyle } from '../lib/faithStyle'
+import DietSummary from '../components/DietSummary.vue'
+import { hasDiet } from '../lib/diet'
 
 const { t, locale } = useI18n()
 const router = useRouter()
@@ -72,6 +74,7 @@ const managerHints = computed(() =>
     .slice(0, 4),
 )
 const praying = computed(() => members.value.filter((m) => m.prayer))
+const eaters = computed(() => members.value.filter((m) => hasDiet(m.diet)))
 
 function toDate(key) {
   const [y, m, d] = key.split('-').map(Number)
@@ -234,6 +237,23 @@ async function leave() {
                   </span>
                 </div>
                 </RouterLink>
+              </li>
+            </ul>
+          </section>
+
+          <!-- Meal notes -->
+          <section class="mt-6">
+            <h2 class="text-base font-semibold">{{ t('teamPage.meals') }}</h2>
+            <p class="text-sm text-muted">{{ t('teamPage.mealsDesc') }}</p>
+            <p v-if="!eaters.length" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
+              {{ t('teamPage.mealsEmpty') }}
+            </p>
+            <ul v-else class="mt-2 flex flex-col divide-y divide-line rounded-2xl border border-line bg-white">
+              <li v-for="m in eaters" :key="m.id" class="px-4 py-3">
+                <p class="font-semibold">
+                  {{ m.displayName }}<span v-if="m.isMe && !m.hideYou" class="font-normal text-muted"> ({{ t('teamPage.you') }})</span>
+                </p>
+                <DietSummary :diet="m.diet" compact />
               </li>
             </ul>
           </section>

@@ -35,7 +35,9 @@
     "holidays": "宗教節日",
     "holidaysHint": "方便安排請假和排班",
     "prayer": "禱告時間",
-    "prayerHint": "讓團隊知道你需要短暫離開的時段"
+    "prayerHint": "讓團隊知道你需要短暫離開的時段",
+    "diet": "飲食需求",
+    "dietHint": "方便團隊訂便當、安排聚餐"
   },
   "team": {
     "title": "加入團隊",
@@ -141,7 +143,10 @@
     "loading": "載入中…",
     "fastHint": "{date} {event}：{n} 位同事",
     "noHints": "接下來沒有需要特別安排的日子",
-    "fastingNone": "今天沒有同事齋戒或吃素"
+    "fastingNone": "今天沒有同事齋戒或吃素",
+    "meals": "訂餐備忘",
+    "mealsDesc": "訂便當或聚餐前看一下",
+    "mealsEmpty": "還沒有人分享飲食需求"
   },
   "detail": {
     "open": "說明",
@@ -160,5 +165,39 @@
     "start": "先看看示範團隊",
     "banner": "這是示範團隊，同事都是虛構的，你是主管。",
     "exit": "離開示範"
+  },
+  "diet": {
+    "title": "飲食需求",
+    "desc": "勾選你不吃的東西，同事訂餐、聚餐時就能參考。",
+    "dontEat": "我不吃",
+    "dontEatShort": "不吃：",
+    "halalHint": "不含豬肉和酒精，肉品要依清真方式處理",
+    "included": "已包含在上面的選項裡",
+    "whenTitle": "什麼時候",
+    "note": "其他說明（選填）",
+    "notePlaceholder": "例如：不吃辣",
+    "preview": "同事會看到",
+    "inTaiwan": "在台灣點餐可以說：",
+    "someDaysShort": "特定日子",
+    "termNote": "各國的素食說法不同，例如台灣的「五辛素」「蛋奶素」，在其他國家不一定有對應的名稱。所以這裡改用「不吃哪些東西」來描述，App 再幫你換算成台灣的說法，方便點餐。",
+    "skip": "先跳過",
+    "card": "我的飲食需求",
+    "notSet": "尚未設定",
+    "edit": "修改",
+    "items": {
+      "halal": "只吃清真食物",
+      "pork": "豬肉",
+      "beef": "牛肉",
+      "meat": "所有肉類（含雞、鴨）",
+      "seafood": "魚和海鮮",
+      "egg": "蛋",
+      "dairy": "奶類（牛奶、起司）",
+      "pungent": "蔥、蒜、韭菜、洋蔥（五辛）",
+      "alcohol": "酒（包括料理用酒）"
+    },
+    "when": {
+      "always": "每天都這樣",
+      "someDays": "只有特定日子（例如初一十五、齋戒期間）"
+    }
   }
 }

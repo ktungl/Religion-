@@ -27,6 +27,7 @@ const SCHEMAS = {
     locale: { type: 'String' },
     faiths: { type: 'Array' },
     share: { type: 'Object' },
+    diet: { type: 'Object' },
   },
 }
 

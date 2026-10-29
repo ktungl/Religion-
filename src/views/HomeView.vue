@@ -6,6 +6,8 @@ import { profile, resetProfile } from '../lib/profile'
 import { faithStyle } from '../lib/faithStyle'
 import SubscribeCard from '../components/SubscribeCard.vue'
 import AppNav from '../components/AppNav.vue'
+import DietSummary from '../components/DietSummary.vue'
+import { hasDiet } from '../lib/diet'
 import { leaveTeam } from '../lib/team'
 import { eventsBetween, groupForList, prayerTimes, isRamadan, ymd, DEFAULT_PLACE } from '../lib/calendar'
 
@@ -128,6 +130,15 @@ async function startOver() {
         </li>
       </ul>
       <p v-if="hasIslam" class="mt-3 text-xs text-muted">{{ t('home.islamicNote') }}</p>
+    </section>
+
+    <section class="mt-6 rounded-2xl border border-line bg-white p-4">
+      <div class="flex items-center justify-between gap-3">
+        <h2 class="text-base font-semibold">{{ t('diet.card') }}</h2>
+        <RouterLink to="/settings/diet" class="text-sm font-semibold underline underline-offset-4">{{ t('diet.edit') }}</RouterLink>
+      </div>
+      <DietSummary v-if="hasDiet(profile.diet)" class="mt-2" :diet="profile.diet" />
+      <p v-else class="mt-1 text-sm text-muted">{{ t('diet.notSet') }}</p>
     </section>
 
     <SubscribeCard v-if="!profile.faiths.includes('none')" class="mt-6" />

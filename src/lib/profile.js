@@ -7,8 +7,9 @@ const KEY = 'ft.profile'
 const DEFAULTS = {
   displayName: '',
   faiths: [],
+  diet: { avoid: [], when: 'always', note: '' },
   // Nothing is shared until the person turns it on.
-  share: { faith: false, fasting: false, holidays: false, prayer: false },
+  share: { faith: false, fasting: false, holidays: false, prayer: false, diet: false },
   onboarded: false,
   team: null, // { name, code }
   member: null, // { id, token, role }
@@ -20,7 +21,12 @@ function load() {
     const raw = localStorage.getItem(KEY)
     if (!raw) return structuredClone(DEFAULTS)
     const saved = JSON.parse(raw)
-    return { ...structuredClone(DEFAULTS), ...saved, share: { ...DEFAULTS.share, ...saved.share } }
+    return {
+      ...structuredClone(DEFAULTS),
+      ...saved,
+      share: { ...DEFAULTS.share, ...saved.share },
+      diet: { ...DEFAULTS.diet, ...saved.diet },
+    }
   } catch {
     return structuredClone(DEFAULTS)
   }

@@ -47,7 +47,7 @@ function next() {
 </script>
 
 <template>
-  <OnboardingShell :step="1" :total="4">
+  <OnboardingShell :step="1" :total="5">
     <div class="pt-6 pb-8 text-center">
       <div class="relative h-12 overflow-hidden" aria-live="polite">
         <Transition name="welcome" mode="out-in">
