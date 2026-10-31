@@ -6,6 +6,7 @@ import { profile, resetProfile } from '../lib/profile'
 import { faithStyle } from '../lib/faithStyle'
 import SubscribeCard from '../components/SubscribeCard.vue'
 import AppNav from '../components/AppNav.vue'
+import MonthGrid from '../components/MonthGrid.vue'
 import { leaveTeam } from '../lib/team'
 import { eventsBetween, groupForList, prayerTimes, isRamadan, ymd, DEFAULT_PLACE } from '../lib/calendar'
 
@@ -102,31 +103,35 @@ async function startOver() {
       </ol>
     </section>
 
-    <section class="mt-6">
-      <h2 class="text-base font-semibold">{{ t('home.upcoming') }}</h2>
-      <p v-if="!upcoming.length" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
-        {{ t('home.empty') }}
-      </p>
-      <ul v-else class="mt-2 flex flex-col divide-y divide-line rounded-2xl border border-line bg-white">
-        <li v-for="e in upcoming" :key="e.date + e.key">
-          <RouterLink :to="eventLink(e)" class="relative flex items-center gap-3 py-3 pr-4 pl-5 active:bg-brand-soft">
-          <span class="absolute top-3 bottom-3 left-0 w-1 rounded-r-full" :class="faithStyle(e.faith).bar" aria-hidden="true" />
-          <div class="w-20 shrink-0">
-            <p class="text-sm font-semibold whitespace-nowrap">{{ fmtDate(e.date) }}</p>
-            <p class="text-xs text-muted whitespace-nowrap">{{ relative(e.date) || fmtWeekday(e.date) }}</p>
-          </div>
-          <div class="min-w-0 flex-1">
-            <p class="truncate">{{ t(`events.${e.key}`) }}</p>
-            <p class="truncate text-xs" :class="faithStyle(e.faith).text">
-              {{ t(`faiths.${e.faith}`) }}<template v-if="e.until"> · {{ t('home.until', { date: fmtDate(e.until) }) }}</template>
-            </p>
-          </div>
-          <span class="shrink-0 rounded-full border border-line px-2.5 py-1 text-xs text-muted">
-            {{ t(`kinds.${e.kind}`) }}
-          </span>
-          </RouterLink>
-        </li>
-      </ul>
+    <MonthGrid class="mt-6 hidden lg:block" />
+
+    <section class="mt-6 lg:mt-3">
+      <div class="lg:hidden">
+        <h2 class="text-base font-semibold">{{ t('home.upcoming') }}</h2>
+        <p v-if="!upcoming.length" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
+          {{ t('home.empty') }}
+        </p>
+        <ul v-else class="mt-2 flex flex-col divide-y divide-line rounded-2xl border border-line bg-white">
+          <li v-for="e in upcoming" :key="e.date + e.key">
+            <RouterLink :to="eventLink(e)" class="relative flex items-center gap-3 py-3 pr-4 pl-5 active:bg-brand-soft">
+            <span class="absolute top-3 bottom-3 left-0 w-1 rounded-r-full" :class="faithStyle(e.faith).bar" aria-hidden="true" />
+            <div class="w-20 shrink-0">
+              <p class="text-sm font-semibold whitespace-nowrap">{{ fmtDate(e.date) }}</p>
+              <p class="text-xs text-muted whitespace-nowrap">{{ relative(e.date) || fmtWeekday(e.date) }}</p>
+            </div>
+            <div class="min-w-0 flex-1">
+              <p class="truncate">{{ t(`events.${e.key}`) }}</p>
+              <p class="truncate text-xs" :class="faithStyle(e.faith).text">
+                {{ t(`faiths.${e.faith}`) }}<template v-if="e.until"> · {{ t('home.until', { date: fmtDate(e.until) }) }}</template>
+              </p>
+            </div>
+            <span class="shrink-0 rounded-full border border-line px-2.5 py-1 text-xs text-muted">
+              {{ t(`kinds.${e.kind}`) }}
+            </span>
+            </RouterLink>
+          </li>
+        </ul>
+      </div>
       <p v-if="hasIslam" class="mt-3 text-xs text-muted">{{ t('home.islamicNote') }}</p>
     </section>
 

@@ -67,7 +67,12 @@
     "iftar": "Today's iftar",
     "islamicNote": "Islamic dates may shift by a day depending on moon sighting; follow your mosque's announcement",
     "until": "until {date}",
-    "reset": "Set up again"
+    "reset": "Set up again",
+    "thisMonth": "Today",
+    "prevMonth": "Previous month",
+    "nextMonth": "Next month",
+    "more": "+{n} more",
+    "less": "Show less"
   },
   "kinds": {
     "fast": "Fasting",

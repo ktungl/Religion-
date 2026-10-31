@@ -67,7 +67,12 @@
     "iftar": "Waktu buka puasa hari ini",
     "islamicNote": "Tanggal hari raya Islam bisa bergeser satu hari tergantung rukyat; ikuti pengumuman masjid",
     "until": "sampai {date}",
-    "reset": "Atur ulang"
+    "reset": "Atur ulang",
+    "thisMonth": "Hari ini",
+    "prevMonth": "Bulan sebelumnya",
+    "nextMonth": "Bulan berikutnya",
+    "more": "+{n} lainnya",
+    "less": "Tutup"
   },
   "kinds": {
     "fast": "Puasa",

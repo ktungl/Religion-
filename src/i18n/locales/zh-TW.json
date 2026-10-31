@@ -67,7 +67,12 @@
     "iftar": "今天開齋時間",
     "islamicNote": "伊斯蘭節日依看月結果可能差一天，請以清真寺公告為準",
     "until": "至 {date}",
-    "reset": "重新設定"
+    "reset": "重新設定",
+    "thisMonth": "今天",
+    "prevMonth": "上個月",
+    "nextMonth": "下個月",
+    "more": "還有 {n} 個",
+    "less": "收起"
   },
   "kinds": {
     "fast": "齋戒",
