@@ -69,7 +69,12 @@
     "iftar": "Giờ xả chay hôm nay (iftar)",
     "islamicNote": "Ngày lễ Hồi giáo có thể lệch một ngày tùy việc ngắm trăng, hãy theo thông báo của nhà thờ Hồi giáo",
     "until": "đến {date}",
-    "reset": "Thiết lập lại"
+    "reset": "Thiết lập lại",
+    "thisMonth": "Hôm nay",
+    "prevMonth": "Tháng trước",
+    "nextMonth": "Tháng sau",
+    "more": "+{n} mục khác",
+    "less": "Thu gọn"
   },
   "kinds": {
     "fast": "Nhịn ăn",
