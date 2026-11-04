@@ -539,12 +539,15 @@ function weekOfMonth(d) {
   return Math.ceil(d.getDate() / 7)
 }
 
-// The next date (from today, inclusive) a service takes place, within eight weeks.
+// The next date a service takes place, within eight weeks. Today counts only
+// if the service hasn't started yet (or has no known time).
 export function nextDate(service, from = new Date()) {
   const start = new Date(from.getFullYear(), from.getMonth(), from.getDate())
+  const now = `${String(from.getHours()).padStart(2, '0')}:${String(from.getMinutes()).padStart(2, '0')}`
   for (let i = 0; i < 56; i++) {
     const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i)
     if (d.getDay() !== service.day) continue
+    if (i === 0 && service.time && service.time <= now) continue
     if (service.weeks && !service.weeks.includes(weekOfMonth(d))) continue
     return d
   }

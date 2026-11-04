@@ -5,6 +5,7 @@ import { useRoute, useRouter } from 'vue-router'
 import OnboardingShell from '../components/OnboardingShell.vue'
 import DietSummary from '../components/DietSummary.vue'
 import { profile } from '../lib/profile'
+import { goBack } from '../lib/nav'
 import { DIET_ITEMS, impliedBy } from '../lib/diet'
 
 const { t } = useI18n()
@@ -22,7 +23,7 @@ function toggle(item) {
 }
 
 function next() {
-  if (isSettings) router.back()
+  if (isSettings) goBack(router)
   else router.push('/onboarding/share')
 }
 </script>

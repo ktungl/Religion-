@@ -3,6 +3,7 @@ import { ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { faithStyle } from '../lib/faithStyle'
+import { goBack } from '../lib/nav'
 
 const { t, locale } = useI18n()
 const route = useRoute()
@@ -35,10 +36,7 @@ function fmt(d) {
   return new Intl.DateTimeFormat(locale.value, { year: 'numeric', month: 'long', day: 'numeric', weekday: 'short' }).format(new Date(y, m - 1, day))
 }
 
-function back() {
-  if (window.history.state?.back) router.back()
-  else router.replace('/home')
-}
+const back = () => goBack(router)
 </script>
 
 <template>

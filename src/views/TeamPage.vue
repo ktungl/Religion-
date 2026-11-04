@@ -78,7 +78,7 @@ const teamDays = computed(() => {
 // The grid stops at the last month the shared window reaches.
 const teamMonths = (() => {
   const now = new Date()
-  const end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + TEAM_DAYS)
+  const end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + TEAM_DAYS - 1)
   return (end.getFullYear() - now.getFullYear()) * 12 + end.getMonth() - now.getMonth() + 1
 })()
 

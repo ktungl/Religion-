@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import OnboardingShell from '../components/OnboardingShell.vue'
 import { profile } from '../lib/profile'
+import { goBack } from '../lib/nav'
 import { CITIES } from '../lib/places'
 
 const { t } = useI18n()
@@ -22,7 +23,7 @@ function next() {
     error.value = true
     return
   }
-  if (isSettings) router.back()
+  if (isSettings) goBack(router)
   else router.push('/onboarding/diet')
 }
 </script>
@@ -54,7 +55,7 @@ function next() {
     <template #footer>
       <p v-if="error" class="mb-2 text-center text-sm text-red-700" role="alert">{{ t('city.required') }}</p>
       <div class="flex gap-3">
-        <button type="button" class="h-14 rounded-2xl border-2 border-line bg-white px-5 text-lg text-ink" @click="router.back()">
+        <button type="button" class="h-14 rounded-2xl border-2 border-line bg-white px-5 text-lg text-ink" @click="isSettings ? goBack(router) : router.back()">
           {{ t('onboarding.back') }}
         </button>
         <button type="button" class="h-14 flex-1 rounded-2xl bg-brand text-lg font-semibold text-paper active:opacity-90" @click="next">
