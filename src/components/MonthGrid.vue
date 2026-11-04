@@ -1,10 +1,11 @@
 <script setup>
-import { computed, ref } from 'vue'
+import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { profile } from '../lib/profile'
 import { faithStyle } from '../lib/faithStyle'
 import { eventsBetween, ymd } from '../lib/calendar'
 import { placesFor } from '../lib/places'
+import { today } from '../lib/today'
 
 // Month view for wide screens; phones keep the lists on the home and team pages.
 const MAX_PER_DAY = 2
@@ -19,10 +20,15 @@ const props = defineProps({
 
 const { t, locale } = useI18n()
 
-const today = new Date()
-const todayKey = ymd(today)
-const month = ref(new Date(today.getFullYear(), today.getMonth(), 1))
+const todayKey = computed(() => ymd(today.value))
+const month = ref(new Date(today.value.getFullYear(), today.value.getMonth(), 1))
 const openDay = ref(null)
+// If the date rolls into a new month while this month is shown, follow it.
+watch(today, (d, prev) => {
+  if (month.value.getFullYear() === prev.getFullYear() && month.value.getMonth() === prev.getMonth()) {
+    month.value = new Date(d.getFullYear(), d.getMonth(), 1)
+  }
+})
 
 // 0 = Sunday. Browsers without Intl.Locale week info fall back to Sunday.
 const weekStart = computed(() => {
@@ -75,7 +81,7 @@ const weekdays = computed(() => {
 const title = computed(() => new Intl.DateTimeFormat(locale.value, { year: 'numeric', month: 'long' }).format(month.value))
 
 const isThisMonth = computed(
-  () => month.value.getFullYear() === today.getFullYear() && month.value.getMonth() === today.getMonth(),
+  () => month.value.getFullYear() === today.value.getFullYear() && month.value.getMonth() === today.value.getMonth(),
 )
 
 const legend = computed(() => {
@@ -90,7 +96,7 @@ const legend = computed(() => {
 })
 
 const monthIndex = computed(
-  () => (month.value.getFullYear() - today.getFullYear()) * 12 + month.value.getMonth() - today.getMonth(),
+  () => (month.value.getFullYear() - today.value.getFullYear()) * 12 + month.value.getMonth() - today.value.getMonth(),
 )
 const canPrev = computed(() => !props.months || monthIndex.value > 0)
 const canNext = computed(() => !props.months || monthIndex.value < props.months - 1)
@@ -101,7 +107,7 @@ function shift(n) {
 }
 
 function goToday() {
-  month.value = new Date(today.getFullYear(), today.getMonth(), 1)
+  month.value = new Date(today.value.getFullYear(), today.value.getMonth(), 1)
   openDay.value = null
 }
 

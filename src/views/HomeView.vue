@@ -11,29 +11,29 @@ import { hasDiet } from '../lib/diet'
 import MonthGrid from '../components/MonthGrid.vue'
 import PlaceCard from '../components/PlaceCard.vue'
 import { placesFor } from '../lib/places'
+import { today } from '../lib/today'
 import { leaveTeam } from '../lib/team'
 import { eventsBetween, groupForList, prayerTimes, isRamadan, ymd, DEFAULT_PLACE } from '../lib/calendar'
 
 const { t, locale } = useI18n()
 const router = useRouter()
 
-const now = new Date()
-const todayKey = ymd(now)
+const todayKey = computed(() => ymd(today.value))
 const hasIslam = computed(() => profile.faiths.includes('islam'))
 
 const todayLabel = computed(() =>
-  new Intl.DateTimeFormat(locale.value, { weekday: 'long', month: 'long', day: 'numeric' }).format(now),
+  new Intl.DateTimeFormat(locale.value, { weekday: 'long', month: 'long', day: 'numeric' }).format(today.value),
 )
 
-const allEvents = computed(() => eventsBetween(now, 90, profile.faiths))
-const todayEvents = computed(() => allEvents.value.filter((e) => e.date === todayKey))
-const upcoming = computed(() => groupForList(allEvents.value.filter((e) => e.date > todayKey)))
+const allEvents = computed(() => eventsBetween(today.value, 90, profile.faiths))
+const todayEvents = computed(() => allEvents.value.filter((e) => e.date === todayKey.value))
+const upcoming = computed(() => groupForList(allEvents.value.filter((e) => e.date > todayKey.value)))
 
 const places = computed(() => placesFor(profile.city, profile.faiths, locale.value))
 const HOME_PLACES = 2
 
-const prayers = computed(() => (hasIslam.value ? prayerTimes(now) : []))
-const iftar = computed(() => (hasIslam.value && isRamadan(now) ? prayers.value.find((p) => p.key === 'maghrib') : null))
+const prayers = computed(() => (hasIslam.value ? prayerTimes(today.value) : []))
+const iftar = computed(() => (hasIslam.value && isRamadan(today.value) ? prayers.value.find((p) => p.key === 'maghrib') : null))
 
 function fmtTime(d) {
   return new Intl.DateTimeFormat(locale.value, { hour: '2-digit', minute: '2-digit', hourCycle: 'h23', timeZone: DEFAULT_PLACE.tz }).format(d)
@@ -53,7 +53,7 @@ function fmtWeekday(key) {
 }
 
 function relative(key) {
-  const days = Math.round((toDate(key) - new Date(now.getFullYear(), now.getMonth(), now.getDate())) / 86400000)
+  const days = Math.round((toDate(key) - today.value) / 86400000)
   if (days > 7) return ''
   return new Intl.RelativeTimeFormat(locale.value, { numeric: 'auto' }).format(days, 'day')
 }

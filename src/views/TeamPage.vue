@@ -1,5 +1,5 @@
 <script setup>
-import { computed, onMounted, ref } from 'vue'
+import { computed, onMounted, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import AppNav from '../components/AppNav.vue'
@@ -9,6 +9,7 @@ import { loadTeam, leaveTeam } from '../lib/team'
 import { demoTeamView } from '../lib/demoTeam'
 import { groupForList, ymd } from '../lib/calendar'
 import { TEAM_DAYS } from '../lib/sharedView'
+import { today } from '../lib/today'
 import { faithStyle } from '../lib/faithStyle'
 import DietSummary from '../components/DietSummary.vue'
 import MonthGrid from '../components/MonthGrid.vue'
@@ -21,7 +22,7 @@ const data = ref(null)
 const state = ref('idle') // idle | loading | error
 const join = ref()
 const copied = ref(false)
-const todayKey = ymd(new Date())
+const todayKey = computed(() => ymd(today.value))
 
 const inTeam = computed(() => !!(profile.member || profile.demo))
 
@@ -46,6 +47,8 @@ async function refresh() {
   }
 }
 onMounted(refresh)
+// What the team shares starts from today, so fetch again when the date changes.
+watch(today, refresh)
 
 const isManager = computed(() => data.value?.me.role === 'manager')
 const members = computed(() => data.value?.members || [])
@@ -54,7 +57,7 @@ const members = computed(() => data.value?.members || [])
 const teamEvents = computed(() => {
   const rows = new Map()
   for (const m of members.value) {
-    for (const e of groupForList(m.events.filter((x) => x.date >= todayKey))) {
+    for (const e of groupForList(m.events.filter((x) => x.date >= todayKey.value))) {
       const id = `${e.date}|${e.key}|${e.until || ''}`
       if (!rows.has(id)) rows.set(id, { ...e, people: [] })
       rows.get(id).people.push(m)
@@ -76,15 +79,15 @@ const teamDays = computed(() => {
   return [...rows.values()]
 })
 // The grid stops at the last month the shared window reaches.
-const teamMonths = (() => {
-  const now = new Date()
-  const end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + TEAM_DAYS - 1)
-  return (end.getFullYear() - now.getFullYear()) * 12 + end.getMonth() - now.getMonth() + 1
-})()
+const teamMonths = computed(() => {
+  const d = today.value
+  const end = new Date(d.getFullYear(), d.getMonth(), d.getDate() + TEAM_DAYS - 1)
+  return (end.getFullYear() - d.getFullYear()) * 12 + end.getMonth() - d.getMonth() + 1
+})
 
 // Manager notes are about the others on the team, so the viewer is left out.
 const fastingToday = computed(
-  () => members.value.filter((m) => !m.isMe && m.events.some((e) => e.date === todayKey && e.kind !== 'holiday')).length,
+  () => members.value.filter((m) => !m.isMe && m.events.some((e) => e.date === todayKey.value && e.kind !== 'holiday')).length,
 )
 // Upcoming fasting periods and holidays others shared, soonest first.
 const managerHints = computed(() =>

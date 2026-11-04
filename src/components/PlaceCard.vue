@@ -3,6 +3,7 @@ import { computed } from 'vue'
 import { useI18n } from 'vue-i18n'
 import { faithStyle } from '../lib/faithStyle'
 import { mapLink, nextDate } from '../lib/places'
+import { now } from '../lib/today'
 
 const props = defineProps({ place: { type: Object, required: true } })
 const { t, locale } = useI18n()
@@ -22,7 +23,7 @@ const services = computed(() =>
 // The soonest service in the person's own language, if the place has one.
 const nextInMyLang = computed(() => {
   const mine = services.value.filter((s) => s.lang === myLang.value && s.lang !== 'zh')
-  const dated = mine.map((s) => ({ s, d: nextDate(s) })).filter((x) => x.d)
+  const dated = mine.map((s) => ({ s, d: nextDate(s, now.value) })).filter((x) => x.d)
   dated.sort((a, b) => a.d - b.d || (a.s.time || '').localeCompare(b.s.time || ''))
   return dated[0] || null
 })
