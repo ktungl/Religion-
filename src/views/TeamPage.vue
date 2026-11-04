@@ -8,8 +8,10 @@ import { profile } from '../lib/profile'
 import { loadTeam, leaveTeam } from '../lib/team'
 import { demoTeamView } from '../lib/demoTeam'
 import { groupForList, ymd } from '../lib/calendar'
+import { TEAM_DAYS } from '../lib/sharedView'
 import { faithStyle } from '../lib/faithStyle'
 import DietSummary from '../components/DietSummary.vue'
+import MonthGrid from '../components/MonthGrid.vue'
 import { hasDiet } from '../lib/diet'
 
 const { t, locale } = useI18n()
@@ -60,6 +62,25 @@ const teamEvents = computed(() => {
   }
   return [...rows.values()].sort((a, b) => a.date.localeCompare(b.date))
 })
+
+// Same, but one entry per day (Ramadan included) for the month grid.
+const teamDays = computed(() => {
+  const rows = new Map()
+  for (const m of members.value) {
+    for (const e of m.events) {
+      const id = `${e.date}|${e.key}`
+      if (!rows.has(id)) rows.set(id, { ...e, people: [] })
+      rows.get(id).people.push(m)
+    }
+  }
+  return [...rows.values()]
+})
+// The grid stops at the last month the shared window reaches.
+const teamMonths = (() => {
+  const now = new Date()
+  const end = new Date(now.getFullYear(), now.getMonth(), now.getDate() + TEAM_DAYS)
+  return (end.getFullYear() - now.getFullYear()) * 12 + end.getMonth() - now.getMonth() + 1
+})()
 
 // Manager notes are about the others on the team, so the viewer is left out.
 const fastingToday = computed(
@@ -217,7 +238,11 @@ async function leave() {
           </section>
 
           <!-- Team calendar -->
-          <section class="mt-6">
+          <section class="mt-6 hidden lg:block">
+            <h2 class="text-sm font-semibold text-muted">{{ t('teamPage.calendar') }}</h2>
+            <MonthGrid class="mt-1" :events="teamDays" :months="teamMonths" />
+          </section>
+          <section class="mt-6 lg:hidden">
             <h2 class="text-base font-semibold">{{ t('teamPage.calendar') }}</h2>
             <p v-if="!teamEvents.length" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
               {{ t('teamPage.empty') }}

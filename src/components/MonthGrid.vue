@@ -6,8 +6,16 @@ import { faithStyle } from '../lib/faithStyle'
 import { eventsBetween, ymd } from '../lib/calendar'
 import { placesFor } from '../lib/places'
 
-// Month view for wide screens; phones keep the list on the home page.
+// Month view for wide screens; phones keep the lists on the home and team pages.
 const MAX_PER_DAY = 2
+
+const props = defineProps({
+  // Events to show, each optionally with the people who share it. Left out, the
+  // person's own events (and nearby services in their language) are shown.
+  events: { type: Array, default: null },
+  // How many months from this one can be shown (0 = no limit).
+  months: { type: Number, default: 0 },
+})
 
 const { t, locale } = useI18n()
 
@@ -31,7 +39,7 @@ const weekStart = computed(() => {
 const MY_LANG = { vi: 'vi', id: 'id', en: 'en' }
 const myServices = computed(() => {
   const lang = MY_LANG[locale.value]
-  if (!lang) return []
+  if (!lang || props.events) return []
   return placesFor(profile.city, profile.faiths, locale.value).flatMap((place) =>
     (place.services || []).filter((s) => s.lang === lang).map((s) => ({ place, s })),
   ).sort((a, b) => (a.s.time || '').localeCompare(b.s.time || ''))
@@ -47,7 +55,7 @@ const gridStart = computed(() => {
 const days = computed(() => {
   const start = gridStart.value
   const byDate = {}
-  for (const e of eventsBetween(start, 42, profile.faiths)) (byDate[e.date] ||= []).push(e)
+  for (const e of props.events || eventsBetween(start, 42, profile.faiths)) (byDate[e.date] ||= []).push(e)
   return Array.from({ length: 42 }, (_, i) => {
     const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i)
     const key = ymd(d)
@@ -72,13 +80,20 @@ const isThisMonth = computed(
 
 const legend = computed(() => {
   const seen = new Set()
-  return profile.faiths.filter((f) => {
+  const faiths = props.events ? [...new Set(props.events.map((e) => e.faith))] : profile.faiths
+  return faiths.filter((f) => {
     const style = faithStyle(f)
     if (f === 'none' || seen.has(style)) return false
     seen.add(style)
     return true
   })
 })
+
+const monthIndex = computed(
+  () => (month.value.getFullYear() - today.getFullYear()) * 12 + month.value.getMonth() - today.getMonth(),
+)
+const canPrev = computed(() => !props.months || monthIndex.value > 0)
+const canNext = computed(() => !props.months || monthIndex.value < props.months - 1)
 
 function shift(n) {
   month.value = new Date(month.value.getFullYear(), month.value.getMonth() + n, 1)
@@ -94,8 +109,12 @@ function shown(d) {
   return openDay.value === d.key ? d.events : d.events.slice(0, MAX_PER_DAY)
 }
 
+function names(e) {
+  return e.people?.map((p) => (p.isMe && !p.hideYou ? `${p.displayName} (${t('teamPage.you')})` : p.displayName)).join('、') || ''
+}
+
 function eventLink(e) {
-  return { path: `/event/${e.key}`, query: { faith: e.faith, date: e.date } }
+  return { path: `/event/${e.key}`, query: { faith: e.faith, date: e.date, ...(e.until ? { until: e.until } : {}) } }
 }
 </script>
 
@@ -112,8 +131,8 @@ function eventLink(e) {
         >
           {{ t('home.thisMonth') }}
         </button>
-        <button type="button" class="grid h-8 w-8 place-items-center rounded-full hover:bg-brand-soft" :aria-label="t('home.prevMonth')" @click="shift(-1)">‹</button>
-        <button type="button" class="grid h-8 w-8 place-items-center rounded-full hover:bg-brand-soft" :aria-label="t('home.nextMonth')" @click="shift(1)">›</button>
+        <button type="button" class="grid h-8 w-8 place-items-center rounded-full hover:bg-brand-soft disabled:opacity-30 disabled:hover:bg-transparent" :disabled="!canPrev" :aria-label="t('home.prevMonth')" @click="shift(-1)">‹</button>
+        <button type="button" class="grid h-8 w-8 place-items-center rounded-full hover:bg-brand-soft disabled:opacity-30 disabled:hover:bg-transparent" :disabled="!canNext" :aria-label="t('home.nextMonth')" @click="shift(1)">›</button>
       </div>
     </div>
 
@@ -145,13 +164,14 @@ function eventLink(e) {
         </span>
         <RouterLink
           v-for="e in shown(d)"
-          :key="e.key"
+          :key="e.key + e.faith"
           :to="eventLink(e)"
-          class="block truncate rounded-md px-1.5 py-0.5 text-left text-xs hover:opacity-80"
+          class="block rounded-md px-1.5 py-0.5 text-left text-xs hover:opacity-80"
           :class="faithStyle(e.faith).soft"
-          :title="`${t(`events.${e.key}`)} · ${t(`faiths.${e.faith}`)}`"
+          :title="[t(`events.${e.key}`), t(`faiths.${e.faith}`), names(e)].filter(Boolean).join(' · ')"
         >
-          {{ t(`events.${e.key}`) }}
+          <span class="block truncate">{{ t(`events.${e.key}`) }}</span>
+          <span v-if="e.people" class="block truncate opacity-75">{{ names(e) }}</span>
         </RouterLink>
         <RouterLink
           v-for="{ place, s } in d.services"
