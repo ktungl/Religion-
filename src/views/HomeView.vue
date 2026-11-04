@@ -7,6 +7,7 @@ import { faithStyle } from '../lib/faithStyle'
 import SubscribeCard from '../components/SubscribeCard.vue'
 import AppNav from '../components/AppNav.vue'
 import DietSummary from '../components/DietSummary.vue'
+import NearbyRestaurants from '../components/NearbyRestaurants.vue'
 import { hasDiet } from '../lib/diet'
 import MonthGrid from '../components/MonthGrid.vue'
 import PlaceCard from '../components/PlaceCard.vue'
@@ -174,6 +175,8 @@ async function startOver() {
       <DietSummary v-if="hasDiet(profile.diet)" class="mt-2" :diet="profile.diet" />
       <p v-else class="mt-1 text-sm text-muted">{{ t('diet.notSet') }}</p>
     </section>
+
+    <NearbyRestaurants class="mt-6" />
 
     <SubscribeCard v-if="!profile.faiths.includes('none')" class="mt-6" />
 

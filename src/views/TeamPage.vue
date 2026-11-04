@@ -12,7 +12,6 @@ import { TEAM_DAYS } from '../lib/sharedView'
 import { today } from '../lib/today'
 import { faithStyle } from '../lib/faithStyle'
 import DietSummary from '../components/DietSummary.vue'
-import NearbyRestaurants from '../components/NearbyRestaurants.vue'
 import MonthGrid from '../components/MonthGrid.vue'
 import { hasDiet } from '../lib/diet'
 
@@ -286,9 +285,6 @@ async function leave() {
               </li>
             </ul>
           </section>
-
-          <!-- Halal restaurants for team meals -->
-          <NearbyRestaurants class="mt-6" />
 
           <!-- Members -->
           <section class="mt-6">
