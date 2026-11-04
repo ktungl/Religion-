@@ -4,6 +4,7 @@ import { useI18n } from 'vue-i18n'
 import { profile } from '../lib/profile'
 import { faithStyle } from '../lib/faithStyle'
 import { eventsBetween, ymd } from '../lib/calendar'
+import { placesFor } from '../lib/places'
 
 // Month view for wide screens; phones keep the list on the home page.
 const MAX_PER_DAY = 2
@@ -26,6 +27,16 @@ const weekStart = computed(() => {
   }
 })
 
+// Regular services near the person in their own language (Mandarin ones are everywhere, so left out).
+const MY_LANG = { vi: 'vi', id: 'id', en: 'en' }
+const myServices = computed(() => {
+  const lang = MY_LANG[locale.value]
+  if (!lang) return []
+  return placesFor(profile.city, profile.faiths, locale.value).flatMap((place) =>
+    (place.services || []).filter((s) => s.lang === lang).map((s) => ({ place, s })),
+  ).sort((a, b) => (a.s.time || '').localeCompare(b.s.time || ''))
+})
+
 const gridStart = computed(() => {
   const first = month.value
   const offset = (first.getDay() - weekStart.value + 7) % 7
@@ -40,7 +51,10 @@ const days = computed(() => {
   return Array.from({ length: 42 }, (_, i) => {
     const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i)
     const key = ymd(d)
-    return { key, day: d.getDate(), inMonth: d.getMonth() === month.value.getMonth(), events: byDate[key] || [] }
+    const services = myServices.value.filter(
+      ({ s }) => s.day === d.getDay() && (!s.weeks || s.weeks.includes(Math.ceil(d.getDate() / 7))),
+    )
+    return { key, day: d.getDate(), inMonth: d.getMonth() === month.value.getMonth(), events: byDate[key] || [], services }
   })
 })
 
@@ -138,6 +152,15 @@ function eventLink(e) {
           :title="`${t(`events.${e.key}`)} · ${t(`faiths.${e.faith}`)}`"
         >
           {{ t(`events.${e.key}`) }}
+        </RouterLink>
+        <RouterLink
+          v-for="{ place, s } in d.services"
+          :key="place.id + s.time"
+          to="/places"
+          class="block truncate rounded-md border border-line px-1.5 py-0.5 text-left text-xs text-muted hover:text-ink"
+          :title="`${s.time || ''} ${place.name}`"
+        >
+          <span class="tabular-nums">{{ s.time }}</span> {{ place.en || place.name }}
         </RouterLink>
         <button
           v-if="d.events.length > MAX_PER_DAY"

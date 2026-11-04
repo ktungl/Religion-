@@ -9,6 +9,8 @@ import AppNav from '../components/AppNav.vue'
 import DietSummary from '../components/DietSummary.vue'
 import { hasDiet } from '../lib/diet'
 import MonthGrid from '../components/MonthGrid.vue'
+import PlaceCard from '../components/PlaceCard.vue'
+import { placesFor } from '../lib/places'
 import { leaveTeam } from '../lib/team'
 import { eventsBetween, groupForList, prayerTimes, isRamadan, ymd, DEFAULT_PLACE } from '../lib/calendar'
 
@@ -26,6 +28,9 @@ const todayLabel = computed(() =>
 const allEvents = computed(() => eventsBetween(now, 90, profile.faiths))
 const todayEvents = computed(() => allEvents.value.filter((e) => e.date === todayKey))
 const upcoming = computed(() => groupForList(allEvents.value.filter((e) => e.date > todayKey)))
+
+const places = computed(() => placesFor(profile.city, profile.faiths, locale.value))
+const HOME_PLACES = 2
 
 const prayers = computed(() => (hasIslam.value ? prayerTimes(now) : []))
 const iftar = computed(() => (hasIslam.value && isRamadan(now) ? prayers.value.find((p) => p.key === 'maghrib') : null))
@@ -135,6 +140,30 @@ async function startOver() {
         </ul>
       </div>
       <p v-if="hasIslam" class="mt-3 text-xs text-muted">{{ t('home.islamicNote') }}</p>
+    </section>
+
+    <section v-if="!profile.faiths.includes('none')" class="mt-6">
+      <div class="flex items-center justify-between gap-3">
+        <h2 class="text-base font-semibold">{{ t('places.home') }}</h2>
+        <RouterLink v-if="profile.city" to="/settings/city" class="text-sm text-muted underline underline-offset-4">
+          {{ t(`city.names.${profile.city}`) }} · {{ t('places.change') }}
+        </RouterLink>
+      </div>
+      <RouterLink v-if="!profile.city" to="/settings/city" class="mt-2 block rounded-2xl border border-dashed border-line p-5 text-center">
+        <span class="block text-muted">{{ t('places.noCity') }}</span>
+        <span class="mt-2 inline-block font-semibold underline underline-offset-4">{{ t('places.pickCity') }}</span>
+      </RouterLink>
+      <p v-else-if="!places.length" class="mt-2 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
+        {{ t('places.empty') }}
+      </p>
+      <template v-else>
+        <div class="mt-2 grid gap-3 md:grid-cols-2">
+          <PlaceCard v-for="p in places.slice(0, HOME_PLACES)" :key="p.id" :place="p" />
+        </div>
+        <RouterLink to="/places" class="mt-3 block rounded-2xl border border-line bg-white py-3 text-center font-semibold active:bg-brand-soft">
+          {{ places.length > HOME_PLACES ? t('places.seeAll', { n: places.length }) : t('places.details') }}
+        </RouterLink>
+      </template>
     </section>
 
     <section class="mt-6 rounded-2xl border border-line bg-white p-4">

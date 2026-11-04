@@ -29,12 +29,12 @@ function next() {
     error.value = true
     return
   }
-  router.push('/onboarding/diet')
+  router.push('/onboarding/city')
 }
 </script>
 
 <template>
-  <OnboardingShell :step="2" :total="5">
+  <OnboardingShell :step="2" :total="6">
     <h1 class="pt-8 text-2xl font-semibold">{{ t('faith.title') }}</h1>
     <p class="mt-1 text-muted">{{ t('faith.multi') }}</p>
 

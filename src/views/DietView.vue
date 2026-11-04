@@ -9,7 +9,7 @@ import { DIET_ITEMS, impliedBy } from '../lib/diet'
 
 const { t } = useI18n()
 const router = useRouter()
-// Same screen in onboarding (step 3) and later from the home page.
+// Same screen in onboarding (step 4) and later from the home page.
 const isSettings = useRoute().path.startsWith('/settings')
 
 const implied = computed(() => impliedBy(profile.diet.avoid))
@@ -28,7 +28,7 @@ function next() {
 </script>
 
 <template>
-  <OnboardingShell :step="isSettings ? 0 : 3" :total="isSettings ? 0 : 5">
+  <OnboardingShell :step="isSettings ? 0 : 4" :total="isSettings ? 0 : 6">
     <h1 class="pt-8 text-2xl font-semibold">{{ t('diet.title') }}</h1>
     <p class="mt-1 text-muted">{{ t('diet.desc') }}</p>
 

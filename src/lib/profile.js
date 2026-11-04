@@ -7,6 +7,7 @@ const KEY = 'ft.profile'
 const DEFAULTS = {
   displayName: '',
   faiths: [],
+  city: '', // one of CITIES in places.js; kept on the device only
   diet: { avoid: [], when: 'always', note: '' },
   // Nothing is shared until the person turns it on.
   share: { faith: false, fasting: false, holidays: false, prayer: false, diet: false },

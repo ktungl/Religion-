@@ -204,5 +204,57 @@
       "always": "Every day",
       "someDays": "Only on certain days (e.g. lunar 1st/15th, fasting days)"
     }
+  },
+  "city": {
+    "title": "Where do you live?",
+    "desc": "Used to find mosques, churches and temples near you",
+    "privacy": "Your city stays on this phone and is never shared with your team",
+    "required": "Please pick a city",
+    "save": "Save",
+    "names": {
+      "taipei": "Taipei",
+      "newTaipei": "New Taipei",
+      "keelung": "Keelung",
+      "taoyuan": "Taoyuan",
+      "hsinchu": "Hsinchu",
+      "taichung": "Taichung",
+      "tainan": "Tainan",
+      "kaohsiung": "Kaohsiung",
+      "yilan": "Yilan",
+      "hualien": "Hualien",
+      "pingtung": "Pingtung",
+      "other": "Somewhere else"
+    }
+  },
+  "places": {
+    "home": "Places of worship nearby",
+    "title": "Places of worship",
+    "change": "Change",
+    "noCity": "Pick your city to see mosques, churches and temples nearby",
+    "pickCity": "Pick a city",
+    "empty": "No places for your faith in this city yet",
+    "seeAll": "See all {n} places",
+    "details": "See details",
+    "map": "Map",
+    "call": "Call",
+    "hours": "Open {h}",
+    "friday": "Friday prayer (Jumu'ah) at Dhuhr time every week; ask the mosque for the exact time",
+    "weeks": "Week {n} of the month,",
+    "timeTbc": "Time to be confirmed",
+    "next": "Next: {date} {time} ({lang})",
+    "check": "Checked {date}. Times can change, so please call before you go.",
+    "types": {
+      "mosque": "Mosque",
+      "prayerRoom": "Prayer room",
+      "church": "Church",
+      "temple": "Temple"
+    },
+    "langs": {
+      "vi": "Vietnamese",
+      "id": "Indonesian",
+      "tl": "Tagalog",
+      "en": "English",
+      "zh": "Mandarin"
+    }
   }
 }

@@ -204,5 +204,57 @@
       "always": "Mỗi ngày",
       "someDays": "Chỉ vào một số ngày (ví dụ mùng 1, rằm, mùa chay)"
     }
+  },
+  "city": {
+    "title": "Bạn sống ở đâu?",
+    "desc": "Để tìm nhà thờ Hồi giáo, nhà thờ và chùa gần bạn",
+    "privacy": "Thành phố chỉ lưu trên điện thoại này, không chia sẻ với nhóm",
+    "required": "Vui lòng chọn một thành phố",
+    "save": "Lưu",
+    "names": {
+      "taipei": "Taipei",
+      "newTaipei": "New Taipei",
+      "keelung": "Keelung",
+      "taoyuan": "Taoyuan",
+      "hsinchu": "Hsinchu",
+      "taichung": "Taichung",
+      "tainan": "Tainan",
+      "kaohsiung": "Kaohsiung",
+      "yilan": "Yilan",
+      "hualien": "Hualien",
+      "pingtung": "Pingtung",
+      "other": "Nơi khác"
+    }
+  },
+  "places": {
+    "home": "Nơi thờ phượng gần bạn",
+    "title": "Nơi thờ phượng",
+    "change": "Đổi",
+    "noCity": "Chọn thành phố để xem nhà thờ Hồi giáo, nhà thờ và chùa gần bạn",
+    "pickCity": "Chọn thành phố",
+    "empty": "Chưa có địa điểm cho tôn giáo của bạn ở thành phố này",
+    "seeAll": "Xem tất cả {n} địa điểm",
+    "details": "Xem chi tiết",
+    "map": "Bản đồ",
+    "call": "Gọi",
+    "hours": "Mở cửa {h}",
+    "friday": "Lễ thứ Sáu (Jumu'ah) vào giờ Dhuhr hằng tuần; hãy hỏi nhà thờ Hồi giáo giờ chính xác",
+    "weeks": "Tuần {n} của tháng,",
+    "timeTbc": "Chưa rõ giờ",
+    "next": "Lần tới: {date} {time} ({lang})",
+    "check": "Kiểm tra vào {date}. Giờ có thể thay đổi, hãy gọi điện trước khi đi.",
+    "types": {
+      "mosque": "Nhà thờ Hồi giáo",
+      "prayerRoom": "Phòng cầu nguyện",
+      "church": "Nhà thờ",
+      "temple": "Chùa / miếu"
+    },
+    "langs": {
+      "vi": "Tiếng Việt",
+      "id": "Tiếng Indonesia",
+      "tl": "Tiếng Tagalog",
+      "en": "Tiếng Anh",
+      "zh": "Tiếng Hoa"
+    }
   }
 }

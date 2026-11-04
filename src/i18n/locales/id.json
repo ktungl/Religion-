@@ -204,5 +204,57 @@
       "always": "Setiap hari",
       "someDays": "Hanya hari tertentu (misalnya hari puasa)"
     }
+  },
+  "city": {
+    "title": "Kamu tinggal di mana?",
+    "desc": "Untuk mencari masjid, gereja, dan kuil di dekatmu",
+    "privacy": "Kota hanya disimpan di ponsel ini dan tidak dibagikan ke tim",
+    "required": "Silakan pilih kota",
+    "save": "Simpan",
+    "names": {
+      "taipei": "Taipei",
+      "newTaipei": "New Taipei",
+      "keelung": "Keelung",
+      "taoyuan": "Taoyuan",
+      "hsinchu": "Hsinchu",
+      "taichung": "Taichung",
+      "tainan": "Tainan",
+      "kaohsiung": "Kaohsiung",
+      "yilan": "Yilan",
+      "hualien": "Hualien",
+      "pingtung": "Pingtung",
+      "other": "Daerah lain"
+    }
+  },
+  "places": {
+    "home": "Tempat ibadah terdekat",
+    "title": "Tempat ibadah",
+    "change": "Ganti",
+    "noCity": "Pilih kotamu untuk melihat masjid, gereja, dan kuil terdekat",
+    "pickCity": "Pilih kota",
+    "empty": "Belum ada tempat untuk agamamu di kota ini",
+    "seeAll": "Lihat semua {n} tempat",
+    "details": "Lihat detail",
+    "map": "Peta",
+    "call": "Telepon",
+    "hours": "Buka {h}",
+    "friday": "Salat Jumat setiap minggu pada waktu Zuhur; tanyakan jam pastinya ke masjid",
+    "weeks": "Minggu ke-{n} setiap bulan,",
+    "timeTbc": "Jam belum pasti",
+    "next": "Berikutnya: {date} {time} ({lang})",
+    "check": "Dicek {date}. Jadwal bisa berubah, telepon dulu sebelum berangkat.",
+    "types": {
+      "mosque": "Masjid",
+      "prayerRoom": "Musala",
+      "church": "Gereja",
+      "temple": "Kuil"
+    },
+    "langs": {
+      "vi": "Bahasa Vietnam",
+      "id": "Bahasa Indonesia",
+      "tl": "Bahasa Tagalog",
+      "en": "Bahasa Inggris",
+      "zh": "Bahasa Mandarin"
+    }
   }
 }

@@ -22,7 +22,7 @@ const options = computed(() => {
 </script>
 
 <template>
-  <OnboardingShell :step="isSettings ? 0 : 4" :total="isSettings ? 0 : 5">
+  <OnboardingShell :step="isSettings ? 0 : 5" :total="isSettings ? 0 : 6">
     <h1 class="pt-8 text-2xl font-semibold">{{ t('share.title') }}</h1>
     <p class="mt-1 text-muted">{{ t('share.desc') }}</p>
 

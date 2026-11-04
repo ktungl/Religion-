@@ -204,5 +204,57 @@
       "always": "每天都這樣",
       "someDays": "只有特定日子（例如初一十五、齋戒期間）"
     }
+  },
+  "city": {
+    "title": "你住在哪裡？",
+    "desc": "用來找附近的清真寺、教堂和寺廟",
+    "privacy": "城市只存在這支手機上，不會分享給團隊",
+    "required": "請選一個城市",
+    "save": "儲存",
+    "names": {
+      "taipei": "台北市",
+      "newTaipei": "新北市",
+      "keelung": "基隆市",
+      "taoyuan": "桃園市",
+      "hsinchu": "新竹",
+      "taichung": "台中市",
+      "tainan": "台南市",
+      "kaohsiung": "高雄市",
+      "yilan": "宜蘭縣",
+      "hualien": "花蓮縣",
+      "pingtung": "屏東縣",
+      "other": "其他地區"
+    }
+  },
+  "places": {
+    "home": "附近的聚會地點",
+    "title": "聚會地點",
+    "change": "更換",
+    "noCity": "選擇城市，就能看到附近的清真寺、教堂和寺廟",
+    "pickCity": "選擇城市",
+    "empty": "這個城市目前還沒有你所選信仰的地點資料",
+    "seeAll": "查看全部 {n} 個地點",
+    "details": "查看詳細資料",
+    "map": "地圖",
+    "call": "電話",
+    "hours": "開放時間 {h}",
+    "friday": "每週五晌禮時間有聚禮（主麻），確切時間請向清真寺確認",
+    "weeks": "每月第 {n} 週",
+    "timeTbc": "時間待確認",
+    "next": "下次：{date} {time}（{lang}）",
+    "check": "資料於 {date} 查核。時間可能異動，出發前請先打電話確認。",
+    "types": {
+      "mosque": "清真寺",
+      "prayerRoom": "祈禱室",
+      "church": "教堂",
+      "temple": "寺廟"
+    },
+    "langs": {
+      "vi": "越南語",
+      "id": "印尼語",
+      "tl": "菲律賓語",
+      "en": "英語",
+      "zh": "國語"
+    }
   }
 }
