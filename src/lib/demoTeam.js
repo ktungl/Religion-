@@ -7,11 +7,11 @@ import { i18n } from '../i18n'
 
 // Each person shares something different, to show how privacy works.
 const PEOPLE = [
-  { id: 'demo-adi', displayName: 'Adi', faiths: ['islam'], share: { faith: true, fasting: true, holidays: true, prayer: true, diet: true }, diet: { avoid: ['halal'], when: 'always', note: '' } },
-  { id: 'demo-siti', displayName: 'Siti', faiths: ['islam'], share: { faith: false, fasting: true, holidays: false, prayer: false, diet: true }, diet: { avoid: ['halal'], when: 'always', note: '' } },
-  { id: 'demo-maria', displayName: 'Maria', faiths: ['catholic'], share: { faith: true, fasting: false, holidays: true, prayer: false, diet: false }, diet: { avoid: [], when: 'always', note: '' } },
-  { id: 'demo-linh', displayName: 'Linh', faiths: ['buddhism'], share: { faith: true, fasting: true, holidays: true, prayer: false, diet: true }, diet: { avoid: ['meat', 'seafood', 'pungent'], when: 'someDays', note: '' } },
-  { id: 'demo-chen', displayName: '阿明', faiths: ['folk'], share: { faith: true, fasting: true, holidays: true, prayer: false, diet: true }, diet: { avoid: ['beef'], when: 'always', note: '' } },
+  { id: 'demo-adi', displayName: 'Adi', locale: 'id', faiths: ['islam'], share: { faith: true, fasting: true, holidays: true, prayer: true, diet: true }, diet: { avoid: ['halal'], when: 'always', note: '' } },
+  { id: 'demo-siti', displayName: 'Siti', locale: 'id', faiths: ['islam'], share: { faith: false, fasting: true, holidays: false, prayer: false, diet: true }, diet: { avoid: ['halal'], when: 'always', note: '' } },
+  { id: 'demo-maria', displayName: 'Maria', locale: 'en', faiths: ['catholic'], share: { faith: true, fasting: false, holidays: true, prayer: false, diet: false }, diet: { avoid: [], when: 'always', note: '' } },
+  { id: 'demo-linh', displayName: 'Linh', locale: 'vi', faiths: ['buddhism'], share: { faith: true, fasting: true, holidays: true, prayer: false, diet: true }, diet: { avoid: ['meat', 'seafood', 'pungent'], when: 'someDays', note: '' } },
+  { id: 'demo-chen', displayName: '阿明', locale: 'zh-TW', faiths: ['folk'], share: { faith: true, fasting: true, holidays: true, prayer: false, diet: true }, diet: { avoid: ['beef'], when: 'always', note: '' } },
 ]
 
 export function demoTeamView(today = new Date()) {
@@ -24,6 +24,7 @@ export function demoTeamView(today = new Date()) {
     share: profile.share,
     diet: profile.diet,
     role: 'manager',
+    locale: i18n.global.locale.value,
   }
   const members = [me, ...PEOPLE.map((p) => ({ ...p, role: 'member' }))].map((m) => sharedView(m, me.id, day))
   // Without a name, "Me" already says who it is; skip the extra "(you)".

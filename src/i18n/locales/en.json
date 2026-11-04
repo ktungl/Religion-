@@ -293,5 +293,18 @@
       "shilin": "Shilin",
       "nangang": "Nangang"
     }
+  },
+  "greet": {
+    "title": "Send a greeting",
+    "desc": "A coworker's day is coming. Say something in a language they read.",
+    "write": "Write a greeting",
+    "loading": "AI is writing…",
+    "inLang": "In {lang}",
+    "meaning": "It means:",
+    "send": "Send",
+    "another": "Another",
+    "copy": "Copy greeting",
+    "aiNote": "Written by AI. Read it before sending, and feel free to change it.",
+    "sampleNote": "This is a sample greeting."
   }
 }

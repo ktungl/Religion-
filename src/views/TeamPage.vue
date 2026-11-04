@@ -14,6 +14,8 @@ import { faithStyle } from '../lib/faithStyle'
 import DietSummary from '../components/DietSummary.vue'
 import MonthGrid from '../components/MonthGrid.vue'
 import { hasDiet } from '../lib/diet'
+import GreetCard from '../components/GreetCard.vue'
+import { GREETABLE } from '../../api/_lib/greetings.js'
 
 const { t, locale } = useI18n()
 const router = useRouter()
@@ -96,6 +98,15 @@ const managerHints = computed(() =>
     .map((e) => ({ ...e, people: e.people.filter((p) => !p.isMe) }))
     .filter((e) => e.people.length)
     .slice(0, 4),
+)
+// Each coworker's next day that suits a greeting (only days they shared).
+const greetings = computed(() =>
+  members.value
+    .filter((m) => !m.isMe)
+    .map((m) => ({ person: m, event: m.events.find((e) => e.date >= todayKey.value && GREETABLE.includes(e.key)) }))
+    .filter((g) => g.event)
+    .sort((a, b) => a.event.date.localeCompare(b.event.date))
+    .slice(0, 5),
 )
 const praying = computed(() => members.value.filter((m) => m.prayer))
 const eaters = computed(() => members.value.filter((m) => hasDiet(m.diet)))
@@ -215,6 +226,15 @@ async function leave() {
               </li>
             </ul>
             <p v-else class="mt-2 text-sm opacity-80">{{ t('teamPage.noHints') }}</p>
+          </section>
+
+          <!-- Greetings -->
+          <section v-if="greetings.length" class="mt-6">
+            <h2 class="text-base font-semibold">{{ t('greet.title') }}</h2>
+            <p class="text-sm text-muted">{{ t('greet.desc') }}</p>
+            <ul class="mt-2 flex flex-col divide-y divide-line rounded-2xl border border-line bg-white">
+              <GreetCard v-for="g in greetings" :key="g.person.id + g.event.key" :person="g.person" :event="g.event" :date="fmtShort(g.event.date)" />
+            </ul>
           </section>
 
           <!-- Invite -->

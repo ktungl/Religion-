@@ -11,6 +11,9 @@
     },
     "api/health.js": {
       "maxDuration": 60
+    },
+    "api/greet.js": {
+      "maxDuration": 60
     }
   }
 }

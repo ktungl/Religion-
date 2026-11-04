@@ -293,5 +293,18 @@
       "shilin": "Shilin",
       "nangang": "Nangang"
     }
+  },
+  "greet": {
+    "title": "Kirim ucapan",
+    "desc": "Hari raya rekan kerja sudah dekat. Ucapkan dalam bahasa yang ia baca.",
+    "write": "Tulis ucapan",
+    "loading": "AI sedang menulis…",
+    "inLang": "Dalam {lang}",
+    "meaning": "Artinya:",
+    "send": "Kirim",
+    "another": "Yang lain",
+    "copy": "Salin ucapan",
+    "aiNote": "Ditulis oleh AI. Baca dulu sebelum dikirim, dan boleh diubah.",
+    "sampleNote": "Ini contoh ucapan."
   }
 }

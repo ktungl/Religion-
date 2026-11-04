@@ -293,5 +293,18 @@
       "shilin": "Shilin",
       "nangang": "Nangang"
     }
+  },
+  "greet": {
+    "title": "Gửi lời chúc",
+    "desc": "Sắp đến ngày lễ của đồng nghiệp. Hãy chúc họ bằng ngôn ngữ họ đọc được.",
+    "write": "Viết lời chúc",
+    "loading": "AI đang viết…",
+    "inLang": "Bằng {lang}",
+    "meaning": "Nghĩa là:",
+    "send": "Gửi",
+    "another": "Câu khác",
+    "copy": "Sao chép lời chúc",
+    "aiNote": "Do AI viết. Hãy đọc lại trước khi gửi, bạn có thể tự sửa.",
+    "sampleNote": "Đây là câu mẫu."
   }
 }

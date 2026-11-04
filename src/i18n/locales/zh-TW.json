@@ -293,5 +293,18 @@
       "shilin": "士林區",
       "nangang": "南港區"
     }
+  },
+  "greet": {
+    "title": "送上祝福",
+    "desc": "同事的節日快到了，用對方看得懂的語言說一聲",
+    "write": "寫一句祝福",
+    "loading": "AI 正在寫…",
+    "inLang": "用 {lang} 寫的",
+    "meaning": "意思是：",
+    "send": "傳送",
+    "another": "換一句",
+    "copy": "複製祝福",
+    "aiNote": "AI 寫的，送出前請看一下，也可以自己改。",
+    "sampleNote": "這是範例句子。"
   }
 }

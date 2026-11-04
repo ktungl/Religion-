@@ -23,5 +23,8 @@ export function sharedView(member, viewerId, today, days = TEAM_DAYS) {
     .filter((e) => isMe || (e.kind === 'holiday' ? share.holidays : share.fasting) === true)
     .map(({ date, key, kind, faith }) => ({ date, key, kind, faith }))
   view.prayer = faiths.includes('islam') && (isMe || share.prayer === true)
+  // App language, so coworkers can send a greeting the person can read.
+  // Only given along with days the person chose to share.
+  if (view.events.length) view.lang = member.locale || 'en'
   return view
 }
