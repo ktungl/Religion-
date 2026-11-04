@@ -256,5 +256,42 @@
       "en": "Bahasa Inggris",
       "zh": "Bahasa Mandarin"
     }
+  },
+  "restaurants": {
+    "title": "Restoran halal untuk makan bersama",
+    "desc": "Restoran di Taipei untuk makan bersama rekan kerja Muslim.",
+    "halal": "Restoran Muslim",
+    "friendly": "Ramah Muslim",
+    "halalHint": "Dikelola Muslim atau bersertifikat halal.",
+    "friendlyHint": "Restoran umum dengan menu yang bisa dimakan Muslim. Pastikan lagi saat memesan.",
+    "all": "Semua",
+    "call": "Telepon",
+    "map": "Peta",
+    "source": "Sumber: Peta restoran ramah Muslim Taipei",
+    "empty": "Belum ada tempat di distrik ini",
+    "cuisines": {
+      "indian": "Masakan India",
+      "thai": "Masakan Thailand",
+      "yunnan": "Masakan Yunnan",
+      "noodles": "Mi sapi",
+      "moroccan": "Masakan Maroko",
+      "pakistani": "Masakan India & Pakistan",
+      "turkish": "Masakan Turki",
+      "indonesian": "Masakan Indonesia",
+      "indonesianSnacks": "Jajanan Indonesia",
+      "seafood": "Makanan laut",
+      "desserts": "Es serut & hidangan penutup",
+      "taiwanese": "Jajanan Taiwan",
+      "friedChicken": "Ayam goreng"
+    },
+    "districts": {
+      "zhongshan": "Zhongshan",
+      "daan": "Da’an",
+      "songshan": "Songshan",
+      "zhongzheng": "Zhongzheng",
+      "xinyi": "Xinyi",
+      "shilin": "Shilin",
+      "nangang": "Nangang"
+    }
   }
 }

@@ -256,5 +256,42 @@
       "en": "Tiếng Anh",
       "zh": "Tiếng Hoa"
     }
+  },
+  "restaurants": {
+    "title": "Nhà hàng halal cho bữa ăn nhóm",
+    "desc": "Nhà hàng ở Đài Bắc để đi ăn cùng đồng nghiệp Hồi giáo.",
+    "halal": "Nhà hàng Hồi giáo",
+    "friendly": "Thân thiện Hồi giáo",
+    "halalHint": "Do người Hồi giáo điều hành hoặc có chứng nhận halal.",
+    "friendlyHint": "Nhà hàng thông thường có món người Hồi giáo ăn được. Hãy hỏi lại khi gọi món.",
+    "all": "Tất cả",
+    "call": "Gọi",
+    "map": "Bản đồ",
+    "source": "Nguồn: Bản đồ nhà hàng thân thiện Hồi giáo Đài Bắc",
+    "empty": "Khu này chưa có địa điểm nào",
+    "cuisines": {
+      "indian": "Món Ấn Độ",
+      "thai": "Món Thái",
+      "yunnan": "Món Vân Nam",
+      "noodles": "Mì bò",
+      "moroccan": "Món Maroc",
+      "pakistani": "Món Ấn Độ & Pakistan",
+      "turkish": "Món Thổ Nhĩ Kỳ",
+      "indonesian": "Món Indonesia",
+      "indonesianSnacks": "Đồ ăn vặt Indonesia",
+      "seafood": "Hải sản",
+      "desserts": "Đá bào & tráng miệng",
+      "taiwanese": "Món ăn vặt Đài Loan",
+      "friedChicken": "Gà rán"
+    },
+    "districts": {
+      "zhongshan": "Zhongshan",
+      "daan": "Da’an",
+      "songshan": "Songshan",
+      "zhongzheng": "Zhongzheng",
+      "xinyi": "Xinyi",
+      "shilin": "Shilin",
+      "nangang": "Nangang"
+    }
   }
 }

@@ -256,5 +256,42 @@
       "en": "English",
       "zh": "Mandarin"
     }
+  },
+  "restaurants": {
+    "title": "Halal restaurants for team meals",
+    "desc": "Taipei restaurants to consider for a team meal with Muslim coworkers.",
+    "halal": "Muslim restaurants",
+    "friendly": "Muslim-friendly",
+    "halalHint": "Run by Muslims or halal certified.",
+    "friendlyHint": "Regular restaurants with dishes Muslims can eat. Check again when ordering.",
+    "all": "All",
+    "call": "Call",
+    "map": "Map",
+    "source": "Source: Taipei Muslim-friendly restaurant map",
+    "empty": "No places listed in this district yet",
+    "cuisines": {
+      "indian": "Indian",
+      "thai": "Thai",
+      "yunnan": "Yunnan",
+      "noodles": "Beef noodles",
+      "moroccan": "Moroccan",
+      "pakistani": "Indian & Pakistani",
+      "turkish": "Turkish",
+      "indonesian": "Indonesian",
+      "indonesianSnacks": "Indonesian snacks",
+      "seafood": "Seafood",
+      "desserts": "Shaved ice & desserts",
+      "taiwanese": "Taiwanese snacks",
+      "friedChicken": "Fried chicken"
+    },
+    "districts": {
+      "zhongshan": "Zhongshan",
+      "daan": "Da’an",
+      "songshan": "Songshan",
+      "zhongzheng": "Zhongzheng",
+      "xinyi": "Xinyi",
+      "shilin": "Shilin",
+      "nangang": "Nangang"
+    }
   }
 }

@@ -256,5 +256,42 @@
       "en": "英語",
       "zh": "國語"
     }
+  },
+  "restaurants": {
+    "title": "清真聚餐餐廳",
+    "desc": "和穆斯林同事聚餐時，可以參考這些臺北的餐廳。",
+    "halal": "穆斯林餐廳",
+    "friendly": "穆斯林友善",
+    "halalHint": "穆斯林經營或清真認證的餐廳。",
+    "friendlyHint": "一般餐廳，但提供穆斯林可以吃的餐點，點餐時再確認一次。",
+    "all": "全部",
+    "call": "打電話",
+    "map": "地圖",
+    "source": "資料來源：臺北穆斯林友善餐廳地圖",
+    "empty": "這一區目前沒有資料",
+    "cuisines": {
+      "indian": "印度料理",
+      "thai": "泰式料理",
+      "yunnan": "雲南料理",
+      "noodles": "牛肉麵",
+      "moroccan": "摩洛哥料理",
+      "pakistani": "印度巴基斯坦料理",
+      "turkish": "土耳其料理",
+      "indonesian": "印尼料理",
+      "indonesianSnacks": "印尼小吃",
+      "seafood": "海鮮",
+      "desserts": "冰品甜點",
+      "taiwanese": "臺灣小吃",
+      "friedChicken": "炸雞"
+    },
+    "districts": {
+      "zhongshan": "中山區",
+      "daan": "大安區",
+      "songshan": "松山區",
+      "zhongzheng": "中正區",
+      "xinyi": "信義區",
+      "shilin": "士林區",
+      "nangang": "南港區"
+    }
   }
 }
