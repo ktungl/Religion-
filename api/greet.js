@@ -69,10 +69,10 @@ const clean = (s) => String(s || '').trim().slice(0, 300)
 export default async function handler(req, res) {
   const url = new URL(req.url, 'http://localhost')
   const key = url.searchParams.get('key')
-  const pick = (p) => (LANGUAGES[url.searchParams.get(p)] ? url.searchParams.get(p) : 'en')
+  const pick = (p) => (Object.hasOwn(LANGUAGES, url.searchParams.get(p) || '') ? url.searchParams.get(p) : 'en')
   const to = pick('to')
   const from = pick('from')
-  const g = GREETINGS[key]
+  const g = Object.hasOwn(GREETINGS, key || '') ? GREETINGS[key] : null
 
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
   if (!g) {

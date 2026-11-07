@@ -11,6 +11,7 @@ import NearbyRestaurants from '../components/NearbyRestaurants.vue'
 import { hasDiet } from '../lib/diet'
 import MonthGrid from '../components/MonthGrid.vue'
 import PlaceCard from '../components/PlaceCard.vue'
+import MapSearch from '../components/MapSearch.vue'
 import { placesFor } from '../lib/places'
 import { today } from '../lib/today'
 import { leaveTeam } from '../lib/team'
@@ -165,6 +166,7 @@ async function startOver() {
           {{ places.length > HOME_PLACES ? t('places.seeAll', { n: places.length }) : t('places.details') }}
         </RouterLink>
       </template>
+      <MapSearch v-if="profile.city" :city="profile.city" :faiths="profile.faiths" :places="places" />
     </section>
 
     <section class="mt-6 rounded-2xl border border-line bg-white p-4">

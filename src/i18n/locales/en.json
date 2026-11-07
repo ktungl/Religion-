@@ -245,7 +245,7 @@
     "change": "Change",
     "noCity": "Pick your city to see mosques, churches and temples nearby",
     "pickCity": "Pick a city",
-    "empty": "No places for your faith in this city yet",
+    "empty": "We have not listed places in this city yet. You can search the map for now.",
     "seeAll": "See all {n} places",
     "details": "See details",
     "map": "Map",
@@ -268,7 +268,8 @@
       "tl": "Tagalog",
       "en": "English",
       "zh": "Mandarin"
-    }
+    },
+    "searchMaps": "Find a {type} on Google Maps"
   },
   "restaurants": {
     "title": "Restaurants for you",

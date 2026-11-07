@@ -197,16 +197,28 @@ export function eventsBetween(start, days, faiths) {
 // Collapse the daily Ramadan rows into a single row (first day, with an
 // "until" date) so the list stays readable.
 export function groupForList(events) {
-  const ramadanDays = events.filter((e) => e.key === 'ramadan')
   const out = events.filter((e) => e.key !== 'ramadan').map((e) => ({ ...e }))
-  if (!ramadanDays.length) return out
-  // The list may stop mid-month, so find the real last day of Ramadan.
-  let last = ramadanDays[ramadanDays.length - 1].date
-  const [y, m, d] = last.split('-').map(Number)
-  for (let x = new Date(y, m - 1, d + 1); hijri(x).month === 9; x = addDays(x, 1)) last = ymd(x)
-  const start = out.find((e) => e.key === 'ramadanStart')
-  if (start) start.until = last
-  else out.push({ ...ramadanDays[0], until: last })
+  // One row per Ramadan: a long window (the calendar feed) can hold several,
+  // so the daily rows are split wherever there is a gap between days.
+  const parse = (s) => {
+    const [y, m, d] = s.split('-').map(Number)
+    return new Date(y, m - 1, d)
+  }
+  const groups = []
+  for (const e of events.filter((x) => x.key === 'ramadan')) {
+    const prev = groups.at(-1)?.at(-1)
+    if (prev && ymd(addDays(parse(prev.date), 1)) === e.date) groups.at(-1).push(e)
+    else groups.push([e])
+  }
+  for (const days of groups) {
+    // The window may stop mid-month, so find the real last day of Ramadan.
+    let last = days.at(-1).date
+    for (let x = addDays(parse(last), 1); hijri(x).month === 9; x = addDays(x, 1)) last = ymd(x)
+    // Day 1 is listed as ramadanStart, the day before the first daily row.
+    const start = out.find((e) => e.key === 'ramadanStart' && ymd(addDays(parse(e.date), 1)) === days[0].date)
+    if (start) start.until = last
+    else out.push({ ...days[0], until: last })
+  }
   return out.sort((a, b) => a.date.localeCompare(b.date))
 }
 

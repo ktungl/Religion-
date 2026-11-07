@@ -6,6 +6,7 @@ import { profile } from '../lib/profile'
 import { placesFor } from '../lib/places'
 import { goBack } from '../lib/nav'
 import PlaceCard from '../components/PlaceCard.vue'
+import MapSearch from '../components/MapSearch.vue'
 import AppNav from '../components/AppNav.vue'
 
 const { t, locale } = useI18n()
@@ -30,6 +31,7 @@ const places = computed(() => placesFor(profile.city, profile.faiths, locale.val
     <div v-else class="mt-4 grid gap-3 md:grid-cols-2">
       <PlaceCard v-for="p in places" :key="p.id" :place="p" />
     </div>
+    <MapSearch :city="profile.city" :faiths="profile.faiths" :places="places" />
     <p v-if="places.length" class="mt-4 text-xs text-muted">{{ t('places.check', { date: places[0].checked }) }}</p>
   </div>
   <AppNav />

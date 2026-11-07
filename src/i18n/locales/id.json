@@ -245,7 +245,7 @@
     "change": "Ganti",
     "noCity": "Pilih kotamu untuk melihat masjid, gereja, dan kuil terdekat",
     "pickCity": "Pilih kota",
-    "empty": "Belum ada tempat untuk agamamu di kota ini",
+    "empty": "Kami belum punya daftar tempat di kota ini. Untuk sementara, cari di peta.",
     "seeAll": "Lihat semua {n} tempat",
     "details": "Lihat detail",
     "map": "Peta",
@@ -268,7 +268,8 @@
       "tl": "Bahasa Tagalog",
       "en": "Bahasa Inggris",
       "zh": "Bahasa Mandarin"
-    }
+    },
+    "searchMaps": "Cari {type} di Google Maps"
   },
   "restaurants": {
     "title": "Restoran untukmu",

@@ -225,17 +225,17 @@
     "required": "กรุณาเลือกเมือง",
     "save": "บันทึก",
     "names": {
-      "taipei": "Taipei",
-      "newTaipei": "New Taipei",
-      "keelung": "Keelung",
-      "taoyuan": "Taoyuan",
-      "hsinchu": "Hsinchu",
-      "taichung": "Taichung",
-      "tainan": "Tainan",
-      "kaohsiung": "Kaohsiung",
-      "yilan": "Yilan",
-      "hualien": "Hualien",
-      "pingtung": "Pingtung",
+      "taipei": "ไทเป",
+      "newTaipei": "นิวไทเป",
+      "keelung": "จีหลง",
+      "taoyuan": "เถาหยวน",
+      "hsinchu": "ซินจู๋",
+      "taichung": "ไถจง",
+      "tainan": "ไถหนาน",
+      "kaohsiung": "เกาสง",
+      "yilan": "อี๋หลาน",
+      "hualien": "ฮัวเหลียน",
+      "pingtung": "ผิงตง",
       "other": "ที่อื่น"
     }
   },
@@ -245,7 +245,7 @@
     "change": "เปลี่ยน",
     "noCity": "เลือกเมืองเพื่อดูมัสยิด โบสถ์ และวัดใกล้คุณ",
     "pickCity": "เลือกเมือง",
-    "empty": "ยังไม่มีสถานที่สำหรับศาสนาของคุณในเมืองนี้",
+    "empty": "ยังไม่มีรายชื่อสถานที่ในเมืองนี้ ลองค้นหาในแผนที่ก่อนได้",
     "seeAll": "ดูทั้งหมด {n} แห่ง",
     "details": "ดูรายละเอียด",
     "map": "แผนที่",
@@ -268,7 +268,8 @@
       "tl": "ภาษาตากาล็อก",
       "en": "ภาษาอังกฤษ",
       "zh": "ภาษาจีนกลาง"
-    }
+    },
+    "searchMaps": "ค้นหา{type}ใน Google Maps"
   },
   "restaurants": {
     "title": "ร้านอาหารที่เหมาะกับคุณ",

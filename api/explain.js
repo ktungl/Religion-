@@ -56,8 +56,8 @@ Return JSON with:
 export default async function handler(req, res) {
   const url = new URL(req.url, 'http://localhost')
   const key = url.searchParams.get('key')
-  const lang = LANGUAGES[url.searchParams.get('lang')] ? url.searchParams.get('lang') : 'en'
-  const facts = EVENT_FACTS[key]
+  const lang = Object.hasOwn(LANGUAGES, url.searchParams.get('lang') || '') ? url.searchParams.get('lang') : 'en'
+  const facts = Object.hasOwn(EVENT_FACTS, key || '') ? EVENT_FACTS[key] : null
 
   res.setHeader('Content-Type', 'application/json; charset=utf-8')
   if (!facts) {

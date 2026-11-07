@@ -245,7 +245,7 @@
     "change": "Đổi",
     "noCity": "Chọn thành phố để xem nhà thờ Hồi giáo, nhà thờ và chùa gần bạn",
     "pickCity": "Chọn thành phố",
-    "empty": "Chưa có địa điểm cho tôn giáo của bạn ở thành phố này",
+    "empty": "Chúng tôi chưa có danh sách địa điểm ở thành phố này. Bạn có thể tìm trên bản đồ.",
     "seeAll": "Xem tất cả {n} địa điểm",
     "details": "Xem chi tiết",
     "map": "Bản đồ",
@@ -268,7 +268,8 @@
       "tl": "Tiếng Tagalog",
       "en": "Tiếng Anh",
       "zh": "Tiếng Hoa"
-    }
+    },
+    "searchMaps": "Tìm {type} trên Google Maps"
   },
   "restaurants": {
     "title": "Nhà hàng phù hợp với bạn",

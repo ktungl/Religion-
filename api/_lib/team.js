@@ -79,7 +79,15 @@ export function handler(fn) {
       return res.status(405).json({ error: 'method_not_allowed' })
     }
     try {
-      const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : req.body || {}
+      let body = req.body
+      if (typeof body === 'string') {
+        try {
+          body = JSON.parse(body || '{}')
+        } catch {
+          throw new StoreError('invalid', 'body')
+        }
+      }
+      if (!body || typeof body !== 'object' || Array.isArray(body)) body = {}
       const store = getStore()
       const out = await fn(body, store)
       res.setHeader('Cache-Control', 'no-store')
