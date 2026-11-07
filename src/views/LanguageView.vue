@@ -42,12 +42,12 @@ function speak(lang) {
 }
 
 function next() {
-  router.push('/onboarding/faith')
+  router.push('/onboarding/intro')
 }
 </script>
 
 <template>
-  <OnboardingShell :step="1" :total="6">
+  <OnboardingShell :step="1" :total="7">
     <div class="pt-6 pb-8 text-center">
       <div class="relative h-12 overflow-hidden" aria-live="polite">
         <Transition name="welcome" mode="out-in">

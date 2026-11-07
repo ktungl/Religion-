@@ -4,8 +4,8 @@ import { useRouter } from 'vue-router'
 import OnboardingShell from '../components/OnboardingShell.vue'
 import BrandMark from '../components/BrandMark.vue'
 
-// First screen for someone new: what the app is for, before any setup.
-// Text follows the phone's language (detected in i18n), so most people can read it.
+// What the app is for, shown right after the language step so it's always
+// in a language the person picked (a phone's own setting is often Chinese or English).
 const { t } = useI18n()
 const router = useRouter()
 
@@ -17,8 +17,8 @@ const points = [
 </script>
 
 <template>
-  <OnboardingShell>
-    <div class="flex flex-col items-center pt-10 text-center md:pt-16">
+  <OnboardingShell :step="2" :total="7">
+    <div class="flex flex-col items-center pt-8 text-center md:pt-12">
       <BrandMark />
       <p class="rise mt-5 max-w-xs text-lg" style="--delay: 1.15s">{{ t('intro.tagline') }}</p>
     </div>
@@ -40,14 +40,14 @@ const points = [
     </ul>
 
     <template #footer>
-      <button
-        type="button"
-        class="rise h-14 w-full rounded-2xl bg-brand text-lg font-semibold text-paper active:opacity-90"
-        style="--delay: 1.8s"
-        @click="router.push('/onboarding/language')"
-      >
-        {{ t('intro.start') }}
-      </button>
+      <div class="rise flex gap-3" style="--delay: 1.8s">
+        <button type="button" class="h-14 rounded-2xl border-2 border-line bg-white px-5 text-lg text-ink" @click="router.back()">
+          {{ t('onboarding.back') }}
+        </button>
+        <button type="button" class="h-14 flex-1 rounded-2xl bg-brand text-lg font-semibold text-paper active:opacity-90" @click="router.push('/onboarding/faith')">
+          {{ t('intro.start') }}
+        </button>
+      </div>
     </template>
   </OnboardingShell>
 </template>

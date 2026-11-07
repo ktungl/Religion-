@@ -69,7 +69,7 @@ async function startOver() {
   // Leaving the team deletes what was shared; if offline, the local copy is cleared anyway.
   await leaveTeam().catch(() => {})
   resetProfile()
-  router.replace('/welcome')
+  router.replace('/onboarding/language')
 }
 </script>
 

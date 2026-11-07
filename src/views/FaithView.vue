@@ -34,7 +34,7 @@ function next() {
 </script>
 
 <template>
-  <OnboardingShell :step="2" :total="6">
+  <OnboardingShell :step="3" :total="7">
     <h1 class="pt-8 text-2xl font-semibold">{{ t('faith.title') }}</h1>
     <p class="mt-1 text-muted">{{ t('faith.multi') }}</p>
 

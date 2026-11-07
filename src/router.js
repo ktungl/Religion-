@@ -1,14 +1,15 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import WelcomeView from './views/WelcomeView.vue'
 import LanguageView from './views/LanguageView.vue'
 import { profile } from './lib/profile'
 
 export const router = createRouter({
   history: createWebHistory(),
   routes: [
-    { path: '/', redirect: () => (profile.onboarded ? '/home' : '/welcome') },
-    { path: '/welcome', component: WelcomeView },
+    { path: '/', redirect: () => (profile.onboarded ? '/home' : '/onboarding/language') },
+    // Old address of the intro, from before it moved after the language step.
+    { path: '/welcome', redirect: '/onboarding/language' },
     { path: '/onboarding/language', component: LanguageView },
+    { path: '/onboarding/intro', component: () => import('./views/IntroView.vue') },
     { path: '/onboarding/faith', component: () => import('./views/FaithView.vue') },
     { path: '/onboarding/city', component: () => import('./views/CityView.vue') },
     { path: '/onboarding/diet', component: () => import('./views/DietView.vue') },
@@ -27,5 +28,5 @@ export const router = createRouter({
 
 // App screens need finished onboarding.
 router.beforeEach((to) => {
-  if (to.meta.app && !profile.onboarded) return '/welcome'
+  if (to.meta.app && !profile.onboarded) return '/onboarding/language'
 })
