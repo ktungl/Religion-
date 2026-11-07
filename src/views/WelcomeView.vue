@@ -2,19 +2,12 @@
 import { useI18n } from 'vue-i18n'
 import { useRouter } from 'vue-router'
 import OnboardingShell from '../components/OnboardingShell.vue'
+import BrandMark from '../components/BrandMark.vue'
 
 // First screen for someone new: what the app is for, before any setup.
 // Text follows the phone's language (detected in i18n), so most people can read it.
 const { t } = useI18n()
 const router = useRouter()
-
-// One dot per faith color, flying out from the middle to its place on the ring.
-const dots = [
-  { color: 'var(--color-islam)', x: 0, y: -90 },
-  { color: 'var(--color-christian)', x: 90, y: 0 },
-  { color: 'var(--color-buddhism)', x: 0, y: 90 },
-  { color: 'var(--color-folk)', x: -90, y: 0 },
-]
 
 const points = [
   { key: 'calendar', icon: 'M8 2v4M16 2v4M3 10h18M5 4h14a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z' },
@@ -26,23 +19,7 @@ const points = [
 <template>
   <OnboardingShell>
     <div class="flex flex-col items-center pt-10 text-center md:pt-16">
-      <svg viewBox="0 0 512 512" class="logo h-32 w-32" aria-hidden="true">
-        <rect width="512" height="512" rx="112" fill="var(--color-brand)" />
-        <circle class="ring" cx="256" cy="256" r="148" fill="none" stroke="var(--color-paper)" stroke-width="18" opacity="0.9" />
-        <circle
-          v-for="(d, i) in dots"
-          :key="i"
-          class="dot"
-          cx="256"
-          cy="256"
-          r="40"
-          :fill="d.color"
-          :style="{ '--x': `${d.x}px`, '--y': `${d.y}px`, '--delay': `${0.35 + i * 0.09}s` }"
-        />
-      </svg>
-
-      <h1 class="rise mt-6 text-3xl font-semibold tracking-tight" style="--delay: 0.8s">Faith Together</h1>
-      <p class="rise mt-1 text-2xl font-semibold text-muted" lang="zh-TW" style="--delay: 0.95s">共好日</p>
+      <BrandMark />
       <p class="rise mt-5 max-w-xs text-lg" style="--delay: 1.15s">{{ t('intro.tagline') }}</p>
     </div>
 
@@ -76,44 +53,10 @@ const points = [
 </template>
 
 <style scoped>
-.logo {
-  animation: logo-in 0.5s cubic-bezier(0.2, 0.8, 0.2, 1) both;
-}
-.ring {
-  stroke-dasharray: 930;
-  animation: ring-draw 0.7s 0.15s ease-out both;
-}
-.dot {
-  transform-box: view-box;
-  transform-origin: 256px 256px;
-  animation: dot-out 0.55s var(--delay) cubic-bezier(0.34, 1.56, 0.64, 1) both;
-}
 .rise {
   animation: rise 0.5s var(--delay, 0s) ease-out both;
 }
 
-@keyframes logo-in {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-}
-@keyframes ring-draw {
-  from {
-    stroke-dashoffset: 930;
-  }
-  to {
-    stroke-dashoffset: 0;
-  }
-}
-@keyframes dot-out {
-  from {
-    transform: translate(0, 0) scale(0);
-  }
-  to {
-    transform: translate(var(--x), var(--y)) scale(1);
-  }
-}
 @keyframes rise {
   from {
     opacity: 0;
@@ -122,14 +65,8 @@ const points = [
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .logo,
-  .ring,
   .rise {
     animation: none;
-  }
-  .dot {
-    animation: none;
-    transform: translate(var(--x), var(--y));
   }
 }
 </style>
