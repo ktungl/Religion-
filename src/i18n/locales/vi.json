@@ -1,5 +1,12 @@
 {
   "welcome": "Xin chào",
+  "intro": {
+    "tagline": "Giúp đồng nghiệp khác tôn giáo hiểu và quan tâm nhau",
+    "calendar": "Ngày lễ, ngày ăn chay và giờ cầu nguyện của bạn trong một lịch",
+    "share": "Bạn tự quyết định nhóm được biết những gì",
+    "together": "Ăn chung, gửi lời chúc, biết cách quan tâm nhau",
+    "start": "Bắt đầu"
+  },
   "language": {
     "title": "Chọn ngôn ngữ",
     "changeLater": "Bạn có thể thay đổi sau trong phần Cài đặt",

@@ -1,5 +1,12 @@
 {
   "welcome": "Selamat datang",
+  "intro": {
+    "tagline": "Membantu rekan kerja beda agama saling memahami",
+    "calendar": "Hari raya, puasa, dan waktu salat kamu dalam satu kalender",
+    "share": "Kamu sendiri yang menentukan apa yang dilihat tim",
+    "together": "Makan bersama dan kirim ucapan dengan penuh perhatian",
+    "start": "Mulai"
+  },
   "language": {
     "title": "Pilih bahasa",
     "changeLater": "Anda bisa mengubahnya nanti di Pengaturan",

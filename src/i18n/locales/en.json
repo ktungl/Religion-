@@ -1,5 +1,12 @@
 {
   "welcome": "Welcome",
+  "intro": {
+    "tagline": "Helping coworkers of different faiths understand each other",
+    "calendar": "Your holy days, fasting and prayer times in one calendar",
+    "share": "You decide what your team gets to see",
+    "together": "Plan meals and send greetings with care",
+    "start": "Get started"
+  },
   "language": {
     "title": "Choose your language",
     "changeLater": "You can change this later in Settings",
