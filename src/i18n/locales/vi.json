@@ -86,7 +86,9 @@
   "kinds": {
     "fast": "Nhịn ăn",
     "vegetarian": "Ăn chay",
-    "holiday": "Ngày lễ"
+    "holiday": "Ngày lễ",
+    "noMeat": "Kiêng thịt",
+    "holidayFast": "Ngày lễ · giữ chay"
   },
   "prayers": {
     "fajr": "Fajr",
@@ -119,7 +121,8 @@
     "easter": "Lễ Phục Sinh",
     "allSaints": "Lễ Các Thánh",
     "christmasEve": "Đêm Giáng sinh",
-    "christmas": "Lễ Giáng sinh"
+    "christmas": "Lễ Giáng sinh",
+    "lentFriday": "Thứ Sáu Mùa Chay"
   },
   "subscribe": {
     "title": "Thêm vào lịch điện thoại",
@@ -158,7 +161,8 @@
     "fastingNone": "Hôm nay không có đồng nghiệp nào nhịn ăn hay ăn chay",
     "meals": "Ghi chú đặt đồ ăn",
     "mealsDesc": "Xem trước khi đặt cơm hoặc ăn chung",
-    "mealsEmpty": "Chưa ai chia sẻ nhu cầu ăn uống"
+    "mealsEmpty": "Chưa ai chia sẻ nhu cầu ăn uống",
+    "foodToday": "Hôm nay:"
   },
   "detail": {
     "open": "Xem",

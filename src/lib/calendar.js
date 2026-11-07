@@ -3,7 +3,8 @@
 //
 // Event shape: { date: 'YYYY-MM-DD', faith, key, kind }
 //   key  -> i18n label under events.*
-//   kind -> 'fast' | 'vegetarian' | 'holiday'
+//   kind -> 'fast' | 'vegetarian' | 'noMeat' | 'holiday' | 'holidayFast'
+//   (holidayFast: a holy day that is also a fast day, e.g. Good Friday for Catholics)
 //
 // Sources of truth:
 //   - Chinese lunar dates: lunar-javascript
@@ -155,13 +156,19 @@ function christianEventsForYear(year, faiths) {
   const faith = catholic ? 'catholic' : 'protestant'
   const easter = easterSunday(year)
   const out = [
-    { date: ymd(addDays(easter, -2)), faith, key: 'goodFriday', kind: 'holiday' },
+    // Catholics fast and do not eat meat on Good Friday; for Protestants it is a holy day only.
+    { date: ymd(addDays(easter, -2)), faith, key: 'goodFriday', kind: catholic ? 'holidayFast' : 'holiday' },
     { date: ymd(easter), faith, key: 'easter', kind: 'holiday' },
     { date: `${year}-12-24`, faith, key: 'christmasEve', kind: 'holiday' },
     { date: `${year}-12-25`, faith, key: 'christmas', kind: 'holiday' },
   ]
   if (catholic) {
     out.push({ date: ymd(addDays(easter, -46)), faith: 'catholic', key: 'ashWednesday', kind: 'fast' })
+    // Fridays of Lent (from the Friday after Ash Wednesday up to the week
+    // before Good Friday): no meat, fish is fine.
+    for (let d = addDays(easter, -44); d < addDays(easter, -2); d = addDays(d, 7)) {
+      out.push({ date: ymd(d), faith: 'catholic', key: 'lentFriday', kind: 'noMeat' })
+    }
     out.push({ date: `${year}-11-01`, faith: 'catholic', key: 'allSaints', kind: 'holiday' })
   }
   return out

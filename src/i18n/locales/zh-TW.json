@@ -86,7 +86,9 @@
   "kinds": {
     "fast": "齋戒",
     "vegetarian": "吃素",
-    "holiday": "節日"
+    "holiday": "節日",
+    "noMeat": "不吃肉",
+    "holidayFast": "節日・守齋"
   },
   "prayers": {
     "fajr": "晨禮",
@@ -119,7 +121,8 @@
     "easter": "復活節",
     "allSaints": "諸聖節",
     "christmasEve": "平安夜",
-    "christmas": "聖誕節"
+    "christmas": "聖誕節",
+    "lentFriday": "四旬期星期五"
   },
   "subscribe": {
     "title": "加到我的手機日曆",
@@ -158,7 +161,8 @@
     "fastingNone": "今天沒有同事齋戒或吃素",
     "meals": "訂餐備忘",
     "mealsDesc": "訂便當或聚餐前看一下",
-    "mealsEmpty": "還沒有人分享飲食需求"
+    "mealsEmpty": "還沒有人分享飲食需求",
+    "foodToday": "今天："
   },
   "detail": {
     "open": "說明",

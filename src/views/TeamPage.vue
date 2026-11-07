@@ -95,7 +95,8 @@ const fastingToday = computed(
 // Upcoming fasting periods and holidays others shared, soonest first.
 const managerHints = computed(() =>
   teamEvents.value
-    .filter((e) => e.kind !== 'vegetarian')
+    // Weekly food days (lunar 1st/15th, Lent Fridays) would crowd out the rest.
+    .filter((e) => e.kind !== 'vegetarian' && e.kind !== 'noMeat')
     .map((e) => ({ ...e, people: e.people.filter((p) => !p.isMe) }))
     .filter((e) => e.people.length)
     .slice(0, 4),
@@ -110,7 +111,10 @@ const greetings = computed(() =>
     .slice(0, 5),
 )
 const praying = computed(() => members.value.filter((m) => m.prayer))
-const eaters = computed(() => members.value.filter((m) => hasDiet(m.diet)))
+// Shared days today that change what someone eats (fasting, vegetarian, no meat).
+const FOOD_KINDS = ['fast', 'vegetarian', 'noMeat', 'holidayFast']
+const foodToday = (m) => m.events.filter((e) => e.date === todayKey.value && FOOD_KINDS.includes(e.kind))
+const eaters = computed(() => members.value.filter((m) => hasDiet(m.diet) || foodToday(m).length))
 
 function toDate(key) {
   const [y, m, d] = key.split('-').map(Number)
@@ -218,7 +222,7 @@ async function leave() {
               <li v-for="e in managerHints" :key="e.date + e.key" class="flex gap-2">
                 <span class="mt-1.5 h-2 w-2 shrink-0 rounded-full" :class="faithStyle(e.faith).bar" aria-hidden="true" />
                 <span>{{
-                  t(e.kind === 'holiday' ? 'teamPage.leaveHint' : 'teamPage.fastHint', {
+                  t(e.kind === 'holiday' || e.kind === 'holidayFast' ? 'teamPage.leaveHint' : 'teamPage.fastHint', {
                     date: e.until ? `${fmtShort(e.date)}–${fmtShort(e.until)}` : fmtShort(e.date),
                     event: t(`events.${e.key}`),
                     n: e.people.length,
@@ -302,7 +306,17 @@ async function leave() {
                 <p class="font-semibold">
                   {{ m.displayName }}<span v-if="m.isMe && !m.hideYou" class="font-normal text-muted"> ({{ t('teamPage.you') }})</span>
                 </p>
-                <DietSummary :diet="m.diet" compact />
+                <p v-if="foodToday(m).length" class="mt-0.5 flex flex-wrap items-center gap-1.5 text-sm">
+                  <span class="text-muted">{{ t('teamPage.foodToday') }}</span>
+                  <span
+                    v-for="e in foodToday(m)"
+                    :key="e.key"
+                    class="rounded-full px-2 py-0.5 text-xs font-semibold"
+                    :class="[faithStyle(e.faith).soft, faithStyle(e.faith).text]"
+                    >{{ t(`events.${e.key}`) }}<template v-if="e.kind !== 'fast'"> · {{ t(`kinds.${e.kind}`) }}</template></span
+                  >
+                </p>
+                <DietSummary v-if="hasDiet(m.diet)" :diet="m.diet" compact />
               </li>
             </ul>
           </section>

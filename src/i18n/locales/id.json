@@ -86,7 +86,9 @@
   "kinds": {
     "fast": "Puasa",
     "vegetarian": "Vegetarian",
-    "holiday": "Hari raya"
+    "holiday": "Hari raya",
+    "noMeat": "Pantang daging",
+    "holidayFast": "Hari raya · puasa"
   },
   "prayers": {
     "fajr": "Subuh",
@@ -119,7 +121,8 @@
     "easter": "Paskah",
     "allSaints": "Hari Raya Semua Orang Kudus",
     "christmasEve": "Malam Natal",
-    "christmas": "Natal"
+    "christmas": "Natal",
+    "lentFriday": "Jumat Prapaskah"
   },
   "subscribe": {
     "title": "Tambahkan ke kalender ponsel",
@@ -158,7 +161,8 @@
     "fastingNone": "Hari ini tidak ada rekan kerja yang berpuasa atau makan vegetarian",
     "meals": "Catatan pesan makanan",
     "mealsDesc": "Lihat sebelum memesan makanan atau makan bersama",
-    "mealsEmpty": "Belum ada yang membagikan kebutuhan makanan"
+    "mealsEmpty": "Belum ada yang membagikan kebutuhan makanan",
+    "foodToday": "Hari ini:"
   },
   "detail": {
     "open": "Lihat",

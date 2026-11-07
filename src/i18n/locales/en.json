@@ -86,7 +86,9 @@
   "kinds": {
     "fast": "Fasting",
     "vegetarian": "Vegetarian",
-    "holiday": "Holiday"
+    "holiday": "Holiday",
+    "noMeat": "No meat",
+    "holidayFast": "Holy day · fasting"
   },
   "prayers": {
     "fajr": "Fajr",
@@ -119,7 +121,8 @@
     "easter": "Easter",
     "allSaints": "All Saints' Day",
     "christmasEve": "Christmas Eve",
-    "christmas": "Christmas"
+    "christmas": "Christmas",
+    "lentFriday": "Friday in Lent"
   },
   "subscribe": {
     "title": "Add to your phone calendar",
@@ -158,7 +161,8 @@
     "fastingNone": "No coworkers are fasting or vegetarian today",
     "meals": "Meal notes",
     "mealsDesc": "Check before ordering food or planning a meal",
-    "mealsEmpty": "No one has shared food needs yet"
+    "mealsEmpty": "No one has shared food needs yet",
+    "foodToday": "Today:"
   },
   "detail": {
     "open": "About",

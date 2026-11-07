@@ -165,6 +165,15 @@ export const EVENT_FACTS = {
       'Offer a meat-free option for team meals on this day and on Fridays in Lent.',
     ],
   },
+  lentFriday: {
+    faith: 'catholic',
+    what: 'A Friday in Lent, the 40-day season of preparation before Easter.',
+    how: 'Many Catholics do not eat meat on Fridays in Lent; fish and seafood are fine. It is widely kept by Filipino Catholics. Practice differs between countries and between people.',
+    tips: [
+      'If the team orders meals on these Fridays, include a fish or meat-free option.',
+      'There is no need to ask a coworker how strictly they keep it.',
+    ],
+  },
   goodFriday: {
     faith: 'catholic',
     what: 'Good Friday, the Friday before Easter, remembering the death of Jesus on the cross.',

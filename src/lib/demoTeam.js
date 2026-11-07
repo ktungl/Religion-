@@ -9,7 +9,7 @@ import { i18n } from '../i18n'
 const PEOPLE = [
   { id: 'demo-adi', displayName: 'Adi', locale: 'id', faiths: ['islam'], share: { faith: true, fasting: true, holidays: true, prayer: true, diet: true }, diet: { avoid: ['halal'], when: 'always', note: '' } },
   { id: 'demo-siti', displayName: 'Siti', locale: 'id', faiths: ['islam'], share: { faith: false, fasting: true, holidays: false, prayer: false, diet: true }, diet: { avoid: ['halal'], when: 'always', note: '' } },
-  { id: 'demo-maria', displayName: 'Maria', locale: 'en', faiths: ['catholic'], share: { faith: true, fasting: false, holidays: true, prayer: false, diet: false }, diet: { avoid: [], when: 'always', note: '' } },
+  { id: 'demo-maria', displayName: 'Maria', locale: 'en', faiths: ['catholic'], share: { faith: true, fasting: true, holidays: true, prayer: false, diet: false }, diet: { avoid: [], when: 'always', note: '' } },
   { id: 'demo-linh', displayName: 'Linh', locale: 'vi', faiths: ['buddhism'], share: { faith: true, fasting: true, holidays: true, prayer: false, diet: true }, diet: { avoid: ['meat', 'seafood', 'pungent'], when: 'someDays', note: '' } },
   { id: 'demo-chen', displayName: '阿明', locale: 'zh-TW', faiths: ['folk'], share: { faith: true, fasting: true, holidays: true, prayer: false, diet: true }, diet: { avoid: ['beef'], when: 'always', note: '' } },
 ]
