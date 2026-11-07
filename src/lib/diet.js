@@ -10,7 +10,9 @@ const IMPLIES = {
   meat: ['pork', 'beef'],
 }
 
-export const EMPTY_DIET = { avoid: [], when: 'always', note: '' }
+// anything: the person eats everything. Different from leaving it blank, which
+// means they haven't said; it can't be combined with ticked items.
+export const EMPTY_DIET = { avoid: [], when: 'always', note: '', anything: false }
 
 export function impliedBy(avoid) {
   const out = new Set()
@@ -24,7 +26,7 @@ export function effectiveAvoid(avoid = []) {
 }
 
 export function hasDiet(diet) {
-  return !!(diet && (diet.avoid?.length || diet.note?.trim()))
+  return !!(diet && (diet.anything || diet.avoid?.length || diet.note?.trim()))
 }
 
 // Taiwanese terms, following the categories used on food labels in Taiwan
@@ -49,5 +51,6 @@ export function cleanDiet(input) {
   const avoid = Array.isArray(input?.avoid) ? [...new Set(input.avoid.filter((x) => DIET_ITEMS.includes(x)))] : []
   const when = input?.when === 'someDays' ? 'someDays' : 'always'
   const note = String(input?.note || '').replace(/\s+/g, ' ').trim().slice(0, 60)
-  return { avoid, when, note }
+  const anything = input?.anything === true && !avoid.length
+  return { avoid, when, note, anything }
 }

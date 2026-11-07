@@ -20,6 +20,16 @@ function toggle(item) {
   if (implied.value.has(item) && !profile.diet.avoid.includes(item)) return
   const avoid = profile.diet.avoid
   profile.diet.avoid = avoid.includes(item) ? avoid.filter((x) => x !== item) : [...avoid, item]
+  profile.diet.anything = false
+}
+
+// "Eats everything" and the items below rule each other out.
+function toggleAnything() {
+  profile.diet.anything = !profile.diet.anything
+  if (profile.diet.anything) {
+    profile.diet.avoid = []
+    profile.diet.when = 'always'
+  }
 }
 
 function next() {
@@ -32,6 +42,26 @@ function next() {
   <OnboardingShell :step="isSettings ? 0 : 4" :total="isSettings ? 0 : 6">
     <h1 class="pt-8 text-2xl font-semibold">{{ t('diet.title') }}</h1>
     <p class="mt-1 text-muted">{{ t('diet.desc') }}</p>
+
+    <button
+      type="button"
+      role="checkbox"
+      :aria-checked="profile.diet.anything"
+      class="mt-6 flex min-h-14 w-full items-center justify-between gap-3 rounded-2xl border-2 px-4 py-2 text-left transition-colors"
+      :class="profile.diet.anything ? 'border-brand bg-brand-soft' : 'border-line bg-white active:bg-brand-soft'"
+      @click="toggleAnything"
+    >
+      <span>
+        <span class="block" :class="profile.diet.anything ? 'font-semibold' : ''">{{ t('diet.anything') }}</span>
+        <span class="block text-xs text-muted">{{ t('diet.anythingHint') }}</span>
+      </span>
+      <span
+        class="flex h-6 w-6 shrink-0 items-center justify-center rounded-md border-2 text-sm"
+        :class="profile.diet.anything ? 'border-brand bg-brand text-paper' : 'border-line'"
+        aria-hidden="true"
+        >{{ profile.diet.anything ? '✓' : '' }}</span
+      >
+    </button>
 
     <h2 class="mt-6 text-sm font-semibold">{{ t('diet.dontEat') }}</h2>
     <ul class="mt-2 grid grid-cols-1 gap-2" role="group" :aria-label="t('diet.dontEat')">
@@ -60,18 +90,20 @@ function next() {
       </li>
     </ul>
 
-    <h2 class="mt-6 text-sm font-semibold">{{ t('diet.whenTitle') }}</h2>
-    <div class="mt-2 grid grid-cols-1 gap-2" role="radiogroup" :aria-label="t('diet.whenTitle')">
-      <label
-        v-for="w in ['always', 'someDays']"
-        :key="w"
-        class="flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border-2 px-4"
-        :class="profile.diet.when === w ? 'border-brand bg-brand-soft font-semibold' : 'border-line bg-white'"
-      >
-        <input v-model="profile.diet.when" type="radio" :value="w" class="h-4 w-4 accent-[var(--color-brand)]" />
-        {{ t(`diet.when.${w}`) }}
-      </label>
-    </div>
+    <template v-if="!profile.diet.anything">
+      <h2 class="mt-6 text-sm font-semibold">{{ t('diet.whenTitle') }}</h2>
+      <div class="mt-2 grid grid-cols-1 gap-2" role="radiogroup" :aria-label="t('diet.whenTitle')">
+        <label
+          v-for="w in ['always', 'someDays']"
+          :key="w"
+          class="flex min-h-12 cursor-pointer items-center gap-3 rounded-2xl border-2 px-4"
+          :class="profile.diet.when === w ? 'border-brand bg-brand-soft font-semibold' : 'border-line bg-white'"
+        >
+          <input v-model="profile.diet.when" type="radio" :value="w" class="h-4 w-4 accent-[var(--color-brand)]" />
+          {{ t(`diet.when.${w}`) }}
+        </label>
+      </div>
+    </template>
 
     <label class="mt-6 block">
       <span class="text-sm font-semibold">{{ t('diet.note') }}</span>
@@ -84,7 +116,7 @@ function next() {
       />
     </label>
 
-    <section v-if="profile.diet.avoid.length" class="mt-6 rounded-2xl border border-line bg-white p-4">
+    <section v-if="profile.diet.avoid.length || profile.diet.anything" class="mt-6 rounded-2xl border border-line bg-white p-4">
       <h2 class="text-sm font-semibold">{{ t('diet.preview') }}</h2>
       <DietSummary class="mt-1" :diet="profile.diet" />
     </section>
@@ -105,7 +137,7 @@ function next() {
           {{ t('onboarding.back') }}
         </button>
         <button type="button" class="h-14 flex-1 rounded-2xl bg-brand text-lg font-semibold text-paper active:opacity-90" @click="next">
-          {{ profile.diet.avoid.length || profile.diet.note ? t('onboarding.next') : t('diet.skip') }}
+          {{ profile.diet.avoid.length || profile.diet.note || profile.diet.anything ? t('onboarding.next') : t('diet.skip') }}
         </button>
       </div>
     </template>

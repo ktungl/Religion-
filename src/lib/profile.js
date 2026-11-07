@@ -8,7 +8,7 @@ const DEFAULTS = {
   displayName: '',
   faiths: [],
   city: '', // one of CITIES in places.js; kept on the device only
-  diet: { avoid: [], when: 'always', note: '' },
+  diet: { avoid: [], when: 'always', note: '', anything: false },
   // Nothing is shared until the person turns it on.
   share: { faith: false, fasting: false, holidays: false, prayer: false, diet: false },
   onboarded: false,

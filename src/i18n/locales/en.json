@@ -174,6 +174,8 @@
   "diet": {
     "title": "Food needs",
     "desc": "Tick what you don't eat so coworkers can plan food orders and meals.",
+    "anything": "I eat everything",
+    "anythingHint": "No need to tick anything below",
     "dontEat": "I don't eat",
     "dontEatShort": "Doesn't eat:",
     "halalHint": "No pork or alcohol; meat slaughtered the halal way",

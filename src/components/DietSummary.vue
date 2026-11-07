@@ -24,6 +24,7 @@ const label = computed(() => taiwanLabel(avoid.value))
 
 <template>
   <div>
+    <p v-if="diet.anything" :class="compact ? 'text-sm' : ''">{{ t('diet.anything') }}</p>
     <p v-if="halal" :class="compact ? 'text-sm' : ''">
       {{ t('diet.items.halal') }}
       <span v-if="!items.length && diet.when === 'someDays'" class="ml-1 rounded-full border border-line px-2 py-0.5 text-xs text-muted whitespace-nowrap">
