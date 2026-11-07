@@ -1,7 +1,7 @@
 <script setup>
 import { computed, ref, watch } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { DISTRICTS, SOURCES, needsOf, restaurantsIn } from '../lib/restaurants'
+import { DISTRICTS, needsOf, restaurantsIn, sourceFor } from '../lib/restaurants'
 import { profile } from '../lib/profile'
 import RestaurantCard from './RestaurantCard.vue'
 
@@ -30,6 +30,7 @@ const inCity = computed(() => restaurantsIn(profile.city))
 const shown = computed(() => inCity.value.filter((p) => p.type === type.value && (!district.value || p.district === district.value)))
 const districts = computed(() => DISTRICTS.filter((d) => inCity.value.some((p) => p.type === type.value && p.district === d)))
 const source = computed(() => (type.value === 'vegetarian' ? 'vegetarian' : 'halal'))
+const sourceUrl = computed(() => sourceFor(type.value, profile.city))
 
 function pickType(next) {
   type.value = next
@@ -86,8 +87,8 @@ function pickType(next) {
         <RestaurantCard v-for="p in shown" :key="p.id" :place="p" />
       </ul>
 
-      <p class="mt-3 text-xs text-muted">
-        <a :href="SOURCES[source]" target="_blank" rel="noopener" class="underline underline-offset-4">{{ t(`restaurants.source.${source}`) }}</a>
+      <p v-if="sourceUrl && shown.length" class="mt-3 text-xs text-muted">
+        <a :href="sourceUrl" target="_blank" rel="noopener" class="underline underline-offset-4">{{ t(`restaurants.source.${source}`) }}</a>
       </p>
     </template>
   </section>

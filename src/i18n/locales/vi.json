@@ -277,10 +277,10 @@
     "call": "Gọi",
     "map": "Bản đồ",
     "source": {
-      "halal": "Nguồn: Bản đồ nhà hàng thân thiện Hồi giáo Đài Bắc",
+      "halal": "Nguồn: danh sách nhà hàng thân thiện Hồi giáo tại địa phương",
       "vegetarian": "Nguồn: Bản đồ ăn chay Merit Times và các nguồn khác"
     },
-    "empty": "Khu này chưa có địa điểm nào",
+    "empty": "Chưa có nhà hàng loại này ở thành phố này.",
     "cuisines": {
       "indian": "Món Ấn Độ",
       "thai": "Món Thái",
@@ -298,7 +298,8 @@
       "sichuan": "Món Tứ Xuyên",
       "dimsum": "Dim sum",
       "fusion": "Món chay sáng tạo",
-      "buffet": "Buffet chay"
+      "buffet": "Buffet chay",
+      "hotelBuffet": "Buffet khách sạn"
     },
     "districts": {
       "zhongshan": "Zhongshan",
@@ -308,7 +309,11 @@
       "zhongzheng": "Zhongzheng",
       "xinyi": "Xinyi",
       "shilin": "Shilin",
-      "nangang": "Nangang"
+      "nangang": "Nangang",
+      "lingya": "Linh Nhã",
+      "zuoying": "Tả Doanh",
+      "qianjin": "Tiền Kim",
+      "pingtungCity": "TP. Bình Đông"
     },
     "vegetarian": "Nhà hàng chay",
     "vegetarianHint": "Nhà hàng chay thuần hoặc chay có trứng sữa. Nếu bạn không ăn hành, tỏi, hẹ (ngũ vị tân), hãy nói với nhân viên khi gọi món.",

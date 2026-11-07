@@ -277,10 +277,10 @@
     "call": "Telepon",
     "map": "Peta",
     "source": {
-      "halal": "Sumber: Peta restoran ramah Muslim Taipei",
+      "halal": "Sumber: daftar restoran ramah Muslim setempat",
       "vegetarian": "Sumber: Peta vegetarian Merit Times dan lainnya"
     },
-    "empty": "Belum ada tempat di distrik ini",
+    "empty": "Belum ada restoran jenis ini di kota ini.",
     "cuisines": {
       "indian": "Masakan India",
       "thai": "Masakan Thailand",
@@ -298,7 +298,8 @@
       "sichuan": "Masakan Sichuan",
       "dimsum": "Dim sum",
       "fusion": "Vegetarian kreasi",
-      "buffet": "Prasmanan vegetarian"
+      "buffet": "Prasmanan vegetarian",
+      "hotelBuffet": "Prasmanan hotel"
     },
     "districts": {
       "zhongshan": "Zhongshan",
@@ -308,7 +309,11 @@
       "zhongzheng": "Zhongzheng",
       "xinyi": "Xinyi",
       "shilin": "Shilin",
-      "nangang": "Nangang"
+      "nangang": "Nangang",
+      "lingya": "Lingya",
+      "zuoying": "Zuoying",
+      "qianjin": "Qianjin",
+      "pingtungCity": "Kota Pingtung"
     },
     "vegetarian": "Restoran vegetarian",
     "vegetarianHint": "Restoran vegan atau vegetarian dengan telur dan susu. Jika kamu tidak makan bawang, bawang putih, dan kucai (五辛), beri tahu staf saat memesan.",

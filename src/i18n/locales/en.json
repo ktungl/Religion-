@@ -277,10 +277,10 @@
     "call": "Call",
     "map": "Map",
     "source": {
-      "halal": "Source: Taipei Muslim-friendly restaurant map",
+      "halal": "Source: local Muslim-friendly restaurant lists",
       "vegetarian": "Sources: Merit Times veggie map and others"
     },
-    "empty": "No places listed in this district yet",
+    "empty": "No restaurants of this kind in this city yet.",
     "cuisines": {
       "indian": "Indian",
       "thai": "Thai",
@@ -298,7 +298,8 @@
       "sichuan": "Sichuan",
       "dimsum": "Dim sum",
       "fusion": "Creative vegetarian",
-      "buffet": "Vegetarian buffet"
+      "buffet": "Vegetarian buffet",
+      "hotelBuffet": "Hotel buffet"
     },
     "districts": {
       "zhongshan": "Zhongshan",
@@ -308,7 +309,11 @@
       "zhongzheng": "Zhongzheng",
       "xinyi": "Xinyi",
       "shilin": "Shilin",
-      "nangang": "Nangang"
+      "nangang": "Nangang",
+      "lingya": "Lingya",
+      "zuoying": "Zuoying",
+      "qianjin": "Qianjin",
+      "pingtungCity": "Pingtung City"
     },
     "vegetarian": "Vegetarian",
     "vegetarianHint": "Vegan or lacto-ovo vegetarian restaurants. If you avoid onion, garlic and chives (五辛), tell the staff when ordering.",

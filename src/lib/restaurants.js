@@ -1,20 +1,30 @@
 import { effectiveAvoid } from './diet.js'
 
 // Restaurants matched to faiths and food needs, by city (one of CITIES in places.js).
-// Only Taipei has data so far.
+// Taipei, Kaohsiung and Pingtung have data so far.
 //
-// halal / friendly: from the Taipei Muslim-friendly restaurant map
-// (https://thpc.taiwantrade.com/restaurant_map). halal is a Muslim restaurant (A on
-// the map), friendly a Muslim-friendly one (B). The source has no B5. Names and
-// addresses are kept as the source writes them.
+// halal is a Muslim or halal-certified restaurant, friendly a Muslim-friendly one.
+// Taipei: the Taipei Muslim-friendly restaurant map (A = halal, B = friendly; the
+// source has no B5), names and addresses as the source writes them. Kaohsiung: the
+// city's Muslim travel pages and Takao magazine, cross-checked with other listings;
+// the friendly one is from the Tourism Administration's list. No Pingtung halal
+// restaurant could be confirmed.
 //
 // vegetarian: kept only where several listings agree on the address and phone, and
 // on what the menu covers. veg: 'vegan' has no egg or dairy at all, 'mixed' offers
 // both 全素 and 蛋奶素 dishes. pungent (蔥蒜韭等五辛): 'some' means the menu marks
 // many dishes without them; 'ask' means it isn't clear, so people should ask.
-export const SOURCES = {
-  halal: 'https://thpc.taiwantrade.com/restaurant_map',
+const SOURCES = {
+  halal: {
+    taipei: 'https://thpc.taiwantrade.com/restaurant_map',
+    kaohsiung: 'https://theme.khh.travel/muslim/en/page-6.html',
+  },
   vegetarian: 'https://vegemap.merit-times.com/restaurant_list',
+}
+
+// Where a list of one kind of restaurant in one city came from.
+export function sourceFor(type, city) {
+  return type === 'vegetarian' ? SOURCES.vegetarian : SOURCES.halal[city] || null
 }
 
 export const RESTAURANTS = [
@@ -43,12 +53,26 @@ export const RESTAURANTS = [
   { city: 'taipei', id: 'V3', type: 'vegetarian', veg: 'vegan', pungent: 'ask', name: 'Vegan Amore 蔬慕', nameEn: 'Vegan Amore', cuisine: 'fusion', district: 'datong', phone: '+886-2-2555-6090', address: '臺北市大同區承德路1段1號3樓', addressEn: '3F., No. 1, Sec. 1, Chengde Rd., Datong Dist., Taipei City' },
   { city: 'taipei', id: 'V4', type: 'vegetarian', veg: 'mixed', pungent: 'ask', name: '小小樹食（大安路）', nameEn: 'Little Tree Food', cuisine: 'fusion', district: 'daan', phone: '+886-2-2778-2277', address: '臺北市大安區大安路1段116巷17號', addressEn: 'No. 17, Ln. 116, Sec. 1, Da’an Rd., Da’an Dist., Taipei City' },
   { city: 'taipei', id: 'V5', type: 'vegetarian', veg: 'mixed', pungent: 'ask', name: '全國健康素食（士林店）', nameEn: 'Quanguo Vegetarian Buffet (Shilin)', cuisine: 'buffet', district: 'shilin', phone: '+886-2-2881-5876', address: '臺北市士林區中正路281號', addressEn: 'No. 281, Zhongzheng Rd., Shilin Dist., Taipei City' },
+  { city: 'kaohsiung', id: 'KH1', type: 'halal', name: '高雄清真館', nameEn: 'Kaohsiung Halal Restaurant', cuisine: 'indonesian', district: 'lingya', phone: '+886-7-749-6277', address: '高雄市苓雅區建軍路13號', addressEn: 'No. 13, Jianjun Rd., Lingya Dist., Kaohsiung City' },
+  { city: 'kaohsiung', id: 'KH2', type: 'halal', name: '棉花堡土耳其料理', nameEn: 'Pamukkale Turkish Restaurant', cuisine: 'turkish', district: 'zuoying', phone: '+886-7-557-1717', address: '高雄市左營區裕誠路429號', addressEn: 'No. 429, Yucheng Rd., Zuoying Dist., Kaohsiung City' },
+  { city: 'kaohsiung', id: 'KH3', type: 'halal', name: '爪哇真美食（明華店）', nameEn: 'Jawawa Indonesian Restaurant', cuisine: 'indonesian', district: 'zuoying', phone: '+886-7-550-9889', address: '高雄市左營區明華一路168號', addressEn: 'No. 168, Minghua 1st Rd., Zuoying Dist., Kaohsiung City' },
+  { city: 'kaohsiung', id: 'KH4', type: 'halal', name: '拉合爾異國美食', nameEn: 'Lahore Halal Restaurant', cuisine: 'pakistani', district: 'lingya', phone: '+886-7-726-6803', address: '高雄市苓雅區林泉街86號', addressEn: 'No. 86, Linchuan St., Lingya Dist., Kaohsiung City' },
+  { city: 'kaohsiung', id: 'KF1', type: 'friendly', name: '福容大飯店高雄 田園咖啡廳', nameEn: 'Fullon Hotel Kaohsiung, Garden Café', cuisine: 'hotelBuffet', district: 'qianjin', phone: '+886-7-231-2333', address: '高雄市前金區六合二路161號', addressEn: 'No. 161, Liuhe 2nd Rd., Qianjin Dist., Kaohsiung City' },
+  { city: 'kaohsiung', id: 'KV1', type: 'vegetarian', veg: 'mixed', pungent: 'ask', name: '食不二蔬食', nameEn: 'Shi Bu Er Vegetarian', cuisine: 'fusion', district: 'zuoying', phone: '+886-7-588-7366', address: '高雄市左營區南大路4號', addressEn: 'No. 4, Nanda Rd., Zuoying Dist., Kaohsiung City' },
+  { city: 'pingtung', id: 'PV1', type: 'vegetarian', veg: 'mixed', pungent: 'ask', name: '小孩吃素（勝利店）', nameEn: 'Kids Eat Veggie (Shengli)', cuisine: 'fusion', district: 'pingtungCity', phone: '+886-8-765-5222', address: '屏東縣屏東市南京路41號', addressEn: 'No. 41, Nanjing Rd., Pingtung City, Pingtung County' },
 ]
 
 export const restaurantsIn = (city) => RESTAURANTS.filter((r) => r.city === city)
 
 // Districts in the order they are offered as filters.
-export const DISTRICTS = ['zhongshan', 'datong', 'daan', 'songshan', 'zhongzheng', 'xinyi', 'shilin', 'nangang']
+export const DISTRICTS = [
+  // Taipei
+  'zhongshan', 'datong', 'daan', 'songshan', 'zhongzheng', 'xinyi', 'shilin', 'nangang',
+  // Kaohsiung
+  'lingya', 'zuoying', 'qianjin',
+  // Pingtung
+  'pingtungCity',
+]
 
 // ---------- Matching restaurants to people ----------
 
