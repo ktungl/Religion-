@@ -13,8 +13,9 @@ export default defineConfig({
       // The offline page must never stand in for API addresses.
       workbox: { navigateFallbackDenylist: [/^\/api\//] },
       manifest: {
-        name: 'Faith Together',
-        short_name: 'Faith Together',
+        name: 'Faith Together｜共好日',
+        // Shown under the home-screen icon, where there's room for only a few characters.
+        short_name: '共好日',
         description: 'A shared faith calendar that helps coworkers understand each other.',
         start_url: '/',
         display: 'standalone',
