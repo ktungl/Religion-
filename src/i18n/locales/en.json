@@ -268,7 +268,7 @@
   },
   "restaurants": {
     "title": "Restaurants for you",
-    "desc": "Taipei restaurants that suit your faith and food needs.",
+    "desc": "Restaurants in your city that suit your faith and food needs.",
     "halal": "Muslim restaurants",
     "friendly": "Muslim-friendly",
     "halalHint": "Run by Muslims or halal certified.",
@@ -330,14 +330,16 @@
     },
     "team": {
       "title": "Where the team can eat",
-      "desc": "Restaurants that work for everyone, based on the food needs people shared.",
+      "desc": "Restaurants in your city that work for everyone, based on the food needs people shared.",
       "none": "Nobody has shared food restrictions, so anywhere works.",
       "someDays": " (some days)",
       "noMatch": "No restaurant suits everyone; consider ordering separately.",
       "legend": "✓ Suits　△ Has options, check when ordering　✕ Not on those days",
       "more": "Show all {n}",
       "less": "Show less"
-    }
+    },
+    "noCityData": "No restaurants for this city yet; we're adding more.",
+    "noCity": "Pick your city to see restaurants near you."
   },
   "greet": {
     "title": "Send a greeting",

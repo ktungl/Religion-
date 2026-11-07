@@ -268,7 +268,7 @@
   },
   "restaurants": {
     "title": "Nhà hàng phù hợp với bạn",
-    "desc": "Nhà hàng ở Đài Bắc phù hợp với tôn giáo và nhu cầu ăn uống của bạn.",
+    "desc": "Nhà hàng trong thành phố của bạn, phù hợp với tôn giáo và nhu cầu ăn uống.",
     "halal": "Nhà hàng Hồi giáo",
     "friendly": "Thân thiện Hồi giáo",
     "halalHint": "Do người Hồi giáo điều hành hoặc có chứng nhận halal.",
@@ -330,14 +330,16 @@
     },
     "team": {
       "title": "Nơi cả nhóm có thể ăn",
-      "desc": "Nhà hàng phù hợp với mọi người, dựa trên nhu cầu ăn uống đã chia sẻ.",
+      "desc": "Nhà hàng trong thành phố của bạn phù hợp với mọi người, dựa trên nhu cầu ăn uống đã chia sẻ.",
       "none": "Chưa ai chia sẻ hạn chế ăn uống, đi đâu ăn cũng được.",
       "someDays": " (một số ngày)",
       "noMatch": "Không có nhà hàng nào hợp với tất cả mọi người; có thể đặt món riêng.",
       "legend": "✓ Phù hợp　△ Có món ăn được, hỏi lại khi gọi　✕ Không hợp vào những ngày đó",
       "more": "Xem tất cả {n}",
       "less": "Thu gọn"
-    }
+    },
+    "noCityData": "Chưa có nhà hàng cho thành phố này, chúng tôi sẽ bổ sung dần.",
+    "noCity": "Chọn thành phố để xem nhà hàng gần bạn."
   },
   "greet": {
     "title": "Gửi lời chúc",

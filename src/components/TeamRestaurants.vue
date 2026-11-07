@@ -1,11 +1,13 @@
 <script setup>
 import { computed, ref } from 'vue'
 import { useI18n } from 'vue-i18n'
-import { NEEDS, needsOf, recommend } from '../lib/restaurants'
+import { NEEDS, needsOf, recommend, restaurantsIn } from '../lib/restaurants'
+import { profile } from '../lib/profile'
 import RestaurantCard from './RestaurantCard.vue'
 
 // Restaurants the whole team can eat at, from the food needs (or faiths) people
 // chose to share. A restaurant that rules out anyone's need is left out.
+// Cities aren't shared, so the viewer's own city is used.
 const props = defineProps({ members: { type: Array, required: true } })
 const { t } = useI18n()
 const FIRST = 4
@@ -25,7 +27,8 @@ const needs = computed(() => {
 
 // A need only counts as a must when someone has it every day.
 const soft = computed(() => new Set(needs.value.filter((x) => x.people.every(someDays)).map((x) => x.need)))
-const picks = computed(() => recommend(new Set(needs.value.map((x) => x.need)), soft.value))
+const picks = computed(() => recommend(profile.city, new Set(needs.value.map((x) => x.need)), soft.value))
+const hasData = computed(() => restaurantsIn(profile.city).length > 0)
 const shown = computed(() => (showAll.value ? picks.value : picks.value.slice(0, FIRST)))
 
 function someDays(m) {
@@ -36,7 +39,12 @@ const name = (m) => (m.isMe && !m.hideYou ? `${m.displayName} (${t('teamPage.you
 
 <template>
   <section>
-    <h2 class="text-base font-semibold">{{ t('restaurants.team.title') }}</h2>
+    <div class="flex items-center justify-between gap-3">
+      <h2 class="text-base font-semibold">{{ t('restaurants.team.title') }}</h2>
+      <RouterLink to="/settings/city" class="shrink-0 text-sm text-muted underline underline-offset-4">
+        {{ profile.city ? `${t(`city.names.${profile.city}`)} · ${t('places.change')}` : t('places.pickCity') }}
+      </RouterLink>
+    </div>
     <p class="text-sm text-muted">{{ t('restaurants.team.desc') }}</p>
 
     <p v-if="!needs.length" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
@@ -54,7 +62,10 @@ const name = (m) => (m.isMe && !m.hideYou ? `${m.displayName} (${t('teamPage.you
         </li>
       </ul>
 
-      <p v-if="!picks.length" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
+      <p v-if="!hasData" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
+        {{ t(profile.city ? 'restaurants.noCityData' : 'restaurants.noCity') }}
+      </p>
+      <p v-else-if="!picks.length" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
         {{ t('restaurants.team.noMatch') }}
       </p>
       <template v-else>

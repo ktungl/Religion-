@@ -268,7 +268,7 @@
   },
   "restaurants": {
     "title": "Restoran untukmu",
-    "desc": "Restoran di Taipei yang sesuai dengan agama dan kebutuhan makanmu.",
+    "desc": "Restoran di kotamu yang sesuai dengan agama dan kebutuhan makanmu.",
     "halal": "Restoran Muslim",
     "friendly": "Ramah Muslim",
     "halalHint": "Dikelola Muslim atau bersertifikat halal.",
@@ -330,14 +330,16 @@
     },
     "team": {
       "title": "Tempat makan untuk tim",
-      "desc": "Restoran yang cocok untuk semua orang, berdasarkan kebutuhan makan yang dibagikan.",
+      "desc": "Restoran di kotamu yang cocok untuk semua orang, berdasarkan kebutuhan makan yang dibagikan.",
       "none": "Belum ada yang membagikan pantangan makanan, jadi di mana saja boleh.",
       "someDays": " (hari tertentu)",
       "noMatch": "Tidak ada restoran yang cocok untuk semua orang; pertimbangkan memesan terpisah.",
       "legend": "✓ Cocok　△ Ada pilihan, cek saat memesan　✕ Tidak cocok di hari-hari itu",
       "more": "Tampilkan semua {n}",
       "less": "Tutup"
-    }
+    },
+    "noCityData": "Belum ada restoran untuk kota ini, akan kami tambahkan.",
+    "noCity": "Pilih kotamu untuk melihat restoran terdekat."
   },
   "greet": {
     "title": "Kirim ucapan",
