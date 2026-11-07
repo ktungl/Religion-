@@ -267,8 +267,8 @@
     }
   },
   "restaurants": {
-    "title": "Nhà hàng halal cho bữa ăn nhóm",
-    "desc": "Nhà hàng ở Đài Bắc để đi ăn cùng đồng nghiệp Hồi giáo.",
+    "title": "Nhà hàng phù hợp với bạn",
+    "desc": "Nhà hàng ở Đài Bắc phù hợp với tôn giáo và nhu cầu ăn uống của bạn.",
     "halal": "Nhà hàng Hồi giáo",
     "friendly": "Thân thiện Hồi giáo",
     "halalHint": "Do người Hồi giáo điều hành hoặc có chứng nhận halal.",
@@ -276,7 +276,10 @@
     "all": "Tất cả",
     "call": "Gọi",
     "map": "Bản đồ",
-    "source": "Nguồn: Bản đồ nhà hàng thân thiện Hồi giáo Đài Bắc",
+    "source": {
+      "halal": "Nguồn: Bản đồ nhà hàng thân thiện Hồi giáo Đài Bắc",
+      "vegetarian": "Nguồn: Bản đồ ăn chay Merit Times và các nguồn khác"
+    },
     "empty": "Khu này chưa có địa điểm nào",
     "cuisines": {
       "indian": "Món Ấn Độ",
@@ -291,16 +294,49 @@
       "seafood": "Hải sản",
       "desserts": "Đá bào & tráng miệng",
       "taiwanese": "Món ăn vặt Đài Loan",
-      "friedChicken": "Gà rán"
+      "friedChicken": "Gà rán",
+      "sichuan": "Món Tứ Xuyên",
+      "dimsum": "Dim sum",
+      "fusion": "Món chay sáng tạo",
+      "buffet": "Buffet chay"
     },
     "districts": {
       "zhongshan": "Zhongshan",
+      "datong": "Đại Đồng",
       "daan": "Da’an",
       "songshan": "Songshan",
       "zhongzheng": "Zhongzheng",
       "xinyi": "Xinyi",
       "shilin": "Shilin",
       "nangang": "Nangang"
+    },
+    "vegetarian": "Nhà hàng chay",
+    "vegetarianHint": "Nhà hàng chay thuần hoặc chay có trứng sữa. Nếu bạn không ăn hành, tỏi, hẹ (ngũ vị tân), hãy nói với nhân viên khi gọi món.",
+    "veg": {
+      "vegan": "Chay thuần (không trứng sữa)",
+      "mixed": "Chay thuần và chay trứng sữa"
+    },
+    "pungent": {
+      "some": "Thực đơn có ghi món không hành tỏi",
+      "ask": "Hỏi về hành tỏi khi gọi món"
+    },
+    "needs": {
+      "halal": "Halal",
+      "noPork": "Không thịt heo",
+      "vegan": "Chay thuần",
+      "veg": "Ăn chay",
+      "noPungent": "Không hành tỏi",
+      "noBeef": "Không thịt bò"
+    },
+    "team": {
+      "title": "Nơi cả nhóm có thể ăn",
+      "desc": "Nhà hàng phù hợp với mọi người, dựa trên nhu cầu ăn uống đã chia sẻ.",
+      "none": "Chưa ai chia sẻ hạn chế ăn uống, đi đâu ăn cũng được.",
+      "someDays": " (một số ngày)",
+      "noMatch": "Không có nhà hàng nào hợp với tất cả mọi người; có thể đặt món riêng.",
+      "legend": "✓ Phù hợp　△ Có món ăn được, hỏi lại khi gọi　✕ Không hợp vào những ngày đó",
+      "more": "Xem tất cả {n}",
+      "less": "Thu gọn"
     }
   },
   "greet": {

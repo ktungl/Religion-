@@ -12,6 +12,7 @@ import { TEAM_DAYS } from '../lib/sharedView'
 import { today } from '../lib/today'
 import { faithStyle } from '../lib/faithStyle'
 import DietSummary from '../components/DietSummary.vue'
+import TeamRestaurants from '../components/TeamRestaurants.vue'
 import MonthGrid from '../components/MonthGrid.vue'
 import { hasDiet } from '../lib/diet'
 import GreetCard from '../components/GreetCard.vue'
@@ -305,6 +306,8 @@ async function leave() {
               </li>
             </ul>
           </section>
+
+          <TeamRestaurants class="mt-6" :members="members" />
 
           <!-- Members -->
           <section class="mt-6">

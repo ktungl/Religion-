@@ -267,8 +267,8 @@
     }
   },
   "restaurants": {
-    "title": "Halal restaurants for team meals",
-    "desc": "Taipei restaurants to consider for a team meal with Muslim coworkers.",
+    "title": "Restaurants for you",
+    "desc": "Taipei restaurants that suit your faith and food needs.",
     "halal": "Muslim restaurants",
     "friendly": "Muslim-friendly",
     "halalHint": "Run by Muslims or halal certified.",
@@ -276,7 +276,10 @@
     "all": "All",
     "call": "Call",
     "map": "Map",
-    "source": "Source: Taipei Muslim-friendly restaurant map",
+    "source": {
+      "halal": "Source: Taipei Muslim-friendly restaurant map",
+      "vegetarian": "Sources: Merit Times veggie map and others"
+    },
     "empty": "No places listed in this district yet",
     "cuisines": {
       "indian": "Indian",
@@ -291,16 +294,49 @@
       "seafood": "Seafood",
       "desserts": "Shaved ice & desserts",
       "taiwanese": "Taiwanese snacks",
-      "friedChicken": "Fried chicken"
+      "friedChicken": "Fried chicken",
+      "sichuan": "Sichuan",
+      "dimsum": "Dim sum",
+      "fusion": "Creative vegetarian",
+      "buffet": "Vegetarian buffet"
     },
     "districts": {
       "zhongshan": "Zhongshan",
+      "datong": "Datong",
       "daan": "Da’an",
       "songshan": "Songshan",
       "zhongzheng": "Zhongzheng",
       "xinyi": "Xinyi",
       "shilin": "Shilin",
       "nangang": "Nangang"
+    },
+    "vegetarian": "Vegetarian",
+    "vegetarianHint": "Vegan or lacto-ovo vegetarian restaurants. If you avoid onion, garlic and chives (五辛), tell the staff when ordering.",
+    "veg": {
+      "vegan": "Vegan (no egg or dairy)",
+      "mixed": "Vegan and lacto-ovo"
+    },
+    "pungent": {
+      "some": "Menu marks dishes without onion and garlic",
+      "ask": "Ask about onion and garlic when ordering"
+    },
+    "needs": {
+      "halal": "Halal",
+      "noPork": "No pork",
+      "vegan": "Vegan",
+      "veg": "Vegetarian",
+      "noPungent": "No onion/garlic",
+      "noBeef": "No beef"
+    },
+    "team": {
+      "title": "Where the team can eat",
+      "desc": "Restaurants that work for everyone, based on the food needs people shared.",
+      "none": "Nobody has shared food restrictions, so anywhere works.",
+      "someDays": " (some days)",
+      "noMatch": "No restaurant suits everyone; consider ordering separately.",
+      "legend": "✓ Suits　△ Has options, check when ordering　✕ Not on those days",
+      "more": "Show all {n}",
+      "less": "Show less"
     }
   },
   "greet": {

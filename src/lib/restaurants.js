@@ -1,8 +1,20 @@
-// Restaurants for team meals with Muslim coworkers, from the Taipei Muslim-friendly
-// restaurant map: https://thpc.taiwantrade.com/restaurant_map
-// halal: Muslim restaurant (A on the map). friendly: Muslim-friendly restaurant (B).
-// The source has no B5. Names and addresses are kept as the source writes them.
-export const RESTAURANTS_SOURCE = 'https://thpc.taiwantrade.com/restaurant_map'
+import { effectiveAvoid } from './diet.js'
+
+// Taipei restaurants matched to faiths and food needs.
+//
+// halal / friendly: from the Taipei Muslim-friendly restaurant map
+// (https://thpc.taiwantrade.com/restaurant_map). halal is a Muslim restaurant (A on
+// the map), friendly a Muslim-friendly one (B). The source has no B5. Names and
+// addresses are kept as the source writes them.
+//
+// vegetarian: kept only where several listings agree on the address and phone, and
+// on what the menu covers. veg: 'vegan' has no egg or dairy at all, 'mixed' offers
+// both 全素 and 蛋奶素 dishes. pungent (蔥蒜韭等五辛): 'some' means the menu marks
+// many dishes without them; 'ask' means it isn't clear, so people should ask.
+export const SOURCES = {
+  halal: 'https://thpc.taiwantrade.com/restaurant_map',
+  vegetarian: 'https://vegemap.merit-times.com/restaurant_list',
+}
 
 export const RESTAURANTS = [
   { id: 'A1', type: 'halal', name: '阿里巴巴的廚房', nameEn: 'Alibaba Indian Kitchen', cuisine: 'indian', district: 'zhongshan', phone: '+886-2-2567-7163', address: '臺北市中山區南京東路2段56號2樓', addressEn: '2F., No. 56, Sec. 2, Nanjing E. Rd., Zhongshan Dist., Taipei City' },
@@ -25,10 +37,85 @@ export const RESTAURANTS = [
   { id: 'B3', type: 'friendly', name: '冰館', nameEn: 'Ice Monster', cuisine: 'desserts', district: 'daan', phone: '+886-2-8771-3263', address: '臺北市大安區忠孝東路4段297號', addressEn: 'No. 297, Sec. 4, Zhongxiao E. Rd., Da’an Dist., Taipei City' },
   { id: 'B4', type: 'friendly', name: '故宮晶華', nameEn: 'Silks Palace at the National Palace Museum', cuisine: 'taiwanese', district: 'shilin', phone: '+886-2-2882-9393', address: '臺北市士林區至善路2段221號', addressEn: 'No. 221, Sec. 2, Zhishan Rd., Shilin Dist., Taipei City' },
   { id: 'B6', type: 'friendly', name: '炸雞大獅', nameEn: 'Fried Chicken Master', cuisine: 'friedChicken', district: 'nangang', phone: '+886-2-7746-2978', address: '臺北市南港區經貿二路1號', addressEn: 'No. 1, Jingmao 2nd Rd., Nangang Dist., Taipei City' },
+  { id: 'V1', type: 'vegetarian', veg: 'mixed', pungent: 'some', name: '祥和蔬食料理（鎮江店）', nameEn: 'Serenity Vegetarian', cuisine: 'sichuan', district: 'zhongzheng', phone: '+886-2-2357-0377', address: '臺北市中正區鎮江街1巷1號', addressEn: 'No. 1, Ln. 1, Zhenjiang St., Zhongzheng Dist., Taipei City' },
+  { id: 'V2', type: 'vegetarian', veg: 'mixed', pungent: 'ask', name: '養心茶樓', nameEn: 'Yang Shin Vegetarian', cuisine: 'dimsum', district: 'zhongshan', phone: '+886-2-2542-8828', address: '臺北市中山區松江路128號2樓', addressEn: '2F., No. 128, Songjiang Rd., Zhongshan Dist., Taipei City' },
+  { id: 'V3', type: 'vegetarian', veg: 'vegan', pungent: 'ask', name: 'Vegan Amore 蔬慕', nameEn: 'Vegan Amore', cuisine: 'fusion', district: 'datong', phone: '+886-2-2555-6090', address: '臺北市大同區承德路1段1號3樓', addressEn: '3F., No. 1, Sec. 1, Chengde Rd., Datong Dist., Taipei City' },
+  { id: 'V4', type: 'vegetarian', veg: 'mixed', pungent: 'ask', name: '小小樹食（大安路）', nameEn: 'Little Tree Food', cuisine: 'fusion', district: 'daan', phone: '+886-2-2778-2277', address: '臺北市大安區大安路1段116巷17號', addressEn: 'No. 17, Ln. 116, Sec. 1, Da’an Rd., Da’an Dist., Taipei City' },
+  { id: 'V5', type: 'vegetarian', veg: 'mixed', pungent: 'ask', name: '全國健康素食（士林店）', nameEn: 'Quanguo Vegetarian Buffet (Shilin)', cuisine: 'buffet', district: 'shilin', phone: '+886-2-2881-5876', address: '臺北市士林區中正路281號', addressEn: 'No. 281, Zhongzheng Rd., Shilin Dist., Taipei City' },
 ]
 
 // Districts in the order they are offered as filters.
-export const DISTRICTS = ['zhongshan', 'daan', 'songshan', 'zhongzheng', 'xinyi', 'shilin', 'nangang']
+export const DISTRICTS = ['zhongshan', 'datong', 'daan', 'songshan', 'zhongzheng', 'xinyi', 'shilin', 'nangang']
+
+// ---------- Matching restaurants to people ----------
+
+// Needs, roughly from strictest to mildest; each is checked against every restaurant.
+export const NEEDS = ['halal', 'noPork', 'vegan', 'veg', 'noPungent', 'noBeef']
+
+// Cuisines whose menus usually include vegetarian dishes.
+const VEG_DISHES = ['indian', 'pakistani']
+
+// What someone needs from a restaurant, from their food needs if they shared them,
+// otherwise from their faith. Only Islam reliably implies a need (halal); many
+// Buddhists and folk-religion believers eat meat, so that isn't assumed.
+export function needsOf(diet, faiths = []) {
+  const out = new Set()
+  if (diet?.avoid?.length) {
+    const a = new Set(effectiveAvoid(diet.avoid))
+    const veg = a.has('meat') && a.has('seafood')
+    if (a.has('halal')) out.add('halal')
+    else if (a.has('pork') && !veg) out.add('noPork')
+    if (veg && a.has('egg') && a.has('dairy')) out.add('vegan')
+    else if (veg) out.add('veg')
+    if (a.has('pungent')) out.add('noPungent')
+    if (a.has('beef') && !veg) out.add('noBeef')
+  } else if (!diet?.anything && faiths?.includes('islam')) {
+    out.add('halal')
+  }
+  return out
+}
+
+// How well a restaurant meets one need: 'yes', 'ask' (possible, check when
+// ordering) or 'no'.
+export function fit(r, need) {
+  const veg = r.type === 'vegetarian'
+  switch (need) {
+    case 'halal':
+      // Vegetarian food has no meat, but cooking wine is common in Taiwan.
+      return r.type === 'halal' ? 'yes' : 'ask'
+    case 'noPork':
+      return r.type === 'friendly' ? 'ask' : 'yes'
+    case 'vegan':
+      if (veg) return r.veg === 'vegan' ? 'yes' : 'ask'
+      return 'no'
+    case 'veg':
+      if (veg) return 'yes'
+      return VEG_DISHES.includes(r.cuisine) ? 'ask' : 'no'
+    case 'noPungent':
+      if (!veg) return 'no'
+      // A menu that marks dishes without them lets people choose for themselves.
+      return r.pungent === 'some' ? 'yes' : 'ask'
+    case 'noBeef':
+      if (r.cuisine === 'noodles') return 'no'
+      return veg ? 'yes' : 'ask'
+    default:
+      return 'yes'
+  }
+}
+
+// Restaurants that work for every need, best first. A 'no' rules a restaurant out,
+// except for needs only some days call for (`soft`), which just lower its rank.
+export function recommend(needs, soft = new Set()) {
+  const list = [...needs]
+  const miss = (n) => (soft.has(n) ? 0 : -99)
+  return RESTAURANTS.map((r, i) => {
+    const fits = Object.fromEntries(list.map((n) => [n, fit(r, n)]))
+    const score = list.reduce((sum, n) => sum + (fits[n] === 'yes' ? 2 : fits[n] === 'ask' ? 1 : miss(n)), 0)
+    return { r, fits, score, i }
+  })
+    .filter((x) => x.score >= 0)
+    .sort((a, b) => b.score - a.score || a.i - b.i)
+}
 
 // Search by the Chinese address: Google Maps finds Taipei addresses more reliably that way.
 export const mapLink = (p) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}`
