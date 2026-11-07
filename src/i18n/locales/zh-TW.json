@@ -30,7 +30,8 @@
     "protestant": "基督教",
     "buddhism": "佛教",
     "folk": "道教／民間信仰",
-    "none": "無特定信仰"
+    "none": "無特定信仰",
+    "culture": "傳統節日"
   },
   "share": {
     "title": "要分享給團隊的內容",
@@ -122,7 +123,12 @@
     "allSaints": "諸聖節",
     "christmasEve": "平安夜",
     "christmas": "聖誕節",
-    "lentFriday": "四旬期星期五"
+    "lentFriday": "四旬期星期五",
+    "makhaBucha": "萬佛節",
+    "visakhaBucha": "衛塞節（佛誕）",
+    "asalhaBucha": "三寶佛節",
+    "khaoPhansa": "守夏節開始（入雨安居）",
+    "okPhansa": "出夏節（出雨安居）"
   },
   "subscribe": {
     "title": "加到我的手機日曆",

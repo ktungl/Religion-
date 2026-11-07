@@ -46,7 +46,11 @@ export const GREETINGS = {
   },
   buddhaBirthday: {
     hint: "A peaceful, gentle wish for the Buddha's Birthday. Calm rather than party-like.",
-    phrases: ['Happy Vesak', 'Traditional Chinese: 浴佛節快樂'],
+    phrases: ['Happy Vesak', 'Traditional Chinese: 浴佛節快樂', 'Vietnamese: Mừng Phật Đản'],
+  },
+  visakhaBucha: {
+    hint: 'A peaceful, gentle wish for Visakha Bucha, the most important Buddhist day in Thailand. Calm rather than party-like.',
+    phrases: ['Happy Vesak', 'Thai: สุขสันต์วันวิสาขบูชา'],
   },
   easter: {
     hint: 'Wish them a happy Easter with family and their church.',

@@ -46,7 +46,7 @@ export function buildIcs(faiths, lang) {
   const msg = Object.hasOwn(MESSAGES, lang) ? MESSAGES[lang] : MESSAGES.en
   const start = new Date()
   start.setDate(start.getDate() - 30)
-  const events = groupForList(eventsBetween(start, 430, faiths))
+  const events = groupForList(eventsBetween(start, 430, faiths, { locale: lang }))
   const stamp = new Date().toISOString().replace(/[-:]/g, '').slice(0, 15) + 'Z'
   const faithNames = faiths.map((f) => msg.faiths[f]).join(' / ')
 

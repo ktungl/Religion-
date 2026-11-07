@@ -40,5 +40,6 @@ const STYLES = {
 
 export function faithStyle(faith) {
   if (faith === 'catholic' || faith === 'protestant') return STYLES.christian
+  // Traditional festivals kept as culture (see CULTURE_LUNAR in calendar.js) stay neutral.
   return STYLES[faith] || STYLES.none
 }

@@ -30,7 +30,8 @@
     "protestant": "Tin Lành",
     "buddhism": "Phật giáo",
     "folk": "Đạo giáo / Tín ngưỡng dân gian",
-    "none": "Không theo tôn giáo nào"
+    "none": "Không theo tôn giáo nào",
+    "culture": "Lễ truyền thống"
   },
   "share": {
     "title": "Chia sẻ với nhóm",
@@ -122,7 +123,12 @@
     "allSaints": "Lễ Các Thánh",
     "christmasEve": "Đêm Giáng sinh",
     "christmas": "Lễ Giáng sinh",
-    "lentFriday": "Thứ Sáu Mùa Chay"
+    "lentFriday": "Thứ Sáu Mùa Chay",
+    "makhaBucha": "Lễ Makha Bucha",
+    "visakhaBucha": "Lễ Vesak (Visakha Bucha)",
+    "asalhaBucha": "Lễ Asalha Bucha",
+    "khaoPhansa": "Bắt đầu mùa An cư",
+    "okPhansa": "Kết thúc mùa An cư"
   },
   "subscribe": {
     "title": "Thêm vào lịch điện thoại",

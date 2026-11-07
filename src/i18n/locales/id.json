@@ -30,7 +30,8 @@
     "protestant": "Kristen Protestan",
     "buddhism": "Buddha",
     "folk": "Tao / Kepercayaan tradisional Tionghoa",
-    "none": "Tidak menganut agama tertentu"
+    "none": "Tidak menganut agama tertentu",
+    "culture": "Perayaan tradisional"
   },
   "share": {
     "title": "Yang dibagikan ke tim",
@@ -122,7 +123,12 @@
     "allSaints": "Hari Raya Semua Orang Kudus",
     "christmasEve": "Malam Natal",
     "christmas": "Natal",
-    "lentFriday": "Jumat Prapaskah"
+    "lentFriday": "Jumat Prapaskah",
+    "makhaBucha": "Hari Makha Bucha",
+    "visakhaBucha": "Hari Waisak (Visakha Bucha)",
+    "asalhaBucha": "Hari Asalha Bucha",
+    "khaoPhansa": "Awal masa Vassa",
+    "okPhansa": "Akhir masa Vassa"
   },
   "subscribe": {
     "title": "Tambahkan ke kalender ponsel",

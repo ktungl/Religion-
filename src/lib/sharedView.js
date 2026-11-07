@@ -19,7 +19,7 @@ export function sharedView(member, viewerId, today, days = TEAM_DAYS) {
     diet: (isMe || share.diet) && member.diet?.avoid ? member.diet : null,
   }
   if (!share.fasting && !share.holidays && !share.prayer && !isMe) return view
-  view.events = eventsBetween(today, days, faiths)
+  view.events = eventsBetween(today, days, faiths, { locale: member.locale })
     .filter((e) => isMe || (e.kind === 'holidayFast' ? share.holidays || share.fasting : e.kind === 'holiday' ? share.holidays : share.fasting) === true)
     .map(({ date, key, kind, faith }) => ({ date, key, kind, faith }))
   view.prayer = faiths.includes('islam') && (isMe || share.prayer === true)

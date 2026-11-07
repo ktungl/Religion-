@@ -30,7 +30,8 @@
     "protestant": "Protestant Christian",
     "buddhism": "Buddhism",
     "folk": "Taoism / folk religion",
-    "none": "No particular faith"
+    "none": "No particular faith",
+    "culture": "Traditional festival"
   },
   "share": {
     "title": "What to share with your team",
@@ -122,7 +123,12 @@
     "allSaints": "All Saints' Day",
     "christmasEve": "Christmas Eve",
     "christmas": "Christmas",
-    "lentFriday": "Friday in Lent"
+    "lentFriday": "Friday in Lent",
+    "makhaBucha": "Makha Bucha",
+    "visakhaBucha": "Visakha Bucha (Vesak)",
+    "asalhaBucha": "Asalha Bucha",
+    "khaoPhansa": "Buddhist Lent begins",
+    "okPhansa": "End of Buddhist Lent"
   },
   "subscribe": {
     "title": "Add to your phone calendar",

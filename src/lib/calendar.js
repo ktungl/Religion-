@@ -11,6 +11,12 @@
 //   - Islamic dates: the browser's Umm al-Qura calendar (Intl). Real dates depend on
 //     moon sighting and can differ by a day; the UI says so.
 //   - Easter: Anonymous Gregorian computus.
+//   - Thai Buddhist holy days: published Thai dates (THAI_BUDDHIST below).
+//
+// Some dates depend on where the person comes from. The app language stands in
+// for that (opts.locale):
+//   - th + Buddhism: Thai (Theravada) holy days instead of the Chinese lunar ones
+//   - vi + Buddhism: Buddha's Birthday on the 15th of the 4th lunar month (Phật Đản)
 
 import { Solar, Lunar } from 'lunar-javascript'
 import { Coordinates, CalculationMethod, PrayerTimes } from 'adhan'
@@ -53,20 +59,52 @@ const BUDDHIST_LUNAR = {
   '4-8': 'buddhaBirthday',
   '7-15': 'ullambana',
 }
+// The Vietnamese Buddhist Sangha keeps Phật Đản on the full moon of the 4th month.
+const BUDDHIST_LUNAR_VI = {
+  '4-15': 'buddhaBirthday',
+  '7-15': 'ullambana',
+}
 
-function lunarEvents(d, faiths) {
+// Festivals of the Chinese / Vietnamese calendar that many people keep as
+// culture whatever their faith. Shown to folk religion, and also to Buddhists
+// and Catholics who use the app in Chinese or Vietnamese (Thai Buddhists and
+// Filipino Catholics usually don't keep them). Labelled as a traditional
+// festival rather than as folk religion.
+const CULTURE_LUNAR = new Set(['lunarNewYear', 'lantern', 'dragonBoat', 'midAutumn'])
+const CULTURE_FAITHS = ['buddhism', 'catholic']
+const CULTURE_LOCALES = ['zh-TW', 'vi']
+
+// Thai Buddhist holy days (full-moon days of the Thai lunar calendar, which has
+// its own leap-month rules, so the dates are listed rather than computed).
+// Sources: Thai PBS calendar 2569 (2026); Thai public holiday lists for 2027 and
+// 2028. Marked "derived" where no announcement was found yet: counted three
+// Thai months (89 days) from the published full-moon day; check before use.
+const THAI_BUDDHIST = {
+  2026: { makhaBucha: '2026-03-03', visakhaBucha: '2026-05-31', asalhaBucha: '2026-07-29', khaoPhansa: '2026-07-30', okPhansa: '2026-10-26' },
+  2027: { makhaBucha: '2027-02-21', visakhaBucha: '2027-05-20', asalhaBucha: '2027-07-18', khaoPhansa: '2027-07-19', okPhansa: '2027-10-15' /* derived */ },
+  2028: { makhaBucha: '2028-02-10' /* derived */, visakhaBucha: '2028-05-08', asalhaBucha: '2028-07-06', khaoPhansa: '2028-07-07', okPhansa: '2028-10-03' /* derived */ },
+}
+
+function thaiBuddhistEvents(year) {
+  return Object.entries(THAI_BUDDHIST[year] || {}).map(([key, date]) => ({ date, faith: 'buddhism', key, kind: 'holiday' }))
+}
+
+function lunarEvents(d, faiths, locale) {
   const { month, day, lunar } = lunarParts(d)
   const date = ymd(d)
   const out = []
   const wantsFolk = faiths.includes('folk')
   const wantsBuddhism = faiths.includes('buddhism')
-  if (!wantsFolk && !wantsBuddhism) return out
+  const thaiBuddhist = wantsBuddhism && locale === 'th'
+  const wantsCulture = !wantsFolk && CULTURE_LOCALES.includes(locale) && faiths.some((f) => CULTURE_FAITHS.includes(f))
+  if (!wantsFolk && !wantsBuddhism && !wantsCulture) return out
 
-  // 初一、十五: common vegetarian days for both traditions; listed once.
-  if (month > 0 && (day === 1 || day === 15)) {
+  // 初一、十五: common vegetarian days for Chinese and Vietnamese Buddhists and
+  // folk religion; listed once. Not a Thai Buddhist practice.
+  if (month > 0 && (day === 1 || day === 15) && (wantsFolk || (wantsBuddhism && !thaiBuddhist))) {
     out.push({
       date,
-      faith: wantsBuddhism ? 'buddhism' : 'folk',
+      faith: wantsBuddhism && !thaiBuddhist ? 'buddhism' : 'folk',
       key: day === 1 ? 'lunarFirst' : 'lunarFifteenth',
       kind: 'vegetarian',
     })
@@ -85,8 +123,18 @@ function lunarEvents(d, faiths) {
     }
   }
 
-  if (wantsBuddhism) {
-    const key = month > 0 ? BUDDHIST_LUNAR[`${month}-${day}`] : null
+  if (wantsCulture) {
+    const key = month > 0 ? FOLK_LUNAR[`${month}-${day}`] : null
+    if (CULTURE_LUNAR.has(key)) out.push({ date, faith: 'culture', key, kind: 'holiday' })
+    const tomorrow = lunarParts(addDays(d, 1))
+    if (tomorrow.month === 1 && tomorrow.day === 1) {
+      out.push({ date, faith: 'culture', key: 'lunarNewYearEve', kind: 'holiday' })
+    }
+  }
+
+  if (wantsBuddhism && !thaiBuddhist) {
+    const table = locale === 'vi' ? BUDDHIST_LUNAR_VI : BUDDHIST_LUNAR
+    const key = month > 0 ? table[`${month}-${day}`] : null
     if (key) out.push({ date, faith: 'buddhism', key, kind: 'holiday' })
   }
   return out
@@ -176,7 +224,7 @@ function christianEventsForYear(year, faiths) {
 
 // ---------- Public API ----------
 
-export function eventsBetween(start, days, faiths) {
+export function eventsBetween(start, days, faiths, { locale } = {}) {
   if (!faiths?.length || faiths.includes('none')) return []
   const out = []
   const from = new Date(start.getFullYear(), start.getMonth(), start.getDate())
@@ -185,11 +233,14 @@ export function eventsBetween(start, days, faiths) {
   const endKey = ymd(end)
 
   for (let d = new Date(from); d < end; d = addDays(d, 1)) {
-    out.push(...lunarEvents(d, faiths))
+    out.push(...lunarEvents(d, faiths, locale))
     if (faiths.includes('islam')) out.push(...islamicEvents(d))
   }
   for (let y = from.getFullYear(); y <= end.getFullYear(); y++) {
     out.push(...christianEventsForYear(y, faiths).filter((e) => e.date >= fromKey && e.date < endKey))
+    if (faiths.includes('buddhism') && locale === 'th') {
+      out.push(...thaiBuddhistEvents(y).filter((e) => e.date >= fromKey && e.date < endKey))
+    }
   }
   return out.sort((a, b) => a.date.localeCompare(b.date))
 }

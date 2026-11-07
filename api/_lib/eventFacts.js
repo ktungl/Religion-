@@ -144,7 +144,7 @@ export const EVENT_FACTS = {
   },
   buddhaBirthday: {
     faith: 'buddhism',
-    what: 'Buddha\'s Birthday (佛誕節), on the 8th day of the fourth lunar month in Taiwan. Buddhists in Thailand and some other countries celebrate Vesak on a different date.',
+    what: 'Buddha\'s Birthday (佛誕節). In Taiwan it is on the 8th day of the fourth lunar month; Vietnamese Buddhists celebrate it (Phật Đản) on the 15th day of the fourth lunar month. Buddhists in Thailand celebrate Visakha Bucha (Vesak) instead.',
     how: 'Temples hold a "bathing the Buddha" ceremony (浴佛), pouring water over a small statue of the baby Buddha. Many Buddhists eat vegetarian and do good deeds on this day.',
     tips: ['Include a vegetarian option if the team shares a meal.'],
   },
@@ -153,6 +153,44 @@ export const EVENT_FACTS = {
     what: 'Ullambana (盂蘭盆節), on the 15th day of the seventh lunar month, the same day as the Zhongyuan Festival.',
     how: 'Buddhists make offerings to the monastic community and dedicate merit to their parents and ancestors. It is linked to the value of caring for one\'s parents.',
     tips: ['Include a vegetarian option if the team shares a meal.', 'Some coworkers may visit a temple.'],
+  },
+
+  // ---------- Thai (Theravada) Buddhism ----------
+  makhaBucha: {
+    faith: 'buddhism',
+    what: 'Makha Bucha, a Buddhist holy day on the full moon of the third Thai lunar month (February or March). It remembers a gathering of the Buddha\'s disciples to hear his teaching.',
+    how: 'It is a public holiday in Thailand. Many Thai Buddhists go to the temple to make merit and listen to a sermon, and in the evening walk around the temple three times holding candles, incense and flowers (wian tian).',
+    tips: [
+      'Some coworkers may wish to visit a temple in the evening.',
+      'Many Thais avoid alcohol on Buddhist holy days, so it is not a good day for a drinking party.',
+    ],
+  },
+  visakhaBucha: {
+    faith: 'buddhism',
+    what: 'Visakha Bucha (Vesak), the most important Buddhist holy day in Thailand, on the full moon of the sixth Thai lunar month (May or June). It remembers the Buddha\'s birth, enlightenment and passing away.',
+    how: 'It is a public holiday in Thailand. Thai Buddhists go to the temple, make merit, keep the precepts and join an evening candle procession around the temple (wian tian).',
+    tips: [
+      'Some coworkers may wish to visit a temple in the evening.',
+      'Many Thais avoid alcohol on this day.',
+    ],
+  },
+  asalhaBucha: {
+    faith: 'buddhism',
+    what: 'Asalha Bucha, on the full moon of the eighth Thai lunar month (usually July). It remembers the Buddha\'s first sermon. Buddhist Lent begins the next day.',
+    how: 'It is a public holiday in Thailand. Thai Buddhists go to the temple, make merit and join an evening candle procession.',
+    tips: ['Many Thais avoid alcohol on this day.'],
+  },
+  khaoPhansa: {
+    faith: 'buddhism',
+    what: 'The first day of Buddhist Lent (Vassa, พรรษา), a three-month period in the rainy season when monks stay at their temples.',
+    how: 'People offer candles and robes to temples. Some lay Buddhists make a personal promise for the three months, for example not to drink alcohol.',
+    tips: ['A coworker may not drink alcohol for the next three months; there is no need to press them at team dinners.'],
+  },
+  okPhansa: {
+    faith: 'buddhism',
+    what: 'The end of Buddhist Lent (ออกพรรษา), on the full moon of the eleventh Thai lunar month (October).',
+    how: 'Monks finish the rains retreat. People make merit at the temple, and in the following month many temples hold kathin ceremonies to offer robes to monks.',
+    tips: ['Some coworkers may wish to visit a temple on this day.'],
   },
 
   // ---------- Christianity ----------

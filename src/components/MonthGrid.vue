@@ -61,7 +61,7 @@ const gridStart = computed(() => {
 const days = computed(() => {
   const start = gridStart.value
   const byDate = {}
-  for (const e of props.events || eventsBetween(start, 42, profile.faiths)) (byDate[e.date] ||= []).push(e)
+  for (const e of props.events || eventsBetween(start, 42, profile.faiths, { locale: locale.value })) (byDate[e.date] ||= []).push(e)
   return Array.from({ length: 42 }, (_, i) => {
     const d = new Date(start.getFullYear(), start.getMonth(), start.getDate() + i)
     const key = ymd(d)

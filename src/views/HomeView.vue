@@ -27,7 +27,7 @@ const todayLabel = computed(() =>
   new Intl.DateTimeFormat(locale.value, { weekday: 'long', month: 'long', day: 'numeric' }).format(today.value),
 )
 
-const allEvents = computed(() => eventsBetween(today.value, 90, profile.faiths))
+const allEvents = computed(() => eventsBetween(today.value, 90, profile.faiths, { locale: locale.value }))
 const todayEvents = computed(() => allEvents.value.filter((e) => e.date === todayKey.value))
 const upcoming = computed(() => groupForList(allEvents.value.filter((e) => e.date > todayKey.value)))
 
