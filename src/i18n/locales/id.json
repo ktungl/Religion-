@@ -222,7 +222,8 @@
     "when": {
       "always": "Setiap hari",
       "someDays": "Hanya hari tertentu (misalnya hari puasa)"
-    }
+    },
+    "listen": "Dengarkan dalam bahasa Mandarin"
   },
   "city": {
     "title": "Kamu tinggal di mana?",

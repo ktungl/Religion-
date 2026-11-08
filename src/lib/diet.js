@@ -47,6 +47,24 @@ export function taiwanLabel(avoid = []) {
   return '五辛素'
 }
 
+// Pinyin for each Taiwanese term, and a short sentence to say when ordering,
+// so people who don't read Chinese can say it or play it aloud.
+const PINYIN = {
+  全素: 'quánsù',
+  奶素: 'nǎisù',
+  蛋素: 'dànsù',
+  蛋奶素: 'dànnǎisù',
+  五辛素: 'wǔxīnsù',
+  植物五辛素: 'zhíwù wǔxīnsù',
+  清真: 'qīngzhēn',
+}
+
+export function orderPhrase(label) {
+  if (!label) return null
+  if (label === '清真') return { term: label, termPinyin: PINYIN[label], text: '我只吃清真的。', pinyin: 'Wǒ zhǐ chī qīngzhēn de.' }
+  return { term: label, termPinyin: PINYIN[label], text: `我吃${label}。`, pinyin: `Wǒ chī ${PINYIN[label]}.` }
+}
+
 export function cleanDiet(input) {
   const avoid = Array.isArray(input?.avoid) ? [...new Set(input.avoid.filter((x) => DIET_ITEMS.includes(x)))] : []
   const when = input?.when === 'someDays' ? 'someDays' : 'always'

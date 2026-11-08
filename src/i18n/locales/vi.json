@@ -203,7 +203,7 @@
     "preview": "Đồng nghiệp sẽ thấy",
     "inTaiwan": "Khi gọi món ở Đài Loan, có thể nói:",
     "someDaysShort": "Một số ngày",
-    "termNote": "Mỗi nước gọi đồ chay khác nhau. Ví dụ, các loại chay ở Đài Loan như “ngũ tân tố” không có tên tương ứng ở nước khác. Vì vậy ở đây ghi rõ những món không ăn, và ứng dụng sẽ đổi sang cách gọi ở Đài Loan để bạn dễ gọi món.",
+    "termNote": "Mỗi nước gọi đồ chay khác nhau. Ví dụ, các loại chay ở Đài Loan như “五辛素” (chay nhưng vẫn ăn ngũ tân) không có tên tương ứng ở nước khác. Vì vậy ở đây ghi rõ những món không ăn, và ứng dụng sẽ đổi sang cách gọi ở Đài Loan để bạn dễ gọi món.",
     "skip": "Bỏ qua",
     "card": "Nhu cầu ăn uống của tôi",
     "notSet": "Chưa thiết lập",
@@ -216,13 +216,14 @@
       "seafood": "Cá và hải sản",
       "egg": "Trứng",
       "dairy": "Sữa và chế phẩm từ sữa",
-      "pungent": "Hành, tỏi, hẹ, hành tây",
+      "pungent": "Hành, tỏi, hẹ, hành tây (ngũ tân)",
       "alcohol": "Rượu (kể cả rượu nấu ăn)"
     },
     "when": {
       "always": "Mỗi ngày",
       "someDays": "Chỉ vào một số ngày (ví dụ mùng 1, rằm, mùa chay)"
-    }
+    },
+    "listen": "Nghe phát âm tiếng Trung"
   },
   "city": {
     "title": "Bạn sống ở đâu?",

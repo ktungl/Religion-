@@ -222,7 +222,8 @@
     "when": {
       "always": "Every day",
       "someDays": "Only on certain days (e.g. lunar 1st/15th, fasting days)"
-    }
+    },
+    "listen": "Play in Chinese"
   },
   "city": {
     "title": "Where do you live?",
