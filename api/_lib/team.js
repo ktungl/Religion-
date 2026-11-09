@@ -49,6 +49,8 @@ export function cleanTeamName(raw) {
 export async function authenticate(store, body = {}) {
   const { memberId, token } = body
   if (typeof memberId !== 'string' || typeof token !== 'string') throw new StoreError('unauthorized')
+  // The id goes into the database URL path, so only plain ids are accepted.
+  if (!/^[A-Za-z0-9_-]{1,40}$/.test(memberId)) throw new StoreError('unauthorized')
   const member = await store.getMember(memberId)
   if (!member) throw new StoreError('unauthorized')
   const a = Buffer.from(hash(token))

@@ -84,9 +84,7 @@ export function buildIcs(faiths, lang) {
 
 export default function handler(req, res) {
   const url = new URL(req.url, 'http://localhost')
-  const faiths = (url.searchParams.get('f') || '')
-    .split(',')
-    .filter((f) => FAITHS.includes(f) && f !== 'none')
+  const faiths = [...new Set((url.searchParams.get('f') || '').split(','))].filter((f) => FAITHS.includes(f) && f !== 'none')
   const lang = url.searchParams.get('lang') || 'en'
 
   if (!faiths.length) {

@@ -23,7 +23,8 @@ const copied = ref(false)
 const toLang = computed(() => props.person.lang || 'en')
 const sameLang = computed(() => toLang.value === locale.value)
 const langName = computed(() => LANGUAGES.find((l) => l.code === toLang.value)?.native || toLang.value)
-const fill = (s) => s.replaceAll('{name}', props.person.displayName)
+// A function keeps "$&" or "$$" in a name from being read as replacement patterns.
+const fill = (s) => s.replaceAll('{name}', () => props.person.displayName)
 const option = computed(() => result.value?.options[index.value])
 
 async function load() {
