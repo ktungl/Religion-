@@ -32,6 +32,14 @@ const districts = computed(() => DISTRICTS.filter((d) => inCity.value.some((p) =
 const source = computed(() => (type.value === 'vegetarian' ? 'vegetarian' : 'halal'))
 const sourceUrl = computed(() => sourceFor(type.value, profile.city))
 
+// The Taipei vegetarian list is long, so it is shown a page at a time.
+const PAGE = 12
+const limit = ref(PAGE)
+watch([type, district], () => (limit.value = PAGE))
+const visible = computed(() => shown.value.slice(0, limit.value))
+const hasUnverified = computed(() => shown.value.some((p) => p.unverified))
+const MORE_SOURCES = { gov: 'https://data.gov.tw/en/datasets/94139', osm: 'https://www.openstreetmap.org/copyright' }
+
 function pickType(next) {
   type.value = next
   if (!districts.value.includes(district.value)) district.value = ''
@@ -84,11 +92,26 @@ function pickType(next) {
 
       <p v-if="!shown.length" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">{{ t('restaurants.empty') }}</p>
       <ul v-else class="mt-3 grid gap-2 md:grid-cols-2">
-        <RestaurantCard v-for="p in shown" :key="p.id" :place="p" />
+        <RestaurantCard v-for="p in visible" :key="p.id" :place="p" />
       </ul>
+      <button
+        v-if="shown.length > limit"
+        type="button"
+        class="mt-3 h-11 w-full rounded-xl border-2 border-line text-sm active:bg-brand-soft"
+        @click="limit += PAGE"
+      >
+        {{ t('restaurants.showMore', { n: Math.min(PAGE, shown.length - limit) }) }}
+      </button>
 
+      <p v-if="hasUnverified" class="mt-3 text-xs text-muted">{{ t('restaurants.unverifiedHint') }}</p>
       <p v-if="sourceUrl && shown.length" class="mt-3 text-xs text-muted">
         <a :href="sourceUrl" target="_blank" rel="noopener" class="underline underline-offset-4">{{ t(`restaurants.source.${source}`) }}</a>
+      </p>
+      <p v-if="hasUnverified" class="mt-1 text-xs text-muted">
+        {{ t('restaurants.source.more') }}
+        <a :href="MORE_SOURCES.gov" target="_blank" rel="noopener" class="underline underline-offset-4">{{ t('restaurants.source.gov') }}</a>
+        ·
+        <a :href="MORE_SOURCES.osm" target="_blank" rel="noopener" class="underline underline-offset-4">{{ t('restaurants.source.osm') }}</a>
       </p>
     </template>
   </section>

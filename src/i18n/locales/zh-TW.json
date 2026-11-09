@@ -290,7 +290,10 @@
     "map": "地圖",
     "source": {
       "halal": "資料來源：各地穆斯林友善餐廳名單",
-      "vegetarian": "資料來源：蔬福生活蔬食地圖等"
+      "vegetarian": "資料來源：蔬福生活蔬食地圖等",
+      "more": "另有資料來自：",
+      "gov": "交通部觀光署蔬食餐廳資料",
+      "osm": "© OpenStreetMap 貢獻者"
     },
     "empty": "這個城市目前還沒有這類餐廳的資料。",
     "cuisines": {
@@ -311,7 +314,13 @@
       "dimsum": "港式飲茶",
       "fusion": "創意蔬食",
       "buffet": "素食自助餐",
-      "hotelBuffet": "飯店自助餐"
+      "hotelBuffet": "飯店自助餐",
+      "chinese": "中式料理",
+      "western": "西式料理",
+      "japanese": "日式料理",
+      "burger": "漢堡",
+      "hotpot": "火鍋",
+      "cafe": "咖啡輕食"
     },
     "districts": {
       "zhongshan": "中山區",
@@ -325,13 +334,18 @@
       "lingya": "苓雅區",
       "zuoying": "左營區",
       "qianjin": "前金區",
-      "pingtungCity": "屏東市"
+      "pingtungCity": "屏東市",
+      "wanhua": "萬華區",
+      "beitou": "北投區",
+      "neihu": "內湖區",
+      "wenshan": "文山區"
     },
     "vegetarian": "素食餐廳",
     "vegetarianHint": "全素或蛋奶素的餐廳。不吃五辛（蔥、蒜、韭等）的人，點餐時要跟店家說。",
     "veg": {
       "vegan": "純素（無蛋奶）",
-      "mixed": "全素／蛋奶素"
+      "mixed": "全素／蛋奶素",
+      "unknown": "素食種類未確認"
     },
     "pungent": {
       "some": "菜單有標示不含五辛的菜",
@@ -356,7 +370,11 @@
       "less": "收起"
     },
     "noCityData": "這個城市目前還沒有餐廳資料，我們會陸續補上。",
-    "noCity": "選擇城市，就能看到附近適合的餐廳。"
+    "noCity": "選擇城市，就能看到附近適合的餐廳。",
+    "unverified": "未逐家確認",
+    "unverifiedHint": "標示「未逐家確認」的餐廳是整理自政府名單和 OpenStreetMap 網友的資料，還沒有人打電話確認。素食種類（全素、蛋奶素）和有沒有五辛不一定正確，出發前請先打電話問清楚。",
+    "showMore": "再顯示 {n} 家",
+    "coordsOnly": "沒有地址，請按「地圖」查看位置"
   },
   "greet": {
     "title": "送上祝福",

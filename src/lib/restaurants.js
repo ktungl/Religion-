@@ -1,4 +1,5 @@
 import { effectiveAvoid } from './diet.js'
+import TAIPEI_VEGETARIAN from './taipeiVegetarian.json'
 
 // Restaurants matched to faiths and food needs, by city (one of CITIES in places.js).
 // Taipei, Kaohsiung and Pingtung have data so far.
@@ -14,6 +15,13 @@ import { effectiveAvoid } from './diet.js'
 // on what the menu covers. veg: 'vegan' has no egg or dairy at all, 'mixed' offers
 // both 全素 and 蛋奶素 dishes. pungent (蔥蒜韭等五辛): 'some' means the menu marks
 // many dishes without them; 'ask' means it isn't clear, so people should ask.
+//
+// Taipei also has a long list in taipeiVegetarian.json (unverified: true, listed after
+// the checked ones). It was merged on 2026-11 from the Tourism Administration's open
+// vegetarian restaurant data (source: 'gov') and OpenStreetMap places tagged
+// diet:vegetarian=only whose names read as vegetarian shops (source: 'osm'). Nobody has
+// called these places, so veg is 'unknown' unless the government list says what it
+// serves, pungent is always 'ask', and some have no phone or address (lat/lon only).
 const SOURCES = {
   halal: {
     taipei: 'https://thpc.taiwantrade.com/restaurant_map',
@@ -27,7 +35,7 @@ export function sourceFor(type, city) {
   return type === 'vegetarian' ? SOURCES.vegetarian : SOURCES.halal[city] || null
 }
 
-export const RESTAURANTS = [
+const CURATED = [
   { city: 'taipei', id: 'A1', type: 'halal', name: '阿里巴巴的廚房', nameEn: 'Alibaba Indian Kitchen', cuisine: 'indian', district: 'zhongshan', phone: '+886-2-2567-7163', address: '臺北市中山區南京東路2段56號2樓', addressEn: '2F., No. 56, Sec. 2, Nanjing E. Rd., Zhongshan Dist., Taipei City' },
   { city: 'taipei', id: 'A2', type: 'halal', name: '泰姬印度餐廳', nameEn: 'Taj Indian Restaurant', cuisine: 'indian', district: 'daan', phone: '+886-2-8773-0175', address: '臺北市大安區市民大道4段48巷1號', addressEn: 'No. 1, Ln. 48, Sec. 4, Shimin Blvd., Da’an Dist., Taipei City' },
   { city: 'taipei', id: 'A3', type: 'halal', name: '泰鄉雲店', nameEn: 'Halal Bismilla Restaurant', cuisine: 'thai', district: 'songshan', phone: '+886-2-2577-9271', address: '臺北市松山區北寧路40號1樓', addressEn: '1F., No. 40, Beining Rd., Songshan Dist., Taipei City' },
@@ -62,12 +70,15 @@ export const RESTAURANTS = [
   { city: 'pingtung', id: 'PV1', type: 'vegetarian', veg: 'mixed', pungent: 'ask', name: '小孩吃素（勝利店）', nameEn: 'Kids Eat Veggie (Shengli)', cuisine: 'fusion', district: 'pingtungCity', phone: '+886-8-765-5222', address: '屏東縣屏東市南京路41號', addressEn: 'No. 41, Nanjing Rd., Pingtung City, Pingtung County' },
 ]
 
+export const RESTAURANTS = [...CURATED, ...TAIPEI_VEGETARIAN]
+
 export const restaurantsIn = (city) => RESTAURANTS.filter((r) => r.city === city)
 
 // Districts in the order they are offered as filters.
 export const DISTRICTS = [
   // Taipei
   'zhongshan', 'datong', 'daan', 'songshan', 'zhongzheng', 'xinyi', 'shilin', 'nangang',
+  'wanhua', 'beitou', 'neihu', 'wenshan',
   // Kaohsiung
   'lingya', 'zuoying', 'qianjin',
   // Pingtung
@@ -145,5 +156,9 @@ export function recommend(city, needs, soft = new Set()) {
 }
 
 // Search by the Chinese address: Google Maps finds Taipei addresses more reliably that way.
-export const mapLink = (p) => `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(p.address)}`
+// A few places only have coordinates.
+export const mapLink = (p) => {
+  const q = p.address || (p.lat != null ? `${p.lat},${p.lon}` : p.name)
+  return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(q)}`
+}
 export const telLink = (p) => `tel:${p.phone.replace(/-/g, '')}`

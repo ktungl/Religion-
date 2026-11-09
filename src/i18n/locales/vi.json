@@ -290,7 +290,10 @@
     "map": "Bản đồ",
     "source": {
       "halal": "Nguồn: danh sách nhà hàng thân thiện Hồi giáo tại địa phương",
-      "vegetarian": "Nguồn: Bản đồ ăn chay Merit Times và các nguồn khác"
+      "vegetarian": "Nguồn: Bản đồ ăn chay Merit Times và các nguồn khác",
+      "more": "Các quán khác lấy từ:",
+      "gov": "Dữ liệu mở của Cục Du lịch Đài Loan",
+      "osm": "© Những người đóng góp OpenStreetMap"
     },
     "empty": "Chưa có nhà hàng loại này ở thành phố này.",
     "cuisines": {
@@ -311,7 +314,13 @@
       "dimsum": "Dim sum",
       "fusion": "Món chay sáng tạo",
       "buffet": "Buffet chay",
-      "hotelBuffet": "Buffet khách sạn"
+      "hotelBuffet": "Buffet khách sạn",
+      "chinese": "Món Trung",
+      "western": "Món Tây",
+      "japanese": "Món Nhật",
+      "burger": "Burger",
+      "hotpot": "Lẩu",
+      "cafe": "Cà phê và đồ ăn nhẹ"
     },
     "districts": {
       "zhongshan": "Zhongshan",
@@ -325,13 +334,18 @@
       "lingya": "Linh Nhã",
       "zuoying": "Tả Doanh",
       "qianjin": "Tiền Kim",
-      "pingtungCity": "TP. Bình Đông"
+      "pingtungCity": "TP. Bình Đông",
+      "wanhua": "Wanhua",
+      "beitou": "Beitou",
+      "neihu": "Neihu",
+      "wenshan": "Wenshan"
     },
     "vegetarian": "Nhà hàng chay",
     "vegetarianHint": "Nhà hàng chay thuần hoặc chay có trứng sữa. Nếu bạn không ăn hành, tỏi, hẹ (ngũ vị tân), hãy nói với nhân viên khi gọi món.",
     "veg": {
       "vegan": "Chay thuần (không trứng sữa)",
-      "mixed": "Chay thuần và chay trứng sữa"
+      "mixed": "Chay thuần và chay trứng sữa",
+      "unknown": "Chưa xác nhận loại đồ chay"
     },
     "pungent": {
       "some": "Thực đơn có ghi món không hành tỏi",
@@ -356,7 +370,11 @@
       "less": "Thu gọn"
     },
     "noCityData": "Chưa có nhà hàng cho thành phố này, chúng tôi sẽ bổ sung dần.",
-    "noCity": "Chọn thành phố để xem nhà hàng gần bạn."
+    "noCity": "Chọn thành phố để xem nhà hàng gần bạn.",
+    "unverified": "Chưa kiểm tra",
+    "unverifiedHint": "Các quán có nhãn \"Chưa kiểm tra\" lấy từ dữ liệu của chính phủ và tình nguyện viên OpenStreetMap, chưa có ai gọi điện xác nhận. Loại đồ chay (chay thuần, chay có trứng sữa) và việc có dùng hành tỏi hay không có thể chưa đúng, hãy gọi điện hỏi trước khi đến.",
+    "showMore": "Hiện thêm {n} quán",
+    "coordsOnly": "Không có địa chỉ. Dùng nút bản đồ để xem vị trí."
   },
   "greet": {
     "title": "Gửi lời chúc",

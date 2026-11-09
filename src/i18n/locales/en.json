@@ -290,7 +290,10 @@
     "map": "Map",
     "source": {
       "halal": "Source: local Muslim-friendly restaurant lists",
-      "vegetarian": "Sources: Merit Times veggie map and others"
+      "vegetarian": "Sources: Merit Times veggie map and others",
+      "more": "More places from:",
+      "gov": "Tourism Administration open data",
+      "osm": "© OpenStreetMap contributors"
     },
     "empty": "No restaurants of this kind in this city yet.",
     "cuisines": {
@@ -311,7 +314,13 @@
       "dimsum": "Dim sum",
       "fusion": "Creative vegetarian",
       "buffet": "Vegetarian buffet",
-      "hotelBuffet": "Hotel buffet"
+      "hotelBuffet": "Hotel buffet",
+      "chinese": "Chinese",
+      "western": "Western",
+      "japanese": "Japanese",
+      "burger": "Burgers",
+      "hotpot": "Hot pot",
+      "cafe": "Café and light meals"
     },
     "districts": {
       "zhongshan": "Zhongshan",
@@ -325,13 +334,18 @@
       "lingya": "Lingya",
       "zuoying": "Zuoying",
       "qianjin": "Qianjin",
-      "pingtungCity": "Pingtung City"
+      "pingtungCity": "Pingtung City",
+      "wanhua": "Wanhua",
+      "beitou": "Beitou",
+      "neihu": "Neihu",
+      "wenshan": "Wenshan"
     },
     "vegetarian": "Vegetarian",
     "vegetarianHint": "Vegan or lacto-ovo vegetarian restaurants. If you avoid onion, garlic and chives (五辛), tell the staff when ordering.",
     "veg": {
       "vegan": "Vegan (no egg or dairy)",
-      "mixed": "Vegan and lacto-ovo"
+      "mixed": "Vegan and lacto-ovo",
+      "unknown": "Type of vegetarian food not confirmed"
     },
     "pungent": {
       "some": "Menu marks dishes without onion and garlic",
@@ -356,7 +370,11 @@
       "less": "Show less"
     },
     "noCityData": "No restaurants for this city yet; we're adding more.",
-    "noCity": "Pick your city to see restaurants near you."
+    "noCity": "Pick your city to see restaurants near you.",
+    "unverified": "Not checked",
+    "unverifiedHint": "Places marked \"Not checked\" come from government data and OpenStreetMap volunteers. No one has called them. The type of vegetarian food (vegan, or with egg and dairy) and whether they use onion and garlic may be wrong, so call to confirm before you go.",
+    "showMore": "Show {n} more",
+    "coordsOnly": "No address listed. Use the map button to see the location."
   },
   "greet": {
     "title": "Send a greeting",

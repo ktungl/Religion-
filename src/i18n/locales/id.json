@@ -290,7 +290,10 @@
     "map": "Peta",
     "source": {
       "halal": "Sumber: daftar restoran ramah Muslim setempat",
-      "vegetarian": "Sumber: Peta vegetarian Merit Times dan lainnya"
+      "vegetarian": "Sumber: Peta vegetarian Merit Times dan lainnya",
+      "more": "Tempat lain dari:",
+      "gov": "Data terbuka Administrasi Pariwisata",
+      "osm": "© Kontributor OpenStreetMap"
     },
     "empty": "Belum ada restoran jenis ini di kota ini.",
     "cuisines": {
@@ -311,7 +314,13 @@
       "dimsum": "Dim sum",
       "fusion": "Vegetarian kreasi",
       "buffet": "Prasmanan vegetarian",
-      "hotelBuffet": "Prasmanan hotel"
+      "hotelBuffet": "Prasmanan hotel",
+      "chinese": "Masakan Tiongkok",
+      "western": "Masakan Barat",
+      "japanese": "Masakan Jepang",
+      "burger": "Burger",
+      "hotpot": "Hot pot",
+      "cafe": "Kafe dan makanan ringan"
     },
     "districts": {
       "zhongshan": "Zhongshan",
@@ -325,13 +334,18 @@
       "lingya": "Lingya",
       "zuoying": "Zuoying",
       "qianjin": "Qianjin",
-      "pingtungCity": "Kota Pingtung"
+      "pingtungCity": "Kota Pingtung",
+      "wanhua": "Wanhua",
+      "beitou": "Beitou",
+      "neihu": "Neihu",
+      "wenshan": "Wenshan"
     },
     "vegetarian": "Restoran vegetarian",
     "vegetarianHint": "Restoran vegan atau vegetarian dengan telur dan susu. Jika kamu tidak makan bawang, bawang putih, dan kucai (五辛), beri tahu staf saat memesan.",
     "veg": {
       "vegan": "Vegan (tanpa telur dan susu)",
-      "mixed": "Vegan dan vegetarian telur-susu"
+      "mixed": "Vegan dan vegetarian telur-susu",
+      "unknown": "Jenis makanan vegetarian belum dipastikan"
     },
     "pungent": {
       "some": "Menu menandai hidangan tanpa bawang",
@@ -356,7 +370,11 @@
       "less": "Tutup"
     },
     "noCityData": "Belum ada restoran untuk kota ini, akan kami tambahkan.",
-    "noCity": "Pilih kotamu untuk melihat restoran terdekat."
+    "noCity": "Pilih kotamu untuk melihat restoran terdekat.",
+    "unverified": "Belum diperiksa",
+    "unverifiedHint": "Tempat bertanda \"Belum diperiksa\" berasal dari data pemerintah dan relawan OpenStreetMap. Belum ada yang menelepon untuk memastikan. Jenis makanan vegetarian (vegan, atau dengan telur dan susu) dan apakah memakai bawang bisa saja keliru, jadi telepon dulu sebelum datang.",
+    "showMore": "Tampilkan {n} lagi",
+    "coordsOnly": "Alamat tidak tersedia. Gunakan tombol peta untuk melihat lokasinya."
   },
   "greet": {
     "title": "Kirim ucapan",
