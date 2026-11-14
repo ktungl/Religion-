@@ -160,6 +160,8 @@
     "sharing": "Cài đặt chia sẻ của tôi",
     "leave": "Rời nhóm",
     "leaveConfirm": "Bạn chắc chắn muốn rời nhóm? Dữ liệu bạn đã chia sẻ sẽ bị xóa.",
+    "leaveConfirmManager": "Bạn là quản lý. Nếu bạn rời đi, cả nhóm sẽ bị xóa, kể cả dữ liệu mọi người đã chia sẻ. Tiếp tục?",
+    "deleteTeam": "Xóa nhóm",
     "retry": "Thử lại",
     "loading": "Đang tải…",
     "fastHint": "{date} {event}: {n} đồng nghiệp",

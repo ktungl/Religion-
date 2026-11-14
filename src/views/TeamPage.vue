@@ -25,6 +25,7 @@ const data = ref(null)
 const state = ref('idle') // idle | loading | error
 const join = ref()
 const copied = ref(false)
+const leaveError = ref(false)
 const todayKey = computed(() => ymd(today.value))
 
 const inTeam = computed(() => !!(profile.member || profile.demo))
@@ -63,7 +64,9 @@ const teamEvents = computed(() => {
     for (const e of groupForList(m.events.filter((x) => x.date >= todayKey.value))) {
       const id = `${e.date}|${e.key}|${e.until || ''}`
       if (!rows.has(id)) rows.set(id, { ...e, people: [] })
-      rows.get(id).people.push(m)
+      const row = rows.get(id)
+      row.faith ||= e.faith
+      row.people.push(m)
     }
   }
   return [...rows.values()].sort((a, b) => a.date.localeCompare(b.date))
@@ -76,7 +79,9 @@ const teamDays = computed(() => {
     for (const e of m.events) {
       const id = `${e.date}|${e.key}`
       if (!rows.has(id)) rows.set(id, { ...e, people: [] })
-      rows.get(id).people.push(m)
+      const row = rows.get(id)
+      row.faith ||= e.faith
+      row.people.push(m)
     }
   }
   return [...rows.values()]
@@ -156,12 +161,13 @@ function joined() {
 }
 
 async function leave() {
-  if (!window.confirm(t('teamPage.leaveConfirm'))) return
+  if (!window.confirm(t(isManager.value ? 'teamPage.leaveConfirmManager' : 'teamPage.leaveConfirm'))) return
+  leaveError.value = false
   try {
     await leaveTeam()
     data.value = null
   } catch {
-    state.value = 'error'
+    leaveError.value = true
   }
 }
 </script>
@@ -277,7 +283,7 @@ async function leave() {
             </p>
             <ul v-else class="mt-2 flex flex-col divide-y divide-line rounded-2xl border border-line bg-white">
               <li v-for="e in teamEvents" :key="e.date + e.key">
-                <RouterLink :to="{ path: `/event/${e.key}`, query: { faith: e.faith, date: e.date, ...(e.until ? { until: e.until } : {}) } }" class="relative block py-3 pr-4 pl-5 active:bg-brand-soft">
+                <RouterLink :to="{ path: `/event/${e.key}`, query: { ...(e.faith ? { faith: e.faith } : {}), date: e.date, ...(e.until ? { until: e.until } : {}) } }" class="relative block py-3 pr-4 pl-5 active:bg-brand-soft">
                 <span class="absolute top-3 bottom-3 left-0 w-1 rounded-r-full" :class="faithStyle(e.faith).bar" aria-hidden="true" />
                 <div class="flex items-baseline justify-between gap-2">
                   <p class="font-semibold">{{ t(`events.${e.key}`) }}</p>
@@ -355,9 +361,12 @@ async function leave() {
             <button v-if="data.demo" type="button" class="h-11 text-sm text-muted underline underline-offset-4" @click="exitDemo">
               {{ t('demo.exit') }}
             </button>
-            <button v-else type="button" class="h-11 text-sm text-red-700 underline underline-offset-4" @click="leave">
-              {{ t('teamPage.leave') }}
-            </button>
+            <template v-else>
+              <button type="button" class="h-11 text-sm text-red-700 underline underline-offset-4" @click="leave">
+                {{ t(isManager ? 'teamPage.deleteTeam' : 'teamPage.leave') }}
+              </button>
+              <p v-if="leaveError" class="text-center text-sm text-red-700" role="alert">{{ t('team.errors.network') }}</p>
+            </template>
           </div>
         </template>
       </template>

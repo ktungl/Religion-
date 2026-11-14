@@ -22,7 +22,7 @@ const tabs = computed(() => {
 const type = ref(tabs.value[0] || 'halal')
 const district = ref('')
 watch(tabs, (list) => {
-  if (!list.includes(type.value)) type.value = list[0] || 'halal'
+  if (!list.includes(type.value)) pickType(list[0] || 'halal')
 })
 
 // Only restaurants in the person's own city.

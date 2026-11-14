@@ -160,6 +160,8 @@
     "sharing": "Pengaturan berbagi saya",
     "leave": "Keluar dari tim",
     "leaveConfirm": "Yakin keluar dari tim? Data yang Anda bagikan akan dihapus.",
+    "leaveConfirmManager": "Anda adalah manajer. Jika Anda keluar, seluruh tim akan dihapus, termasuk data yang dibagikan semua anggota. Lanjutkan?",
+    "deleteTeam": "Hapus tim",
     "retry": "Coba lagi",
     "loading": "Memuat…",
     "fastHint": "{date} {event}: {n} rekan kerja",

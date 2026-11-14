@@ -129,6 +129,21 @@ function parseStore() {
       const r = await call('GET', `/classes/Member?${where({ team: teamPointer(teamId) })}&limit=200&order=createdAt`)
       return r.results.map(toMember)
     },
+    // Deletes the team and every member in it.
+    async deleteTeam(teamId) {
+      for (;;) {
+        const r = await call('GET', `/classes/Member?${where({ team: teamPointer(teamId) })}&limit=50&keys=objectId`)
+        if (!r.results.length) break
+        const out = await call('POST', '/batch', {
+          requests: r.results.map((m) => ({ method: 'DELETE', path: `/classes/Member/${m.objectId}` })),
+        })
+        const failed = out.find?.((x) => x.error && x.error.code !== 101)
+        if (failed) throw new StoreError('server', failed.error.error || 'batch delete failed')
+      }
+      await call('DELETE', `/classes/Team/${teamId}`).catch((e) => {
+        if (e.status !== 404) throw e
+      })
+    },
   }
 }
 
@@ -166,6 +181,10 @@ function memoryStore() {
     },
     async listMembers(teamId) {
       return [...memory.members.values()].filter((m) => m.teamId === teamId)
+    },
+    async deleteTeam(teamId) {
+      for (const [id, m] of memory.members) if (m.teamId === teamId) memory.members.delete(id)
+      memory.teams.delete(teamId)
     },
   }
 }

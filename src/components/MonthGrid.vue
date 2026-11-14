@@ -89,7 +89,7 @@ const legend = computed(() => {
   const faiths = props.events ? [...new Set(props.events.map((e) => e.faith))] : profile.faiths
   return faiths.filter((f) => {
     const style = faithStyle(f)
-    if (f === 'none' || seen.has(style)) return false
+    if (!f || f === 'none' || seen.has(style)) return false
     seen.add(style)
     return true
   })
@@ -120,7 +120,7 @@ function names(e) {
 }
 
 function eventLink(e) {
-  return { path: `/event/${e.key}`, query: { faith: e.faith, date: e.date, ...(e.until ? { until: e.until } : {}) } }
+  return { path: `/event/${e.key}`, query: { ...(e.faith ? { faith: e.faith } : {}), date: e.date, ...(e.until ? { until: e.until } : {}) } }
 }
 </script>
 
@@ -174,7 +174,7 @@ function eventLink(e) {
           :to="eventLink(e)"
           class="block rounded-md px-1.5 py-0.5 text-left text-xs hover:opacity-80"
           :class="faithStyle(e.faith).soft"
-          :title="[t(`events.${e.key}`), t(`faiths.${e.faith}`), names(e)].filter(Boolean).join(' · ')"
+          :title="[t(`events.${e.key}`), e.faith && t(`faiths.${e.faith}`), names(e)].filter(Boolean).join(' · ')"
         >
           <span class="block truncate">{{ t(`events.${e.key}`) }}</span>
           <span v-if="e.people" class="block truncate opacity-75">{{ names(e) }}</span>

@@ -160,6 +160,8 @@
     "sharing": "My sharing settings",
     "leave": "Leave team",
     "leaveConfirm": "Leave the team? What you shared will be deleted.",
+    "leaveConfirmManager": "You're the manager. If you leave, the whole team is deleted, along with what everyone shared. Continue?",
+    "deleteTeam": "Delete team",
     "retry": "Retry",
     "loading": "Loading…",
     "fastHint": "{date} {event}: {n} coworkers",

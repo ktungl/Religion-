@@ -64,7 +64,14 @@ http
         const mod = await import(pathToFileURL(file).href)
         return await mod.default(req, withHelpers(res))
       }
-      let file = path.join(dist, decodeURIComponent(url.pathname))
+      let decoded
+      try {
+        decoded = decodeURIComponent(url.pathname)
+      } catch {
+        res.statusCode = 400
+        return res.end('Bad request')
+      }
+      let file = path.join(dist, decoded)
       if (!file.startsWith(dist) || !(await stat(file).catch(() => null))?.isFile()) file = path.join(dist, 'index.html')
       res.setHeader('Content-Type', TYPES[path.extname(file)] || 'application/octet-stream')
       res.end(await readFile(file))

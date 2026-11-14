@@ -21,7 +21,9 @@ export function sharedView(member, viewerId, today, days = TEAM_DAYS) {
   if (!share.fasting && !share.holidays && !share.prayer && !isMe) return view
   view.events = eventsBetween(today, days, faiths, { locale: member.locale })
     .filter((e) => isMe || (e.kind === 'holidayFast' ? share.holidays || share.fasting : e.kind === 'holiday' ? share.holidays : share.fasting) === true)
-    .map(({ date, key, kind, faith }) => ({ date, key, kind, faith }))
+    // Which faith a day belongs to is left out unless the person shares their faith,
+    // so the team page can't show it through colors or labels.
+    .map(({ date, key, kind, faith }) => (isMe || share.faith ? { date, key, kind, faith } : { date, key, kind }))
   view.prayer = faiths.includes('islam') && (isMe || share.prayer === true)
   // App language, so coworkers can send a greeting the person can read.
   // Only given along with days the person chose to share.

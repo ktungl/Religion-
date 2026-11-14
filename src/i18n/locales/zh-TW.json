@@ -160,6 +160,8 @@
     "sharing": "我的分享設定",
     "leave": "離開團隊",
     "leaveConfirm": "確定要離開團隊嗎？你分享的資料會一併刪除。",
+    "leaveConfirmManager": "你是主管。離開後整個團隊會被刪除，所有成員分享的資料也會一併刪除。確定嗎？",
+    "deleteTeam": "刪除團隊",
     "retry": "重試",
     "loading": "載入中…",
     "fastHint": "{date} {event}：{n} 位同事",

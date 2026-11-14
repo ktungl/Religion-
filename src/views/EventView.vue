@@ -4,13 +4,15 @@ import { useI18n } from 'vue-i18n'
 import { useRoute, useRouter } from 'vue-router'
 import { faithStyle } from '../lib/faithStyle'
 import { goBack } from '../lib/nav'
+import { FAITHS } from '../lib/calendar'
 
 const { t, locale } = useI18n()
 const route = useRoute()
 const router = useRouter()
 
 const key = route.params.key
-const faith = route.query.faith || 'none'
+// Left out when the person hasn't shared their faith (or the link is malformed).
+const faith = [...FAITHS, 'culture'].includes(route.query.faith) ? route.query.faith : null
 const date = route.query.date
 const until = route.query.until
 
@@ -47,7 +49,7 @@ const back = () => goBack(router)
     </button>
 
     <header class="mt-2 rounded-2xl p-5" :class="faithStyle(faith).solid">
-      <p class="text-sm opacity-85">{{ t(`faiths.${faith}`) }}</p>
+      <p v-if="faith" class="text-sm opacity-85">{{ t(`faiths.${faith}`) }}</p>
       <h1 class="mt-1 text-2xl font-semibold">{{ t(`events.${key}`) }}</h1>
       <p v-if="date" class="mt-2 text-sm opacity-90">
         {{ fmt(date) }}<template v-if="until"> – {{ fmt(until) }}</template>

@@ -67,6 +67,8 @@ function eventLink(e) {
 }
 
 async function startOver() {
+  // A manager leaving deletes the whole team, so ask first.
+  if (profile.member?.role === 'manager' && !window.confirm(t('teamPage.leaveConfirmManager'))) return
   // Leaving the team deletes what was shared; if offline, the local copy is cleared anyway.
   await leaveTeam().catch(() => {})
   resetProfile()

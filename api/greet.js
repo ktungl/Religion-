@@ -58,10 +58,17 @@ ${same ? 'For "translation", repeat the message unchanged.' : `For "translation"
 Return JSON: {"options":[{"message":"...","translation":"..."}, ...]}`
 }
 
-// Shown when the AI is off or fails: the first common phrase, plainly.
-function fallback(g) {
-  const phrase = g.phrases.find((p) => !p.includes(':')) || g.phrases[0].split(': ')[1]
-  return { options: [{ message: `{name}, ${phrase}!`, translation: `{name}, ${phrase}!` }], source: 'notes' }
+// How the reviewed phrases in greetings.js name each language.
+const PHRASE_LANG = { 'zh-TW': 'Traditional Chinese', vi: 'Vietnamese', id: 'Indonesian', th: 'Thai' }
+
+// Shown when the AI is off or fails: a common phrase, plainly, in the
+// recipient's language when one is listed, otherwise the international one.
+function fallback(g, to) {
+  const prefix = PHRASE_LANG[to] ? `${PHRASE_LANG[to]}: ` : null
+  const own = prefix && g.phrases.find((p) => p.startsWith(prefix))
+  const phrase = own ? own.slice(prefix.length) : g.phrases.find((p) => !p.includes(':')) || g.phrases[0].split(': ')[1]
+  const message = `{name}, ${phrase}!`
+  return { options: [{ message, translation: message }], source: 'notes', to }
 }
 
 const clean = (s) => String(s || '').trim().slice(0, 300)
@@ -81,7 +88,7 @@ export default async function handler(req, res) {
   }
   if (!aiEnabled()) {
     res.setHeader('Cache-Control', 'public, max-age=300')
-    return res.end(JSON.stringify(fallback(g)))
+    return res.end(JSON.stringify(fallback(g, to)))
   }
 
   const cacheKey = `${key}|${to}|${from}|${aiModelName()}`
@@ -100,6 +107,6 @@ export default async function handler(req, res) {
   } catch (e) {
     console.error(e)
     res.setHeader('Cache-Control', 'no-store')
-    return res.end(JSON.stringify(fallback(g)))
+    return res.end(JSON.stringify(fallback(g, to)))
   }
 }
