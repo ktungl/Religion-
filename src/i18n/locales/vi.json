@@ -286,6 +286,11 @@
     "searchMaps": "Tìm {type} trên Google Maps"
   },
   "restaurants": {
+    "general": "Nhà hàng thông thường",
+    "generalHint": "Dành cho người không kiêng ăn. Hỏi nhân viên về nguyên liệu nếu có nhu cầu riêng.",
+    "veganRequest": "Yêu cầu món thuần chay (không trứng, sữa) khi đặt bàn hoặc gọi món.",
+    "checkedSource": "Kiểm tra thông tin công khai: {date}",
+    "menuSource": "Thực đơn / thông tin món ăn",
     "title": "Nhà hàng phù hợp với bạn",
     "desc": "Nhà hàng trong thành phố của bạn, phù hợp với tôn giáo và nhu cầu ăn uống.",
     "halal": "Nhà hàng Hồi giáo",
@@ -359,6 +364,11 @@
       "ask": "Hỏi về hành tỏi khi gọi món"
     },
     "needs": {
+      "noMeat": "Không thịt",
+      "noSeafood": "Không hải sản",
+      "noEgg": "Không trứng",
+      "noDairy": "Không sữa",
+      "noAlcohol": "Không cồn",
       "halal": "Halal",
       "noPork": "Không thịt heo",
       "vegan": "Chay thuần",
@@ -369,7 +379,7 @@
     "team": {
       "title": "Nơi cả nhóm có thể ăn",
       "desc": "Nhà hàng trong thành phố của bạn phù hợp với mọi người, dựa trên nhu cầu ăn uống đã chia sẻ.",
-      "none": "Chưa ai chia sẻ hạn chế ăn uống, đi đâu ăn cũng được.",
+      "none": "Chưa có yêu cầu kiêng ăn được chia sẻ. Đây là các nhà hàng trong thành phố của bạn.",
       "someDays": " (một số ngày)",
       "noMatch": "Không có nhà hàng nào hợp với tất cả mọi người; có thể đặt món riêng.",
       "legend": "✓ Phù hợp　△ Có món ăn được, hỏi lại khi gọi　✕ Không hợp vào những ngày đó",

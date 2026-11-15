@@ -286,6 +286,11 @@
     "searchMaps": "Cari {type} di Google Maps"
   },
   "restaurants": {
+    "general": "Restoran umum",
+    "generalHint": "Untuk yang tidak memiliki pantangan. Tanyakan bahan saat memesan jika ada kebutuhan khusus.",
+    "veganRequest": "Minta pilihan vegan (tanpa telur dan susu) saat reservasi atau memesan.",
+    "checkedSource": "Informasi publik diperiksa: {date}",
+    "menuSource": "Menu / informasi makanan",
     "title": "Restoran untukmu",
     "desc": "Restoran di kotamu yang sesuai dengan agama dan kebutuhan makanmu.",
     "halal": "Restoran Muslim",
@@ -359,6 +364,11 @@
       "ask": "Tanyakan soal bawang saat memesan"
     },
     "needs": {
+      "noMeat": "Tanpa daging",
+      "noSeafood": "Tanpa makanan laut",
+      "noEgg": "Tanpa telur",
+      "noDairy": "Tanpa susu",
+      "noAlcohol": "Tanpa alkohol",
       "halal": "Halal",
       "noPork": "Tanpa babi",
       "vegan": "Vegan",
@@ -369,7 +379,7 @@
     "team": {
       "title": "Tempat makan untuk tim",
       "desc": "Restoran di kotamu yang cocok untuk semua orang, berdasarkan kebutuhan makan yang dibagikan.",
-      "none": "Belum ada yang membagikan pantangan makanan, jadi di mana saja boleh.",
+      "none": "Belum ada pantangan yang dibagikan. Berikut restoran di kota Anda.",
       "someDays": " (hari tertentu)",
       "noMatch": "Tidak ada restoran yang cocok untuk semua orang; pertimbangkan memesan terpisah.",
       "legend": "✓ Cocok　△ Ada pilihan, cek saat memesan　✕ Tidak cocok di hari-hari itu",

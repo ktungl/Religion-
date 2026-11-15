@@ -50,8 +50,7 @@ const name = (m) => (m.isMe && !m.hideYou ? `${m.displayName} (${t('teamPage.you
     <p v-if="!needs.length" class="mt-3 rounded-2xl border border-dashed border-line p-5 text-center text-muted">
       {{ t('restaurants.team.none') }}
     </p>
-    <template v-else>
-      <ul class="mt-2 flex flex-col gap-1 rounded-2xl border border-line bg-white px-4 py-3 text-sm">
+      <ul v-if="needs.length" class="mt-2 flex flex-col gap-1 rounded-2xl border border-line bg-white px-4 py-3 text-sm">
         <li v-for="x in needs" :key="x.need" class="flex gap-2">
           <span class="w-20 shrink-0 font-semibold">{{ t(`restaurants.needs.${x.need}`) }}</span>
           <span class="text-muted">
@@ -82,6 +81,5 @@ const name = (m) => (m.isMe && !m.hideYou ? `${m.displayName} (${t('teamPage.you
           {{ showAll ? t('restaurants.team.less') : t('restaurants.team.more', { n: picks.length }) }}
         </button>
       </template>
-    </template>
   </section>
 </template>

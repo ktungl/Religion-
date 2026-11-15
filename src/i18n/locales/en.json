@@ -286,6 +286,11 @@
     "searchMaps": "Find a {type} on Google Maps"
   },
   "restaurants": {
+    "general": "General restaurants",
+    "generalHint": "For diners without food restrictions. Ask about ingredients when ordering if you have specific needs.",
+    "veganRequest": "Request the vegan option when booking or ordering (no egg or dairy).",
+    "checkedSource": "Public listing checked {date}",
+    "menuSource": "Menu / food information",
     "title": "Restaurants for you",
     "desc": "Restaurants in your city that suit your faith and food needs.",
     "halal": "Muslim restaurants",
@@ -359,6 +364,11 @@
       "ask": "Ask about onion and garlic when ordering"
     },
     "needs": {
+      "noMeat": "No meat",
+      "noSeafood": "No seafood",
+      "noEgg": "No egg",
+      "noDairy": "No dairy",
+      "noAlcohol": "No alcohol",
       "halal": "Halal",
       "noPork": "No pork",
       "vegan": "Vegan",
@@ -369,7 +379,7 @@
     "team": {
       "title": "Where the team can eat",
       "desc": "Restaurants in your city that work for everyone, based on the food needs people shared.",
-      "none": "Nobody has shared food restrictions, so anywhere works.",
+      "none": "No shared restrictions. Here are restaurants in your city.",
       "someDays": " (some days)",
       "noMatch": "No restaurant suits everyone; consider ordering separately.",
       "legend": "✓ Suits　△ Has options, check when ordering　✕ Not on those days",

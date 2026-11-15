@@ -28,12 +28,17 @@ const address = computed(() => (zh.value ? props.place.address : props.place.add
     <p class="font-semibold">{{ title }}</p>
     <p v-if="subtitle" class="text-sm text-muted" :lang="zh ? 'en' : 'zh-Hant'">{{ subtitle }}</p>
     <div class="mt-2 flex flex-wrap gap-1.5 text-xs">
-      <span v-if="place.cuisine" class="rounded-full px-2 py-0.5" :class="faithStyle(veg ? 'buddhism' : 'islam').soft">{{ t(`restaurants.cuisines.${place.cuisine}`) }}</span>
+      <span v-if="place.cuisine" class="rounded-full px-2 py-0.5" :class="faithStyle(veg ? 'buddhism' : place.type === 'general' ? 'none' : 'islam').soft">{{ t(`restaurants.cuisines.${place.cuisine}`) }}</span>
       <span class="rounded-full border border-line px-2 py-0.5 text-muted">{{ t(`restaurants.districts.${place.district}`) }}</span>
       <span v-if="veg" class="rounded-full border border-line px-2 py-0.5 text-muted">{{ t(`restaurants.veg.${place.veg}`) }}</span>
       <span v-if="place.unverified" class="rounded-full border border-dashed border-muted px-2 py-0.5 text-muted">{{ t('restaurants.unverified') }}</span>
     </div>
     <p v-if="veg && !fits" class="mt-1.5 text-xs text-muted">{{ t(`restaurants.pungent.${place.pungent}`) }}</p>
+    <p v-if="place.veganOptions" class="mt-1.5 text-xs text-muted">{{ t('restaurants.veganRequest') }}</p>
+    <p v-if="place.sourceUrl" class="mt-1.5 text-xs text-muted">
+      <a :href="place.sourceUrl" target="_blank" rel="noopener" class="underline underline-offset-4">{{ t('restaurants.checkedSource', { date: place.checked }) }}</a>
+      <a v-if="place.menuUrl" :href="place.menuUrl" target="_blank" rel="noopener" class="ml-2 underline underline-offset-4">{{ t('restaurants.menuSource') }}</a>
+    </p>
     <ul v-if="fits" class="mt-2 flex flex-wrap gap-1.5 text-xs">
       <li
         v-for="(f, need) in fits"

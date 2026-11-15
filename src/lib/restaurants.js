@@ -36,6 +36,12 @@ export function sourceFor(type, city) {
 }
 
 const CURATED = [
+  // Public operating/menu information checked 2026-11-15; not a phone confirmation.
+  { city: 'taipei', id: 'A16', type: 'halal', name: '亞瑟蘭印度餐廳（士林店）', nameEn: 'Asrah Indian Restaurant (Shilin)', cuisine: 'indian', district: 'shilin', phone: '+886-2-2834-3303', address: '臺北市士林區德行西路114號', addressEn: 'No. 114, Dexing W. Rd., Shilin Dist., Taipei City', checked: '2026-11-15', sourceUrl: 'https://www.tad.gov.tw/m1.aspx?sNo=0020118', statusUrl: 'https://www.islamtaiwan.com/ms/restaurants/95' },
+  { city: 'taipei', id: 'V6', type: 'vegetarian', veg: 'vegan', pungent: 'ask', name: 'Ooh Cha Cha 自然食（古亭店）', nameEn: 'Ooh Cha Cha (Guting)', cuisine: 'fusion', district: 'zhongzheng', phone: '+886-2-2367-7133', address: '臺北市中正區南昌路二段207號', addressEn: 'No. 207, Sec. 2, Nanchang Rd., Zhongzheng Dist., Taipei City', checked: '2026-11-15', sourceUrl: 'https://www.oohchacha.com/find-us', menuUrl: 'https://www.oohchacha.com/' },
+  { city: 'taipei', id: 'G1', type: 'general', name: '鼎泰豐（101店）', nameEn: 'Din Tai Fung (Taipei 101)', cuisine: 'chinese', district: 'xinyi', phone: '+886-2-8101-7799', address: '臺北市信義區市府路45號B1', addressEn: 'B1, No. 45, Shifu Rd., Xinyi Dist., Taipei City', checked: '2026-11-15', sourceUrl: 'https://www.dintaifung.com.tw/store.php' },
+  // Replaces the incomplete TV029 open-data record; vegan meals must be requested.
+  { city: 'taipei', id: 'TV029', type: 'vegetarian', veg: 'mixed', veganOptions: true, pungent: 'some', name: '鈺善閣（台北店）', nameEn: 'Yu Shan Ge (Taipei)', cuisine: 'japanese', district: 'zhongzheng', phone: '+886-2-2394-5155', address: '臺北市中正區北平東路14號1樓', addressEn: '1F, No. 14, Beiping E. Rd., Zhongzheng Dist., Taipei City', checked: '2026-11-15', sourceUrl: 'https://www.yu-shan-ge.com.tw/location-detail/Taipei-vegetarian-restaurant/', menuUrl: 'https://www.yu-shan-ge.com.tw/menu/yushangetpe-menu/' },
   { city: 'taipei', id: 'A1', type: 'halal', name: '阿里巴巴的廚房', nameEn: 'Alibaba Indian Kitchen', cuisine: 'indian', district: 'zhongshan', phone: '+886-2-2567-7163', address: '臺北市中山區南京東路2段56號2樓', addressEn: '2F., No. 56, Sec. 2, Nanjing E. Rd., Zhongshan Dist., Taipei City' },
   { city: 'taipei', id: 'A2', type: 'halal', name: '泰姬印度餐廳', nameEn: 'Taj Indian Restaurant', cuisine: 'indian', district: 'daan', phone: '+886-2-8773-0175', address: '臺北市大安區市民大道4段48巷1號', addressEn: 'No. 1, Ln. 48, Sec. 4, Shimin Blvd., Da’an Dist., Taipei City' },
   { city: 'taipei', id: 'A3', type: 'halal', name: '泰鄉雲店', nameEn: 'Halal Bismilla Restaurant', cuisine: 'thai', district: 'songshan', phone: '+886-2-2577-9271', address: '臺北市松山區北寧路40號1樓', addressEn: '1F., No. 40, Beining Rd., Songshan Dist., Taipei City' },
@@ -70,7 +76,7 @@ const CURATED = [
   { city: 'pingtung', id: 'PV1', type: 'vegetarian', veg: 'mixed', pungent: 'ask', name: '小孩吃素（勝利店）', nameEn: 'Kids Eat Veggie (Shengli)', cuisine: 'fusion', district: 'pingtungCity', phone: '+886-8-765-5222', address: '屏東縣屏東市南京路41號', addressEn: 'No. 41, Nanjing Rd., Pingtung City, Pingtung County' },
 ]
 
-export const RESTAURANTS = [...CURATED, ...TAIPEI_VEGETARIAN]
+export const RESTAURANTS = [...CURATED, ...TAIPEI_VEGETARIAN.filter((r) => !CURATED.some((c) => c.id === r.id))]
 
 export const restaurantsIn = (city) => RESTAURANTS.filter((r) => r.city === city)
 
@@ -88,7 +94,7 @@ export const DISTRICTS = [
 // ---------- Matching restaurants to people ----------
 
 // Needs, roughly from strictest to mildest; each is checked against every restaurant.
-export const NEEDS = ['halal', 'noPork', 'vegan', 'veg', 'noPungent', 'noBeef']
+export const NEEDS = ['halal', 'noPork', 'vegan', 'veg', 'noPungent', 'noBeef', 'noMeat', 'noSeafood', 'noEgg', 'noDairy', 'noAlcohol']
 
 // Cuisines whose menus usually include vegetarian dishes.
 const VEG_DISHES = ['indian', 'pakistani']
@@ -107,6 +113,11 @@ export function needsOf(diet, faiths = []) {
     else if (veg) out.add('veg')
     if (a.has('pungent')) out.add('noPungent')
     if (a.has('beef') && !veg) out.add('noBeef')
+    if (a.has('meat') && !veg) out.add('noMeat')
+    if (a.has('seafood') && !veg) out.add('noSeafood')
+    if (a.has('egg') && !out.has('vegan')) out.add('noEgg')
+    if (a.has('dairy') && !out.has('vegan')) out.add('noDairy')
+    if (a.has('alcohol')) out.add('noAlcohol')
   } else if (!diet?.anything && faiths?.includes('islam')) {
     out.add('halal')
   }
@@ -122,9 +133,9 @@ export function fit(r, need) {
       // Vegetarian food has no meat, but cooking wine is common in Taiwan.
       return r.type === 'halal' ? 'yes' : 'ask'
     case 'noPork':
-      return r.type === 'friendly' ? 'ask' : 'yes'
+      return veg || r.type === 'halal' ? 'yes' : 'ask'
     case 'vegan':
-      if (veg) return r.veg === 'vegan' ? 'yes' : 'ask'
+      if (veg) return r.veg === 'vegan' || r.veganOptions ? 'yes' : 'ask'
       return 'no'
     case 'veg':
       if (veg) return 'yes'
@@ -136,6 +147,15 @@ export function fit(r, need) {
     case 'noBeef':
       if (r.cuisine === 'noodles') return 'no'
       return veg ? 'yes' : 'ask'
+    case 'noMeat':
+    case 'noSeafood':
+      return veg ? 'yes' : 'ask'
+    case 'noEgg':
+    case 'noDairy':
+      return veg && (r.veg === 'vegan' || r.veganOptions) ? 'yes' : 'ask'
+    case 'noAlcohol':
+      // Vegetarian cooking may use wine. Halal restaurants exclude alcohol.
+      return r.type === 'halal' ? 'yes' : 'ask'
     default:
       return 'yes'
   }
@@ -151,8 +171,8 @@ export function recommend(city, needs, soft = new Set()) {
     const score = list.reduce((sum, n) => sum + (fits[n] === 'yes' ? 2 : fits[n] === 'ask' ? 1 : miss(n)), 0)
     return { r, fits, score, i }
   })
-    .filter((x) => x.score >= 0)
-    .sort((a, b) => b.score - a.score || a.i - b.i)
+    .filter((x) => !list.some((n) => !soft.has(n) && x.fits[n] === 'no'))
+    .sort((a, b) => b.score - a.score || Number(!!a.r.unverified) - Number(!!b.r.unverified) || (!list.length ? Number(b.r.type === 'general') - Number(a.r.type === 'general') : 0) || a.i - b.i)
 }
 
 // Search by the Chinese address: Google Maps finds Taipei addresses more reliably that way.
