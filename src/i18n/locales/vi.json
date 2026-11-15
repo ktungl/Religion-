@@ -1,4 +1,11 @@
 {
+  "sync": {
+    "pending": "Đã lưu cài đặt trên thiết bị này. Đang chờ đồng bộ.",
+    "syncing": "Đang đồng bộ cài đặt chia sẻ…",
+    "synced": "Đã đồng bộ cài đặt chia sẻ.",
+    "error": "Chưa đồng bộ: đồng nghiệp vẫn có thể thấy thông tin đã chia sẻ trước đó. Sẽ tự động thử lại khi có kết nối.",
+    "retry": "Thử lại ngay"
+  },
   "welcome": "Xin chào",
   "intro": {
     "tagline": "Giúp đồng nghiệp khác tôn giáo hiểu và quan tâm nhau",

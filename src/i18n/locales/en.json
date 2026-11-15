@@ -1,4 +1,11 @@
 {
+  "sync": {
+    "pending": "Settings saved on this device. Waiting to sync.",
+    "syncing": "Syncing sharing settings...",
+    "synced": "Sharing settings synced.",
+    "error": "Not synced: coworkers may still see previously shared information. We will retry when connected.",
+    "retry": "Retry now"
+  },
   "welcome": "Welcome",
   "intro": {
     "tagline": "Helping coworkers of different faiths understand each other",

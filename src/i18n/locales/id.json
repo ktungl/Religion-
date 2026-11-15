@@ -1,4 +1,11 @@
 {
+  "sync": {
+    "pending": "Pengaturan tersimpan di perangkat ini. Menunggu sinkronisasi.",
+    "syncing": "Menyinkronkan pengaturan berbagi...",
+    "synced": "Pengaturan berbagi sudah disinkronkan.",
+    "error": "Belum tersinkron: rekan kerja mungkin masih melihat informasi yang dibagikan sebelumnya. Akan dicoba lagi saat terhubung.",
+    "retry": "Coba lagi"
+  },
   "welcome": "Selamat datang",
   "intro": {
     "tagline": "Membantu rekan kerja beda agama saling memahami",
